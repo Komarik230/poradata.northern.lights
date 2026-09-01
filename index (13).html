@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Где горит небо — атлас северного сияния над российской Арктикой</title>
+<meta name="description" content="Сколько ночей в году видно северное сияние в 43 городах России: 94 года геомагнитных индексов, 26 лет облачности и астрономия темноты. Назовите город — атлас посчитает его личную запись.">
+<meta property="og:title" content="Где горит небо — атлас северного сияния над Россией">
+<meta property="og:description" content="Назовите город — атлас посчитает, сколько ночей в году над ним горит небо.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0e1a33; --night-2:#142341; --night-3:#1c2f54; --line:#25396a;
+  --snow:#edf2fa; --fog:#a3b3cb; --mist:#63739a;
+  --aurora:#7bebb5; --aurora-deep:#2fb98f; --violet:#a493ff; --ember:#f5a65b;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --measure:68ch;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--night);color:var(--snow);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--aurora);text-decoration-color:rgba(123,235,181,.4);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--aurora)}
+h1,h2,h3{font-weight:600;line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(34px,4.2vw,46px)}
+h2{font-size:clamp(26px,3vw,34px);margin-top:0}
+h3{font-size:19px}
+p{margin:0 0 1em;max-width:var(--measure)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--aurora);outline-offset:3px;border-radius:3px}
+.hint{color:var(--fog);font-size:14px;line-height:1.5}
+.small{font-size:14px;line-height:1.5}
+
+/* ---------- hero: globe + panel ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 440px;min-height:100vh;min-height:100svh}
+.globe-wrap{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#16264a 0%,var(--night) 62%,#0a1327 100%)}
+.globe-wrap svg{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.globe-wrap svg:active{cursor:grabbing}
+.globe-ui{position:absolute;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px}
+.globe-ui button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(14,26,51,.85);color:var(--snow);font-size:18px;line-height:1}
+.globe-ui button:hover{background:var(--night-3)}
+.globe-note{position:absolute;left:16px;bottom:16px;max-width:300px;color:var(--fog);font-size:13px;line-height:1.45;pointer-events:none}
+.tip{position:absolute;pointer-events:none;background:rgba(14,26,51,.92);border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-size:13px;line-height:1.35;color:var(--snow);transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .12s}
+.tip b{font-weight:600}
+.tip .num{color:var(--fog)}
+.panel{padding:40px 36px 48px;border-left:1px solid var(--line);background:var(--night);overflow:auto;max-height:100vh}
+.panel .lead{font-size:17px;color:var(--fog);margin-bottom:26px}
+.field{display:block;margin-bottom:22px}
+.field span{display:block;font-size:14px;color:var(--fog);margin-bottom:6px}
+.field input[type=text]{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--night-2);color:var(--snow);font:inherit;font-size:17px}
+.field input[type=text]::placeholder{color:var(--mist)}
+.kp{margin-bottom:8px}
+.kp-head{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--fog);margin-bottom:4px}
+.kp-head output{font-family:var(--mono);font-size:20px;color:var(--snow)}
+.kp-head output small{font-size:13px;color:var(--fog);margin-left:8px;font-family:var(--sans)}
+input[type=range]{width:100%;accent-color:var(--aurora);margin:6px 0 2px}
+.kp-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--mist);padding:0 2px}
+.kp-hint{color:var(--fog);font-size:14px;min-height:42px;margin:8px 0 6px}
+.kp-now{display:flex;gap:10px;align-items:center;margin-bottom:18px;font-size:13px;color:var(--fog)}
+.kp-now button{border:1px solid var(--line);background:transparent;color:var(--snow);border-radius:6px;padding:5px 10px;font-size:13px}
+.kp-now button:hover{background:var(--night-2)}
+.legend{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:center;font-size:13px;color:var(--fog);margin:10px 0 22px}
+.legend i{display:inline-block;width:16px;height:16px;border-radius:50%}
+.legend .sw-over{background:var(--aurora);box-shadow:0 0 10px rgba(123,235,181,.6)}
+.legend .sw-hor{border:2px solid var(--violet)}
+.legend .sw-none{border:1.5px solid var(--mist)}
+.legend .sw-band{border-radius:3px;width:22px;height:12px;background:linear-gradient(90deg,rgba(123,235,181,.9),rgba(164,147,255,.7))}
+
+/* record card */
+.record{border-top:1px solid var(--line);padding-top:24px;margin-top:6px}
+.record[hidden]{display:none}
+.record h2{font-size:28px;margin-bottom:2px}
+.record .region{color:var(--fog);margin-bottom:14px}
+.big{display:flex;align-items:baseline;gap:12px;margin:14px 0 4px}
+.big .n{font-family:var(--mono);font-size:56px;line-height:1;font-weight:500;color:var(--aurora)}
+.big .l{font-size:15px;color:var(--fog);max-width:200px;line-height:1.35}
+.range{color:var(--fog);font-size:13px;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
+.stats div{background:var(--night-2);border-radius:8px;padding:10px 12px}
+.stats b{display:block;font-family:var(--mono);font-size:22px;font-weight:500;line-height:1.1}
+.stats span{font-size:12.5px;color:var(--fog);line-height:1.3;display:block;margin-top:4px}
+.record p{font-size:15px}
+.chart-title{font-size:13px;color:var(--fog);margin:14px 0 4px}
+.record svg{display:block;width:100%;height:auto;overflow:visible}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{border:1px solid var(--line);background:var(--night-2);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--snow)}
+.btn:hover{background:var(--night-3)}
+.btn.primary{background:var(--aurora);color:#0b1a2e;border-color:var(--aurora);font-weight:500}
+.btn.primary:hover{background:#95f2c6}
+
+/* ---------- sections ---------- */
+main{max-width:1180px;margin:0 auto;padding:0 36px}
+section.block{padding:72px 0 24px;border-top:1px solid var(--line)}
+section.block:first-child{border-top:none}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.chart{background:var(--night-2);border-radius:12px;padding:20px 20px 12px;margin:18px 0}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart-cap{color:var(--fog);font-size:13px;margin:8px 4px 0}
+.axis text{fill:var(--fog);font-family:var(--mono);font-size:11px}
+.axis line,.axis path{stroke:var(--line)}
+.anno{fill:var(--fog);font-size:12px}
+
+/* calendar */
+.cal{display:grid;grid-template-columns:170px repeat(9,1fr) 64px;gap:3px;font-size:13px;margin:18px 0 8px}
+.cal .h{color:var(--fog);font-family:var(--mono);font-size:12px;text-align:center;padding:4px 0 6px}
+.cal .h.l,.cal .name{text-align:left}
+.cal .name{padding:0 8px;line-height:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal .c{height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--snow)}
+.cal .t{font-family:var(--mono);text-align:right;padding-right:6px;line-height:28px;color:var(--fog)}
+.cal-legend{display:flex;align-items:center;gap:10px;color:var(--fog);font-size:13px;margin-top:10px}
+.cal-legend i{display:block;width:140px;height:10px;border-radius:3px;background:linear-gradient(90deg,var(--night-3),var(--aurora))}
+
+/* pole */
+.pole-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.pole-wrap svg{display:block;width:100%;height:auto}
+.drift{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+.drift td,.drift th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
+.drift td:first-child,.drift th:first-child{text-align:left}
+.drift th{color:var(--fog);font-weight:500;font-size:13px}
+.drift td.num{color:var(--snow)}
+
+/* method */
+.method h3{margin-top:28px}
+.method ul{padding-left:20px;max-width:var(--measure)}
+.method li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:28px 36px 40px;color:var(--fog);font-size:14px;line-height:1.6}
+footer p{max-width:none}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .globe-wrap{height:min(92vw,560px)}
+  .globe-note{display:none}
+  .panel{border-left:none;border-top:1px solid var(--line);max-height:none;padding:28px 20px 40px}
+  main{padding:0 20px}
+  .two,.pole-wrap{grid-template-columns:1fr;gap:24px}
+  .cal{grid-template-columns:120px repeat(9,1fr) 46px;font-size:12px}
+  .cal .name{padding:0 4px}
+  .cal .c{font-size:10px;height:24px}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .big .n{font-size:46px}
+  footer{padding:24px 20px 36px}
+}
+@media (max-width:560px){
+  .cal{grid-template-columns:96px repeat(9,1fr) 40px}
+  .cal .c{font-size:0}
+  .stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="globe-wrap" id="globe-wrap">
+    <svg id="globe" role="img" aria-label="Глобус с овалом северного сияния над Арктикой"></svg>
+    <div class="tip" id="tip"></div>
+    <div class="globe-ui">
+      <button type="button" id="zoom-in" aria-label="Приблизить">+</button>
+      <button type="button" id="zoom-out" aria-label="Отдалить">−</button>
+      <button type="button" id="zoom-reset" aria-label="Вернуть карту" title="Вернуть карту">○</button>
+    </div>
+    <div class="globe-note" id="globe-note">Глобус можно вращать. Зелёное кольцо — где сияние стоит над головой при выбранном Kp; горящие точки — города внутри овала, обведённые видят его на северном горизонте.</div>
+  </div>
+
+  <aside class="panel">
+    <h1>Где горит небо</h1>
+    <p class="lead">Атлас северного сияния над российской Арктикой. Мы совместили 94 года геомагнитных наблюдений, 26 лет данных об облачности и астрономию полярной ночи для 43 городов — и посчитали, сколько ночей в году над каждым из них горит небо. Назовите свой город.</p>
+
+    <label class="field"><span>Город</span>
+      <input type="text" id="city-input" list="city-list" placeholder="Например, Норильск" autocomplete="off">
+      <datalist id="city-list"></datalist>
+    </label>
+
+    <div class="kp">
+      <div class="kp-head"><span>Геомагнитная активность</span><output id="kp-out">Kp 3</output></div>
+      <input type="range" id="kp" min="0" max="27" step="1" value="9" aria-label="Индекс Kp">
+      <div class="kp-scale"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+      <p class="kp-hint" id="kp-hint"></p>
+      <div class="kp-now"><button type="button" id="kp-now">Показать текущий Kp</button><span id="kp-now-msg">по данным NOAA SWPC</span></div>
+    </div>
+
+    <div class="legend">
+      <i class="sw-band"></i><span>овал сияния: здесь оно над головой</span>
+      <i class="sw-over"></i><span>город внутри овала</span>
+      <i class="sw-hor"></i><span>сияние видно на северном горизонте</span>
+      <i class="sw-none"></i><span>сияния не будет</span>
+    </div>
+
+    <section class="record" id="record" hidden aria-live="polite"></section>
+  </aside>
+</header>
+
+<main>
+  <section class="block" id="calendar">
+    <h2>Календарь сезона</h2>
+    <p>Ожидаемое число ночей в месяц, когда сияние стоит над городом при ясном небе (среднее за 2000–2025). Полярная ночь тёмная, но облачная; сентябрь геомагнитно самый бурный месяц, но осенью в Арктике пасмурно. Поэтому главный сезон у большинства арктических городов — с января по март.</p>
+    <div class="cal" id="cal"></div>
+    <div class="cal-legend"><span>0</span><i></i><span id="cal-max">15 ночей</span></div>
+  </section>
+
+  <section class="block" id="history">
+    <h2>94 года бурь</h2>
+    <p>Число дней в году с геомагнитной бурей (Kp ≥ 5, уровень G1 и выше) на фоне солнечного цикла. Максимум бурь отстаёт от максимума солнечных пятен в среднем на два-три года, а на спаде цикла случаются самые сильные события. Оранжевые метки — дни с Kp 9, высшим баллом шкалы.</p>
+    <div class="chart"><svg id="hist"></svg><div class="chart-cap" id="hist-cap"></div></div>
+  </section>
+
+  <section class="block" id="season">
+    <div class="two">
+      <div>
+        <h2>Равноденствие против полярной ночи</h2>
+        <p>Доля времени с бурей (Kp ≥ 5) по месяцам за 1932–2025. У равноденствий геомагнитная активность вдвое выше, чем у солнцестояний, — это эффект Расселла–Макферрона: в марте и сентябре ось Земли ориентирована так, что межпланетное поле легче стыкуется с земным.</p>
+        <div class="chart"><svg id="season-kp"></svg><div class="chart-cap">Доля 3-часовых интервалов с Kp ≥ 5, %. Источник: GFZ Potsdam.</div></div>
+      </div>
+      <div>
+        <h2>Когда небо действительно горит</h2>
+        <p>А это ожидаемые видимые ночи в месяц для среднего арктического города — с учётом того, что летом темноты нет, а осенью небо закрыто облаками. Пик активности в сентябре в Арктике почти съедает облачность; средней полосе он, наоборот, дарит лучший месяц года.</p>
+        <div class="chart"><svg id="season-vis"></svg><div class="chart-cap">Среднее по 32 городам АЗРФ: ночей с сиянием над головой при ясном небе, 2000–2025.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="pole">
+    <h2>Сияние переезжает в Россию</h2>
+    <p>Северный магнитный полюс с 1590 года прошёл путь от канадской Арктики почти до географического полюса и в 2020-х пересёк его, оказавшись в восточном полушарии: в 2025 году он находится на 139° восточной долготы и движется к Таймыру. Для сияний важнее другое: центр овала следует за геомагнитным полюсом, который тоже смещается к географическому, и вся Россия за 125 лет «подъехала» к овалу на 1–3,5 градуса геомагнитной широты.</p>
+    <div class="pole-wrap">
+      <svg id="pole-map" role="img" aria-label="Траектория северного магнитного полюса с 1590 по 2030 год"></svg>
+      <div>
+        <table class="drift" id="drift"><thead><tr><th>Город</th><th>1900</th><th>1950</th><th>2000</th><th>2026</th><th>сдвиг</th></tr></thead><tbody></tbody></table>
+        <p class="hint">Геомагнитная (CGM) широта города по IGRF-14 на высоте свечения 110 км. Плюс 3,3° для Норильска — это как переехать на 370 км к северу, не двигаясь с места.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block method" id="method">
+    <h2>Как считали</h2>
+    <p>Ночь засчитывается как «ночь с сиянием», если одновременно выполняются три условия: достаточно темно, геомагнитная активность дотянула овал до города и небо ясное. Каждое условие считалось по отдельному набору данных.</p>
+    <h3>Темнота</h3>
+    <p>Для каждого часа с 1932 года вычислена высота Солнца над горизонтом. Час считается тёмным, если Солнце ниже −12° (конец навигационных сумерек). Ночь — промежуток от местного полудня до следующего полудня, чтобы не резать её по полуночи. Летом севернее полярного круга тёмных часов нет вовсе — поэтому сезон сияний в Мурманске длится с конца августа до середины апреля.</p>
+    <h3>Овал сияния и Kp</h3>
+    <p>Положение овала задано индексом Kp (GFZ Potsdam, трёхчасовые значения с 1932 года). Экваториальная граница овала на ночной стороне лежит примерно на 66,5° геомагнитной широты при Kp = 0 и опускается на 2° с каждым баллом (Gussenhoven, Hardy, Heinemann, 1983; эту же связь использует NOAA SWPC). Сияние «над головой» — когда граница достигла геомагнитной широты города; «на северном горизонте» — когда она не дальше 5° (около 550 км) к северу от него. Для ночи брался максимальный Kp за тёмные часы. Модель статистическая: она описывает, где сияние бывает при данном Kp, а не конкретную вспышку.</p>
+    <h3>Геомагнитные координаты</h3>
+    <p>Географическая широта для сияний почти ничего не значит: овал центрирован на геомагнитном полюсе, который лежит над Канадой. Поэтому Норильск на 69° с. ш. и Кемь на 65° с. ш. геомагнитно различаются на четыре градуса, а Анадырь при своих 65° с. ш. магнитно «южнее» Архангельска. Корректированные геомагнитные широты (CGM) вычислены так же, как в стандартной модели AACGM-v2: по полю IGRF-14 силовая линия из точки на высоте 110 км трассируется до апекса, а затем сажается на дипольную линию. Реализация проверена по 13 станциям магнитометрической сети IMAGE (расхождение 0,04°). Эпоха — сентябрь 2026 года; для исторических эпох использованы коэффициенты соответствующих лет.</p>
+    <h3>Облачность</h3>
+    <p>Самая ненадёжная часть расчёта. Часовая облачность реанализа ERA5 (через Open-Meteo) за 2000–2025 годы агрегирована по тёмным часам каждой ночи. Но в холодную полярную зиму ERA5 систематически завышает облачность над Сибирью, а спутниковый продукт CERES (NASA POWER) ночью над снегом, наоборот, склонен её занижать. Поэтому вероятность ясного неба в каждом месяце взята как среднее двух оценок, а в карточке города показан разброс между ними. «Ясно» здесь означает, что закрыто не больше половины неба. При строгом критерии (не больше четверти) все цифры уменьшаются примерно на треть.</p>
+    <h3>Чего модель не умеет</h3>
+    <ul>
+      <li>Не учитывает засветку: все цифры — для тёмного неба за городом.</li>
+      <li>Занижает дальность экстремальных бурь: красное сияние на высотах 300–600 км во время бурь класса G5 видно гораздо южнее расчётной линии — так в мае 2024 года его снимали в Сочи.</li>
+      <li>Считает овал кольцом постоянной геомагнитной широты — это его положение на ночной стороне; вечером и утром он проходит севернее.</li>
+      <li>Для городов внутри спокойного овала (Хатанга, Диксон, Тикси) «активность достаточна» в любую тёмную ночь; на самом деле в очень спокойные ночи дуга может стоять южнее.</li>
+    </ul>
+    <h3>Данные</h3>
+    <ul>
+      <li>Индекс Kp, ap, Ap, числа Вольфа, F10.7 с 1932 г. — <a href="https://kp.gfz.de/" rel="noopener">GFZ Helmholtz Centre, Потсдам</a> (CC BY 4.0).</li>
+      <li>Месячные числа солнечных пятен с 1749 г. — <a href="https://www.sidc.be/SILSO/" rel="noopener">WDC-SILSO, Королевская обсерватория Бельгии</a>.</li>
+      <li>Коэффициенты IGRF-14 (1900–2030) и положения магнитного полюса 1590–2030 — <a href="https://www.ncei.noaa.gov/products/wandering-geomagnetic-poles" rel="noopener">NOAA NCEI</a>.</li>
+      <li>Облачность: реанализ ERA5 (ECMWF) через <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a>; климатология CERES через <a href="https://power.larc.nasa.gov/" rel="noopener">NASA POWER</a>.</li>
+      <li>Связь Kp и границы овала: Gussenhoven M. S., Hardy D. A., Heinemann N. (1983), J. Geophys. Res. 88; метод CGM: Shepherd S. G. (2014), J. Geophys. Res. Space Physics 119.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p><b>ПОРА считать</b> — канал о цифрах Арктики: <a href="https://t.me/poradata" rel="noopener">t.me/poradata</a>. Расчёт, данные и код открыты; ошибки и уточнения — в комментарии к посту.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script>
+(function(){
+'use strict';
+const D = window.AURORA_DATA;
+if (!D) { document.getElementById('globe-note').textContent = 'Не найден файл data.js — положите его рядом с index.html.'; return; }
+const M = D.meta;
+const CITIES = D.cities;
+const byName = new Map(CITIES.map(c => [c.name.toLowerCase(), c]));
+const byId = new Map(CITIES.map(c => [c.id, c]));
+const MON_SHORT = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+const MON_GEN = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const MON_NOM = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const CSS = getComputedStyle(document.documentElement);
+const col = n => CSS.getPropertyValue(n).trim();
+
+// ---------- форматирование ----------
+const fmt1 = x => (Math.round(x * 10) / 10).toLocaleString('ru-RU', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+const fmt0 = x => Math.round(x).toLocaleString('ru-RU');
+function fmtKp(k){ // 4.33 → «4+», 4.67 → «5−»
+  const t = Math.round(k * 3);
+  const base = Math.floor(t / 3), r = t % 3;
+  if (r === 0) return String(base);
+  if (r === 1) return base + '+';
+  return (base + 1) + '−';
+}
+function kpCeil(k){ return Math.ceil(k * 3 - 1e-9) / 3; }
+function gLevel(k){
+  if (k >= 9 - 1e-9) return ['G5', 'экстремальная буря'];
+  if (k >= 8 - 1e-9) return ['G4', 'очень сильная буря'];
+  if (k >= 7 - 1e-9) return ['G3', 'сильная буря'];
+  if (k >= 6 - 1e-9) return ['G2', 'умеренная буря'];
+  if (k >= 5 - 1e-9) return ['G1', 'малая буря'];
+  if (k >= 4 - 1e-9) return ['', 'активно'];
+  if (k >= 2) return ['', 'спокойно'];
+  return ['', 'очень спокойно'];
+}
+function plural(n, one, few, many){ n = Math.round(n); const a = n % 10, b = n % 100; if (b >= 11 && b <= 19) return many; if (a === 1) return one; if (a >= 2 && a <= 4) return few; return many; }
+function fmtDate(s){ if (!s) return '—'; const [y, m, d] = s.split('-').map(Number); return `${d} ${MON_GEN[m-1]} ${y}`; }
+
+// ---------- геомагнитные изолинии ----------
+const ISO = D.cgmIso;
+function isoLine(b){
+  const lo = Math.max(40, Math.min(77.5, Math.floor(b * 2) / 2));
+  const hi = Math.min(78, lo + 0.5);
+  const t = Math.max(0, Math.min(1, (b - lo) / 0.5));
+  const A = ISO.iso[lo.toFixed(1)], B = ISO.iso[hi.toFixed(1)];
+  const pts = [];
+  ISO.lons.forEach((lon, i) => { const a = A[i], c = B[i]; if (a == null || c == null) return; pts.push([lon, a + (c - a) * t]); });
+  return pts;
+}
+function ring(eq, po){
+  eq = eq.concat([[360, eq[0][1]]]); po = po.concat([[360, po[0][1]]]);   // замыкаем кольцо без 3° клина
+  const r = eq.concat(po.slice().reverse()); r.push(r[0]);
+  const poly = {type: 'Polygon', coordinates: [r]};
+  if (d3.geoArea(poly) > 2 * Math.PI) poly.coordinates[0].reverse();
+  return poly;
+}
+function ovalFor(kp){
+  const bEq = M.ovalLat0 - M.ovalSlope * kp;
+  const bPole = Math.min(78, bEq + 6 + 0.7 * kp);
+  const bHor = Math.max(40, bEq - M.horizonDeg);
+  return {bEq, bPole, bHor,
+    band: ring(isoLine(bEq), isoLine(bPole)),
+    eq: {type: 'LineString', coordinates: isoLine(bEq).concat([isoLine(bEq)[0]])},
+    horizon: {type: 'LineString', coordinates: isoLine(bHor).concat([isoLine(bHor)[0]])}};
+}
+function cityState(c, kp){
+  const bEq = M.ovalLat0 - M.ovalSlope * kp;
+  if (c.cgm >= bEq - 1e-6) return 'over';
+  if (c.cgm >= bEq - M.horizonDeg - 1e-6) return 'hor';
+  return 'none';
+}
+
+// ---------- глобус ----------
+const wrap = document.getElementById('globe-wrap');
+const svg = d3.select('#globe');
+const tip = document.getElementById('tip');
+const projection = d3.geoOrthographic().clipAngle(90).rotate([-100, -70]);
+const path = d3.geoPath(projection);
+let zoomK = 1, W = 0, H = 0, land = null, russia = null, selected = null;
+let kp = 3;
+
+const defs = svg.append('defs');
+const gSphere = defs.append('radialGradient').attr('id', 'g-sphere').attr('cx', '48%').attr('cy', '42%').attr('r', '62%');
+gSphere.append('stop').attr('offset', '0%').attr('stop-color', '#1d3159');
+gSphere.append('stop').attr('offset', '100%').attr('stop-color', '#0b1530');
+const gBand = defs.append('linearGradient').attr('id', 'g-band').attr('x1', '0').attr('y1', '1').attr('x2', '0').attr('y2', '0');
+gBand.append('stop').attr('offset', '0%').attr('stop-color', col('--aurora')).attr('stop-opacity', .85);
+gBand.append('stop').attr('offset', '60%').attr('stop-color', col('--aurora-deep')).attr('stop-opacity', .55);
+gBand.append('stop').attr('offset', '100%').attr('stop-color', col('--violet')).attr('stop-opacity', .45);
+const glow = defs.append('filter').attr('id', 'glow').attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
+glow.append('feGaussianBlur').attr('stdDeviation', 6).attr('result', 'b');
+const fm = glow.append('feMerge'); fm.append('feMergeNode').attr('in', 'b'); fm.append('feMergeNode').attr('in', 'SourceGraphic');
+
+const g = svg.append('g');
+const sphere = g.append('path').attr('fill', 'url(#g-sphere)').attr('stroke', '#2a3f6e').attr('stroke-width', 1);
+const grat = g.append('path').attr('fill', 'none').attr('stroke', '#22345f').attr('stroke-width', .6);
+const landP = g.append('path').attr('fill', '#22375f').attr('stroke', '#31497a').attr('stroke-width', .5);
+const rusP = g.append('path').attr('fill', '#2b4677').attr('stroke', '#5a76aa').attr('stroke-width', .8);
+const arctic = g.append('path').attr('fill', 'none').attr('stroke', '#5a76aa').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
+const bandP = g.append('path').attr('fill', 'url(#g-band)').attr('stroke', 'none').attr('filter', 'url(#glow)');
+const eqP = g.append('path').attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 1.3).attr('stroke-opacity', .95);
+const horP = g.append('path').attr('fill', 'none').attr('stroke', col('--violet')).attr('stroke-width', 1).attr('stroke-dasharray', '2 5').attr('stroke-opacity', .8);
+const cityG = g.append('g');
+const labelG = g.append('g').attr('pointer-events', 'none');
+
+const graticule = d3.geoGraticule().step([30, 10]);
+const arcticCircle = {type: 'LineString', coordinates: d3.range(0, 361, 2).map(l => [l, 66.56])};
+
+function visible(lon, lat){
+  const r = projection.rotate();
+  const c = d3.geoDistance([lon, lat], [-r[0], -r[1]]);
+  return c < Math.PI / 2 - 0.02;
+}
+
+function render(){
+  const s = Math.min(W, H) / 2 * 0.94 * zoomK;
+  projection.translate([W / 2, H / 2]).scale(s);
+  sphere.attr('d', path({type: 'Sphere'}));
+  grat.attr('d', path(graticule()));
+  if (land) landP.attr('d', path(land));
+  if (russia) rusP.attr('d', path(russia));
+  arctic.attr('d', path(arcticCircle));
+  const o = ovalFor(kp);
+  bandP.attr('d', path(o.band));
+  eqP.attr('d', path(o.eq));
+  horP.attr('d', path(o.horizon));
+
+  const pts = CITIES.map(c => { const p = projection([c.lon, c.lat]); return {c, p, vis: visible(c.lon, c.lat), st: cityState(c, kp)}; });
+  const sel = cityG.selectAll('circle').data(pts, d => d.c.id);
+  sel.enter().append('circle')
+    .attr('tabindex', 0).attr('role', 'button')
+    .on('mouseenter', (e, d) => showTip(d)).on('mouseleave', hideTip)
+    .on('click', (e, d) => selectCity(d.c, true))
+    .on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCity(d.c, true); } })
+    .merge(sel)
+    .attr('aria-label', d => d.c.name)
+    .attr('cx', d => d.p[0]).attr('cy', d => d.p[1])
+    .attr('display', d => d.vis ? null : 'none')
+    .attr('r', d => (d.c === selected ? 6.5 : (d.c.group === 'АЗРФ' ? 4.2 : 3.4)) * Math.sqrt(zoomK))
+    .attr('fill', d => d.st === 'over' ? col('--aurora') : (d.st === 'hor' ? 'rgba(164,147,255,.15)' : 'rgba(14,26,51,.6)'))
+    .attr('stroke', d => d.st === 'over' ? '#eafff5' : (d.st === 'hor' ? col('--violet') : col('--mist')))
+    .attr('stroke-width', d => d.c === selected ? 2.2 : 1.3)
+    .attr('filter', d => d.st === 'over' ? 'url(#glow)' : null)
+    .style('cursor', 'pointer');
+
+  const labels = pts.filter(d => d.vis && (d.c === selected || (zoomK >= 1.8 && d.c.group === 'АЗРФ') || ['murmansk','norilsk','tiksi','anadyr','arkhangelsk','salekhard','saint_petersburg','moscow','yakutsk'].includes(d.c.id) && zoomK < 1.8 && !selected));
+  const lb = labelG.selectAll('text').data(labels, d => d.c.id);
+  lb.exit().remove();
+  lb.enter().append('text').merge(lb)
+    .attr('x', d => d.p[0] + 8).attr('y', d => d.p[1] + 4)
+    .attr('fill', d => d.c === selected ? col('--snow') : col('--fog'))
+    .attr('font-size', d => d.c === selected ? 13 : 11.5)
+    .attr('font-weight', d => d.c === selected ? 600 : 400)
+    .attr('paint-order', 'stroke').attr('stroke', 'rgba(14,26,51,.85)').attr('stroke-width', 3)
+    .text(d => d.c.name);
+}
+
+function showTip(d){
+  const st = d.st === 'over' ? 'сияние над головой' : d.st === 'hor' ? 'сияние на северном горизонте' : 'при таком Kp сияния нет';
+  tip.innerHTML = `<b>${d.c.name}</b><br>геомагн. широта <span class="num">${fmt1(d.c.cgm)}°</span><br>${st}<br>≈ <span class="num">${fmt0(d.c.visOver)}</span> ${plural(d.c.visOver, 'ночь', 'ночи', 'ночей')} в году`;
+  tip.style.left = d.p[0] + 'px'; tip.style.top = d.p[1] + 'px'; tip.style.opacity = 1;
+}
+function hideTip(){ tip.style.opacity = 0; }
+
+function resize(){ W = wrap.clientWidth; H = wrap.clientHeight; svg.attr('viewBox', `0 0 ${W} ${H}`).attr('width', W).attr('height', H); render(); }
+window.addEventListener('resize', resize);
+
+// вращение
+svg.call(d3.drag()
+  .on('start', hideTip)
+  .on('drag', (e) => {
+    const r = projection.rotate(); const k = 60 / projection.scale() * 1.4;
+    projection.rotate([r[0] + e.dx * k, Math.max(-90, Math.min(90, r[1] - e.dy * k))]);
+    render();
+  }));
+function setZoom(k){ zoomK = Math.max(1, Math.min(3.2, k)); render(); }
+document.getElementById('zoom-in').addEventListener('click', () => setZoom(zoomK * 1.35));
+document.getElementById('zoom-out').addEventListener('click', () => setZoom(zoomK / 1.35));
+document.getElementById('zoom-reset').addEventListener('click', () => { zoomK = 1; d3.transition().duration(700).tween('r', () => { const i = d3.interpolate(projection.rotate(), [-100, -70]); return t => { projection.rotate(i(t)); render(); }; }); });
+
+function rotateTo(c){
+  const target = [-c.lon, -Math.min(c.lat + 6, 88)];
+  const i = d3.interpolate(projection.rotate(), target);
+  d3.transition().duration(900).ease(d3.easeCubicInOut).tween('rotate', () => t => { projection.rotate(i(t)); render(); });
+}
+
+// суша
+Promise.all([
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json').then(r => r.json()),
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json())
+]).then(([l, c]) => {
+  land = topojson.feature(l, l.objects.land);
+  const countries = topojson.feature(c, c.objects.countries);
+  russia = countries.features.find(f => f.id === '643' || f.id === 643 || (f.properties && f.properties.name === 'Russia'));
+  render(); drawPole();
+}).catch(() => { document.getElementById('globe-note').textContent += ' Контуры суши не загрузились (нет доступа к cdn.jsdelivr.net) — овал и города всё равно показаны.'; drawPole(); });
+
+// ---------- Kp ----------
+const kpInput = document.getElementById('kp'), kpOut = document.getElementById('kp-out'), kpHint = document.getElementById('kp-hint');
+function setKp(v, fromSlider){
+  kp = Math.max(0, Math.min(9, v));
+  if (!fromSlider) kpInput.value = Math.round(kp * 3);
+  const [gl, gt] = gLevel(kp);
+  kpOut.innerHTML = `Kp ${fmtKp(kp)}<small>${gl ? gl + ', ' : ''}${gt}</small>`;
+  const o = ovalFor(kp);
+  const inside = CITIES.filter(c => c.group === 'АЗРФ' && cityState(c, kp) === 'over').length;
+  const horiz = CITIES.filter(c => cityState(c, kp) === 'hor');
+  const southern = CITIES.filter(c => cityState(c, kp) !== 'none').sort((a, b) => a.cgm - b.cgm)[0];
+  let txt = `Граница овала — на ${fmt1(o.bEq)}° геомагнитной широты. Над головой сияние у ${inside} из 32 арктических городов`;
+  if (southern) txt += `; самая южная точка, где его видно хотя бы на горизонте, — ${southern.name}.`; else txt += '.';
+  kpHint.textContent = txt;
+  render();
+  if (selected) updateRecordKp();
+}
+kpInput.addEventListener('input', () => setKp(+kpInput.value / 3, true));
+
+document.getElementById('kp-now').addEventListener('click', async () => {
+  const msg = document.getElementById('kp-now-msg');
+  msg.textContent = 'запрашиваю…';
+  try {
+    const r = await fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json');
+    const rows = await r.json();
+    const last = rows[rows.length - 1];
+    const v = parseFloat(last[1]);
+    setKp(Math.round(v * 3) / 3);
+    const t = new Date(last[0].replace(' ', 'T') + 'Z');
+    msg.textContent = `Kp ${fmtKp(v)} на ${t.toLocaleString('ru-RU', {day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit'})} (NOAA SWPC)`;
+  } catch (e) { msg.textContent = 'не удалось получить данные NOAA — попробуйте позже'; }
+});
+
+// ---------- поиск города ----------
+const dl = document.getElementById('city-list');
+CITIES.slice().sort((a, b) => a.name.localeCompare(b.name, 'ru')).forEach(c => { const o = document.createElement('option'); o.value = c.name; dl.appendChild(o); });
+const input = document.getElementById('city-input');
+function tryInput(){
+  const v = input.value.trim().toLowerCase();
+  if (!v) return;
+  let c = byName.get(v);
+  if (!c) c = CITIES.find(x => x.name.toLowerCase().startsWith(v));
+  if (c) selectCity(c, true);
+}
+input.addEventListener('change', tryInput);
+input.addEventListener('keydown', e => { if (e.key === 'Enter') tryInput(); });
+
+// ---------- карточка города ----------
+const rec = document.getElementById('record');
+function selectCity(c, rotate){
+  selected = c;
+  input.value = c.name;
+  rec.hidden = false;
+  rec.innerHTML = recordHTML(c);
+  drawMonths(c); drawYears(c);
+  document.getElementById('png').addEventListener('click', () => downloadCard(c));
+  document.getElementById('share').addEventListener('click', () => shareCity(c));
+  updateRecordKp();
+  if (rotate) rotateTo(c); else render();
+  if (history.replaceState) history.replaceState(null, '', '#' + c.id);
+}
+function recordHTML(c){
+  const over0 = c.kpOver <= 0.01, hor0 = c.kpHor <= 0.01;
+  const thr = over0
+    ? 'Город лежит внутри спокойного овала: сияние может стоять над головой в любую тёмную ночь, даже при Kp 0.'
+    : `Чтобы сияние оказалось над головой, нужен Kp не ниже <span class="num">${fmtKp(kpCeil(c.kpOver))}</span>; ${hor0 ? 'на северном горизонте оно видно при любой активности' : `на северном горизонте — от Kp <span class="num">${fmtKp(kpCeil(c.kpHor))}</span>`}.`;
+  const lo = Math.min(c.visOverEra, c.visOverCeres), hi = Math.max(c.visOverEra, c.visOverCeres);
+  const pd = c.polarDay ? `<p>Светлые ночи без тёмного неба: с ${fmtDate(c.polarDay[0])} по ${fmtDate(c.polarDay[1])} — ${c.polarDay[2]} ${plural(c.polarDay[2], 'ночь', 'ночи', 'ночей')} без сияний.</p>` : '';
+  const drift = c.cgm - c.cgm1900;
+  const lastOver = c.lastOver ? `Последняя ночь, когда сияние по расчёту стояло над городом, — ${fmtDate(c.lastOver)}${c.lastOverKp ? ` (Kp ${fmtKp(c.lastOverKp)})` : ''}.` : 'За 94 года наблюдений овал не дотягивал до этого города ни разу.';
+  const lastHor = (!c.lastOver && c.lastHor) ? ` На северном горизонте его можно было увидеть ${fmtDate(c.lastHor)}.` : '';
+  const visLabel = c.visOver >= 0.95 ? `${plural(c.visOver, 'ночь', 'ночи', 'ночей')} в году сияние стоит над городом при ясном небе` : 'ночей в году — над головой оно почти не появляется';
+  const horLine = c.visHor > c.visOver + 0.5 ? `<p>Если считать и сияние на северном горизонте, ночей набирается около <span class="num">${fmt0(c.visHor)}</span> в году.</p>` : '';
+  return `
+    <h2>${c.name}</h2>
+    <div class="region">${c.region !== c.name ? c.region + ', ' : ''}${fmt1(c.lat)}° с. ш. Геомагнитная широта <span class="num">${fmt1(c.cgm)}°</span></div>
+    <p>${thr}</p>
+    <div class="big"><span class="n">${c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver)}</span><span class="l">${visLabel}</span></div>
+    <div class="range">Среднее за 2000–2025. Разброс по источникам облачности: от ${fmt0(lo)} до ${fmt0(hi)}; при строгом критерии ясности — ${fmt0(c.visOverStrict)}.</div>
+    <div class="stats">
+      <div><b class="num">${fmt0(c.darkNights)}</b><span>тёмных ночей в году</span></div>
+      <div><b class="num">${fmt0(c.overNights)}</b><span>из них с достаточной активностью</span></div>
+      <div><b class="num">${fmt0(c.pClear * 100)}%</b><span>тёмных часов с ясным небом</span></div>
+    </div>
+    ${horLine}
+    <p>${lastOver}${lastHor} В 2025 году таких ночей было ${c.over2025}, за первые восемь месяцев 2026-го — ${c.over2026} (без учёта облачности).</p>
+    ${pd}
+    <p id="rec-kp" class="hint"></p>
+    <div class="chart-title">Ожидаемые ночи с сиянием по месяцам (столбик на фоне — все тёмные ночи месяца)</div>
+    <svg id="months"></svg>
+    <div class="chart-title">Ночей в году с сиянием над городом по данным Kp, без облачности: 1932–2026</div>
+    <svg id="years"></svg>
+    <p class="hint">В 1900 году геомагнитная широта города была ${fmt1(c.cgm1900)}°: за 126 лет овал сместился к городу на ${fmt1(drift)}°.</p>
+    <div class="actions"><button type="button" class="btn primary" id="png">Скачать карточку PNG</button><button type="button" class="btn" id="share">Скопировать ссылку</button></div>`;
+}
+function updateRecordKp(){
+  const el = document.getElementById('rec-kp'); if (!el || !selected) return;
+  const st = cityState(selected, kp);
+  el.textContent = st === 'over' ? `При Kp ${fmtKp(kp)} ${selected.name} внутри овала — сияние над головой.` : st === 'hor' ? `При Kp ${fmtKp(kp)} сияние видно из города на северном горизонте.` : `При Kp ${fmtKp(kp)} до города овал не доходит: нужен Kp ${fmtKp(kpCeil(selected.kpHor))} для горизонта и ${fmtKp(kpCeil(selected.kpOver))} — чтобы оно встало над головой.`;
+}
+const SEASON_ORDER = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7];
+function drawMonths(c){
+  const w = 368, h = 150, m = {l: 26, r: 4, t: 8, b: 22};
+  const s = d3.select('#months').attr('viewBox', `0 0 ${w} ${h}`);
+  s.selectAll('*').remove();
+  const data = SEASON_ORDER.map(mi => c.months.find(x => x.m === mi));
+  const x = d3.scaleBand().domain(SEASON_ORDER).range([m.l, w - m.r]).padding(.22);
+  const y = d3.scaleLinear().domain([0, Math.max(31, d3.max(data, d => d.dark))]).range([h - m.b, m.t]);
+  s.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(3).tickSize(-(w - m.l - m.r))).attr('transform', `translate(${m.l},0)`).call(g => g.select('.domain').remove());
+  s.selectAll('.bg').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.dark)).attr('height', d => y(0) - y(d.dark)).attr('fill', '#233a66').attr('rx', 2);
+  s.selectAll('.v').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.vis)).attr('height', d => y(0) - y(d.vis)).attr('fill', col('--aurora')).attr('rx', 2);
+  s.selectAll('.lab').data(data).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', h - 7).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 10.5).attr('font-family', col('--mono')).text(d => MON_SHORT[d.m - 1]);
+  s.selectAll('.val').data(data.filter(d => d.vis >= 0.5)).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', d => y(d.vis) - 3).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 10).attr('font-family', col('--mono')).text(d => fmt0(d.vis));
+}
+function drawYears(c){
+  const w = 368, h = 110, m = {l: 26, r: 4, t: 6, b: 18};
+  const s = d3.select('#years').attr('viewBox', `0 0 ${w} ${h}`);
+  s.selectAll('*').remove();
+  const years = d3.range(c.yearStart, c.yearStart + c.yearsOver.length);
+  const x = d3.scaleLinear().domain([years[0], years[years.length - 1]]).range([m.l, w - m.r]);
+  const y = d3.scaleLinear().domain([0, Math.max(10, d3.max(c.yearsOver))]).nice().range([h - m.b, m.t]);
+  s.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(3).tickSize(-(w - m.l - m.r))).attr('transform', `translate(${m.l},0)`).call(g => g.select('.domain').remove());
+  s.append('g').attr('class', 'axis').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(d3.format('d')).tickSize(3)).call(g => g.select('.domain').remove());
+  const area = d3.area().x((d, i) => x(years[i])).y0(y(0)).y1(d => y(d)).curve(d3.curveMonotoneX);
+  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', area).attr('fill', 'rgba(123,235,181,.25)');
+  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', d3.line().x((d, i) => x(years[i])).y(d => y(d)).curve(d3.curveMonotoneX)).attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 1.4);
+  const last = c.yearsOver[c.yearsOver.length - 1];
+  s.append('circle').attr('cx', x(2026)).attr('cy', y(last)).attr('r', 2.5).attr('fill', col('--ember'));
+  s.append('text').attr('x', w - m.r).attr('y', m.t + 8).attr('text-anchor', 'end').attr('fill', col('--fog')).attr('font-size', 10).attr('font-family', col('--mono')).text(`2026: ${last} за 8 мес.`);
+}
+async function shareCity(c){
+  const url = location.origin + location.pathname + '#' + c.id;
+  try { await navigator.clipboard.writeText(url); document.getElementById('share').textContent = 'Ссылка скопирована'; } catch (e) { prompt('Ссылка на карточку', url); }
+}
+
+// PNG-карточка 1080×1080
+async function downloadCard(c){
+  if (document.fonts && document.fonts.ready) { try { await document.fonts.ready; } catch (e) {} }
+  const S = 1080, cv = document.createElement('canvas'); cv.width = S; cv.height = S;
+  const ctx = cv.getContext('2d');
+  const bg = ctx.createRadialGradient(S * .5, S * .35, 80, S * .5, S * .5, S * .85);
+  bg.addColorStop(0, '#182b52'); bg.addColorStop(1, '#0b1530');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, S, S);
+  // сияние-полоса
+  const ag = ctx.createLinearGradient(0, 120, 0, 330);
+  ag.addColorStop(0, 'rgba(164,147,255,0)'); ag.addColorStop(.55, 'rgba(47,185,143,.55)'); ag.addColorStop(1, 'rgba(123,235,181,.0)');
+  ctx.fillStyle = ag; ctx.beginPath();
+  for (let i = 0; i <= 40; i++) { const xx = i / 40 * S; const yy = 220 + Math.sin(i / 4.5) * 28 + Math.cos(i / 2.1) * 12; i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); }
+  ctx.lineTo(S, 120); ctx.lineTo(0, 120); ctx.closePath(); ctx.fill();
+  const sans = '"Inter", system-ui, sans-serif', mono = '"JetBrains Mono", Menlo, monospace';
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `500 30px ${sans}`; ctx.fillText('Северное сияние над городом', 72, 380);
+  ctx.fillStyle = '#edf2fa'; ctx.font = `600 ${c.name.length > 14 ? 64 : 84}px ${sans}`; ctx.fillText(c.name, 72, 470);
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `400 28px ${sans}`; ctx.fillText(`${c.region}, геомагнитная широта ${fmt1(c.cgm)}°`, 72, 516);
+  ctx.fillStyle = '#7bebb5'; ctx.font = `500 170px ${mono}`; ctx.fillText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver), 66, 690);
+  const nw = ctx.measureText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver)).width;
+  ctx.fillStyle = '#edf2fa'; ctx.font = `400 30px ${sans}`;
+  wrapText(ctx, `${plural(c.visOver, 'ночь', 'ночи', 'ночей')} в году сияние стоит над головой при ясном небе`, 66 + nw + 28, 640, S - (66 + nw + 28) - 72, 38);
+  // месяцы
+  const data = SEASON_ORDER.map(mi => c.months.find(x => x.m === mi));
+  const bx = 72, bw = (S - 144) / 12, base = 900, maxv = Math.max(31, d3.max(data, d => d.dark)), sc = 130 / maxv;
+  data.forEach((d, i) => {
+    ctx.fillStyle = '#233a66'; roundRect(ctx, bx + i * bw + 6, base - d.dark * sc, bw - 12, d.dark * sc, 4);
+    ctx.fillStyle = '#7bebb5'; roundRect(ctx, bx + i * bw + 6, base - d.vis * sc, bw - 12, d.vis * sc, 4);
+    ctx.fillStyle = '#a3b3cb'; ctx.font = `400 22px ${mono}`; ctx.textAlign = 'center'; ctx.fillText(MON_SHORT[d.m - 1], bx + i * bw + bw / 2, base + 30);
+    if (d.vis >= 0.5) { ctx.fillStyle = '#edf2fa'; ctx.fillText(fmt0(d.vis), bx + i * bw + bw / 2, base - d.vis * sc - 8); }
+    ctx.textAlign = 'left';
+  });
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `400 22px ${sans}`;
+  ctx.fillText('Ночей с сиянием по месяцам; на фоне — все тёмные ночи. Среднее за 2000–2025.', 72, 980);
+  ctx.fillStyle = '#edf2fa'; ctx.font = `600 26px ${sans}`; ctx.fillText('ПОРА считать', 72, 1032);
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `400 24px ${mono}`; ctx.textAlign = 'right'; ctx.fillText('t.me/poradata', S - 72, 1032); ctx.textAlign = 'left';
+  const a = document.createElement('a'); a.download = `siyanie-${c.id}.png`; a.href = cv.toDataURL('image/png'); a.click();
+}
+function roundRect(ctx, x, y, w, h, r){ if (h <= 0) return; r = Math.min(r, h / 2, w / 2); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); ctx.fill(); }
+function wrapText(ctx, text, x, y, maxW, lh){ const words = text.split(' '); let line = ''; for (const w of words) { const t = line ? line + ' ' + w : w; if (ctx.measureText(t).width > maxW && line) { ctx.fillText(line, x, y); line = w; y += lh; } else line = t; } if (line) ctx.fillText(line, x, y); }
+
+// ---------- календарь ----------
+(function calendar(){
+  const el = document.getElementById('cal');
+  const months = [8, 9, 10, 11, 12, 1, 2, 3, 4];
+  const rows = CITIES.filter(c => c.group === 'АЗРФ').sort((a, b) => b.visOver - a.visOver);
+  const maxv = d3.max(rows, c => d3.max(c.months, m => m.vis));
+  const color = d3.scaleLinear().domain([0, maxv]).range(['#1a2c52', '#7bebb5']).interpolate(d3.interpolateRgb);
+  document.getElementById('cal-max').textContent = `${fmt0(maxv)} ночей`;
+  let html = '<div class="h l">город</div>' + months.map(m => `<div class="h">${MON_SHORT[m - 1]}</div>`).join('') + '<div class="h">за год</div>';
+  rows.forEach(c => {
+    html += `<div class="name" title="${c.name}">${c.name}</div>`;
+    months.forEach(m => { const v = c.months.find(x => x.m === m).vis; html += `<div class="c" style="background:${color(v)};color:${v > maxv * .55 ? '#0b1a2e' : '#edf2fa'}" title="${c.name}, ${MON_NOM[m - 1]}: ${fmt1(v)}">${v >= 0.5 ? fmt0(v) : ''}</div>`; });
+    html += `<div class="t">${fmt0(c.visOver)}</div>`;
+  });
+  el.innerHTML = html;
+})();
+
+// ---------- 94 года бурь ----------
+(function historyChart(){
+  const w = 1100, h = 400, m = {l: 44, r: 84, t: 52, b: 34};
+  const s = d3.select('#hist').attr('viewBox', `0 0 ${w} ${h}`);
+  const data = D.kpYearly;
+  const x = d3.scaleBand().domain(data.map(d => d.y).concat([2026])).range([m.l, w - m.r]).padding(.18);
+  const y = d3.scaleLinear().domain([0, d3.max(data, d => d.k5) * 1.05]).range([h - m.b, m.t]);
+  const y2 = d3.scaleLinear().domain([0, d3.max(data, d => d.sn) * 1.05]).range([h - m.b, m.t]);
+  s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(w - m.l - m.r))).call(g => g.select('.domain').remove());
+  s.append('g').attr('class', 'axis').attr('transform', `translate(${w - m.r},0)`).call(d3.axisRight(y2).ticks(5)).call(g => g.select('.domain').remove());
+  s.append('g').attr('class', 'axis').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickValues(d3.range(1935, 2027, 10)).tickSize(3)).call(g => g.select('.domain').remove());
+  s.selectAll('.bar').data(data).enter().append('rect').attr('x', d => x(d.y)).attr('width', x.bandwidth()).attr('y', d => y(d.k5)).attr('height', d => y(0) - y(d.k5)).attr('fill', d => d.y >= 2024 ? col('--aurora') : '#3f7f74').attr('rx', 1.5)
+    .append('title').text(d => `${d.y}: ${d.k5} дней с Kp ≥ 5, ${d.k7} — с Kp ≥ 7; среднее число пятен ${fmt0(d.sn)}`);
+  const p26 = D.kp2026;
+  s.append('rect').attr('x', x(2026)).attr('width', x.bandwidth()).attr('y', y(p26.k5)).attr('height', y(0) - y(p26.k5)).attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-dasharray', '3 2').attr('rx', 1.5)
+    .append('title').text(`2026, январь–август: ${p26.k5} дней с Kp ≥ 5`);
+  s.append('path').datum(data).attr('fill', 'none').attr('stroke', col('--fog')).attr('stroke-width', 1.6).attr('d', d3.line().x(d => x(d.y) + x.bandwidth() / 2).y(d => y2(d.sn)).curve(d3.curveMonotoneX));
+  const kp9 = d3.rollup(D.storms, v => v.length, d => +d.d.slice(0, 4));
+  s.selectAll('.k9').data(Array.from(kp9)).enter().append('circle').attr('cx', d => x(d[0]) + x.bandwidth() / 2).attr('cy', m.t - 30).attr('r', d => 3 + d[1]).attr('fill', col('--ember')).attr('opacity', .9)
+    .append('title').text(d => `${d[0]}: ${d[1]} ${plural(d[1], 'день', 'дня', 'дней')} с Kp 9`);
+  s.append('text').attr('class', 'anno').attr('x', m.l).attr('y', m.t - 42).text('дни с Kp 9').attr('fill', col('--ember')).attr('font-size', 11);
+  s.append('text').attr('class', 'anno').attr('x', w - m.r + 8).attr('y', m.t - 8).text('число пятен').attr('font-size', 11);
+  const ann = [[1951, 'рекорд: 141 день', 'start', 0], [1960, '126 дней и три Kp 9', 'start', 0], [2003, 'Хеллоуинские бури', 'middle', 0], [2024, 'первый Kp 9 за 21 год', 'end', 78]];
+  ann.forEach(([yr, t, anc, yy]) => { const d = data.find(z => z.y === yr); s.append('text').attr('class', 'anno').attr('x', x(yr) + (anc === 'start' ? x.bandwidth() + 4 : anc === 'end' ? -4 : x.bandwidth() / 2)).attr('y', yy ? y(yy) : y(d.k5) - 8).attr('text-anchor', anc).text(t).attr('font-size', 11.5).attr('fill', col('--snow')); });
+  document.getElementById('hist-cap').textContent = `Столбцы — дни с бурей (Kp ≥ 5) по годам, 1932–2025; пунктир — 2026 по 31 августа (${p26.k5} дней). Линия — среднегодовое число солнечных пятен (SILSO). В восьми завершённых циклах максимум бурь наступал в среднем через ${fmt1(d3.mean(D.cycles.filter(c => c.c < 25), c => c.kp5Max - c.snMax))} года после максимума пятен. Источники: GFZ Potsdam, WDC-SILSO.`;
+})();
+
+// ---------- сезонность ----------
+(function seasonCharts(){
+  const w = 520, h = 240, m = {l: 34, r: 8, t: 14, b: 26};
+  function bars(id, vals, fmt, color){
+    const s = d3.select(id).attr('viewBox', `0 0 ${w} ${h}`);
+    const x = d3.scaleBand().domain(d3.range(1, 13)).range([m.l, w - m.r]).padding(.2);
+    const y = d3.scaleLinear().domain([0, d3.max(vals) * 1.12]).range([h - m.b, m.t]);
+    s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(w - m.l - m.r))).call(g => g.select('.domain').remove());
+    s.selectAll('rect').data(vals).enter().append('rect').attr('x', (d, i) => x(i + 1)).attr('width', x.bandwidth()).attr('y', d => y(d)).attr('height', d => y(0) - y(d)).attr('fill', (d, i) => color(i + 1)).attr('rx', 2);
+    s.selectAll('.l').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', h - 8).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 11).attr('font-family', col('--mono')).text((d, i) => MON_SHORT[i]);
+    s.selectAll('.v').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', d => y(d) - 5).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 11).attr('font-family', col('--mono')).text(d => fmt(d));
+  }
+  bars('#season-kp', D.season.map(d => d.k5), d => fmt1(d), i => [3, 4, 9, 10].includes(i) ? col('--ember') : '#3f7f74');
+  const az = CITIES.filter(c => c.group === 'АЗРФ');
+  const vis = d3.range(1, 13).map(mi => d3.mean(az, c => c.months.find(x => x.m === mi).vis));
+  bars('#season-vis', vis, d => d >= 0.3 ? fmt1(d) : '', i => [1, 2, 3].includes(i) ? col('--aurora') : '#3f7f74');
+})();
+
+// ---------- полюс ----------
+function drawPole(){
+  const w = 520, h = 520;
+  const s = d3.select('#pole-map').attr('viewBox', `0 0 ${w} ${h}`);
+  s.selectAll('*').remove();
+  const pr = d3.geoOrthographic().rotate([-90, -90]).clipAngle(90).translate([w / 2, h / 2]).scale(w / 2 * 2.7);
+  const p = d3.geoPath(pr);
+  s.append('path').attr('d', p({type: 'Sphere'})).attr('fill', '#0f1c3a');
+  if (land) s.append('path').attr('d', p(land)).attr('fill', '#22375f').attr('stroke', '#31497a').attr('stroke-width', .5);
+  if (russia) s.append('path').attr('d', p(russia)).attr('fill', '#2b4677').attr('stroke', '#5a76aa').attr('stroke-width', .7);
+  s.append('path').attr('d', p(d3.geoGraticule().step([30, 10])())).attr('fill', 'none').attr('stroke', '#22345f').attr('stroke-width', .6);
+  s.append('path').attr('d', p({type: 'LineString', coordinates: d3.range(0, 361, 2).map(l => [l, 66.56])})).attr('fill', 'none').attr('stroke', '#5a76aa').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
+  const pts = D.pole;
+  const colr = d3.scaleLinear().domain([1590, 2030]).range(['#7d8fb5', '#f5a65b']);
+  for (let i = 1; i < pts.length; i++) {
+    s.append('path').attr('d', p({type: 'LineString', coordinates: [[pts[i - 1].lon, pts[i - 1].lat], [pts[i].lon, pts[i].lat]]})).attr('fill', 'none').attr('stroke', colr(pts[i].y)).attr('stroke-width', pts[i].y > 2025 ? 1.5 : 2.5).attr('stroke-dasharray', pts[i].y > 2025 ? '3 3' : null);
+  }
+  [1590, 1900, 2000, 2020, 2030].forEach(yr => {
+    const d = pts.find(z => z.y === yr) || pts.reduce((a, b) => Math.abs(b.y - yr) < Math.abs(a.y - yr) ? b : a);
+    const q = pr([d.lon, d.lat]); if (!q) return;
+    s.append('circle').attr('cx', q[0]).attr('cy', q[1]).attr('r', yr === 2025 || yr === 2020 ? 4 : 3).attr('fill', colr(d.y)).attr('stroke', '#0f1c3a').attr('stroke-width', 1);
+    s.append('text').attr('x', q[0] + 7).attr('y', q[1] + 4).attr('fill', col('--snow')).attr('font-size', 12).attr('font-family', col('--mono')).attr('paint-order', 'stroke').attr('stroke', 'rgba(15,28,58,.9)').attr('stroke-width', 3).text(yr);
+  });
+  const gp = pr([-72.76, 80.85]);
+  if (gp) { s.append('circle').attr('cx', gp[0]).attr('cy', gp[1]).attr('r', 5).attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 2); s.append('text').attr('x', gp[0] - 9).attr('y', gp[1] + 4).attr('text-anchor', 'end').attr('fill', col('--aurora')).attr('font-size', 12).text('геомагнитный полюс — центр овала'); }
+  s.append('text').attr('x', 14).attr('y', h - 14).attr('fill', col('--fog')).attr('font-size', 12).text('Магнитный полюс 1590–2025 (gufm1/IGRF), пунктир — прогноз WMM2025 до 2030. Пунктирный круг — полярный круг.');
+  // таблица дрейфа
+  const tb = document.querySelector('#drift tbody');
+  const ids = ['murmansk', 'arkhangelsk', 'salekhard', 'norilsk', 'tiksi', 'anadyr', 'saint_petersburg', 'moscow'];
+  tb.innerHTML = ids.map(id => { const c = byId.get(id); return `<tr><td>${c.name}</td><td class="num">${fmt1(c.cgm1900)}</td><td class="num">${fmt1(c.cgm1950)}</td><td class="num">${fmt1(c.cgm2000)}</td><td class="num">${fmt1(c.cgm)}</td><td class="num" style="color:${col('--aurora')}">+${fmt1(c.cgm - c.cgm1900)}°</td></tr>`; }).join('');
+}
+
+// ---------- старт ----------
+resize();
+setKp(3);
+drawPole();
+const hashCity = byId.get(location.hash.replace('#', ''));
+if (hashCity) setTimeout(() => selectCity(hashCity, true), 300);
+})();
+</script>
+</body>
+</html>
