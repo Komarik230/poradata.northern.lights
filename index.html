@@ -2,50 +2,50 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="theme-color" content="#0C1526">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Атлас северного сияния над российской Арктикой | ПОРА считать</title>
+<title>Где горит небо — атлас северного сияния над российской Арктикой</title>
 <meta name="description" content="Сколько ночей в году видно северное сияние в 43 городах России: 94 года геомагнитных индексов, 26 лет облачности и астрономия темноты. Назовите город — атлас посчитает его личную запись.">
-<meta property="og:title" content="Атлас северного сияния над Россией | ПОРА считать">
+<meta property="og:title" content="Где горит небо — атлас северного сияния над Россией">
 <meta property="og:description" content="Назовите город — атлас посчитает, сколько ночей в году над ним горит небо.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --night:#0C1526; --night-2:#121E36; --night-3:#182747; --line:rgba(168,203,236,.16);
-  --snow:#EFF4FA; --fog:#9FB0C6; --mist:#6E7F97;
-  --blue:#5CA8EF; --blue-soft:#A8CBEC; --blue-deep:#0069D3; --orange:#E8912D;
+  --night:#0e1a33; --night-2:#142341; --night-3:#1c2f54; --line:#25396a;
+  --snow:#edf2fa; --fog:#a3b3cb; --mist:#63739a;
+  --aurora:#7bebb5; --aurora-deep:#2fb98f; --violet:#a493ff; --ember:#f5a65b;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --measure:68ch;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--night);color:var(--snow);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--blue);text-decoration-color:rgba(92,168,239,.4);text-underline-offset:3px}
-a:hover{text-decoration-color:var(--blue)}
-::selection{background:rgba(0,105,211,.45)}
-h1,h2,h3{font-weight:600;line-height:1.12;margin:0 0 .5em;letter-spacing:-.012em;text-wrap:pretty}
+a{color:var(--aurora);text-decoration-color:rgba(123,235,181,.4);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--aurora)}
+h1,h2,h3{font-weight:600;line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
 h1{font-size:clamp(34px,4.2vw,46px)}
 h2{font-size:clamp(26px,3vw,34px);margin-top:0}
-.sub{color:var(--fog);font-size:17px;line-height:1.55;margin:0 0 1.1em}
 h3{font-size:19px}
-p{margin:0 0 1em}
-.num{font-variant-numeric:tabular-nums lining-nums}
+p{margin:0 0 1em;max-width:var(--measure)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:3px}
+:focus-visible{outline:2px solid var(--aurora);outline-offset:3px;border-radius:3px}
 .hint{color:var(--fog);font-size:14px;line-height:1.5}
 .small{font-size:14px;line-height:1.5}
 
 /* ---------- hero: globe + panel ---------- */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) 440px;min-height:100vh;min-height:100svh}
-.globe-wrap{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#16233C 0%,var(--night) 62%,#080F1C 100%)}
+.globe-wrap{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#16264a 0%,var(--night) 62%,#0a1327 100%)}
 .globe-wrap svg{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 .globe-wrap svg:active{cursor:grabbing}
 .globe-ui{position:absolute;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px}
-.globe-ui button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(12,21,38,.85);color:var(--snow);font-size:18px;line-height:1}
+.globe-ui button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(14,26,51,.85);color:var(--snow);font-size:18px;line-height:1}
 .globe-ui button:hover{background:var(--night-3)}
-.tip{position:absolute;pointer-events:none;background:rgba(12,21,38,.94);border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-size:13px;line-height:1.35;color:var(--snow);transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .12s}
+.globe-note{position:absolute;left:16px;bottom:16px;max-width:300px;color:var(--fog);font-size:13px;line-height:1.45;pointer-events:none}
+.tip{position:absolute;pointer-events:none;background:rgba(14,26,51,.92);border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-size:13px;line-height:1.35;color:var(--snow);transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .12s}
 .tip b{font-weight:600}
 .tip .num{color:var(--fog)}
 .panel{padding:40px 36px 48px;border-left:1px solid var(--line);background:var(--night);overflow:auto;max-height:100vh}
@@ -56,20 +56,20 @@ button{font:inherit;color:inherit;cursor:pointer}
 .field input[type=text]::placeholder{color:var(--mist)}
 .kp{margin-bottom:8px}
 .kp-head{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--fog);margin-bottom:4px}
-.kp-head output{font-size:20px;color:var(--snow);font-weight:500;font-variant-numeric:tabular-nums}
+.kp-head output{font-family:var(--mono);font-size:20px;color:var(--snow)}
 .kp-head output small{font-size:13px;color:var(--fog);margin-left:8px;font-family:var(--sans)}
-input[type=range]{width:100%;accent-color:var(--blue);margin:6px 0 2px}
-.kp-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--mist);padding:0 2px;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--aurora);margin:6px 0 2px}
+.kp-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--mist);padding:0 2px}
 .kp-hint{color:var(--fog);font-size:14px;min-height:42px;margin:8px 0 6px}
 .kp-now{display:flex;gap:10px;align-items:center;margin-bottom:18px;font-size:13px;color:var(--fog)}
 .kp-now button{border:1px solid var(--line);background:transparent;color:var(--snow);border-radius:6px;padding:5px 10px;font-size:13px}
 .kp-now button:hover{background:var(--night-2)}
 .legend{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:center;font-size:13px;color:var(--fog);margin:10px 0 22px}
 .legend i{display:inline-block;width:16px;height:16px;border-radius:50%}
-.legend .sw-over{background:var(--orange);box-shadow:0 0 10px rgba(232,145,45,.55)}
-.legend .sw-hor{border:2px solid var(--blue-soft)}
+.legend .sw-over{background:var(--aurora);box-shadow:0 0 10px rgba(123,235,181,.6)}
+.legend .sw-hor{border:2px solid var(--violet)}
 .legend .sw-none{border:1.5px solid var(--mist)}
-.legend .sw-band{border-radius:3px;width:22px;height:12px;background:linear-gradient(90deg,rgba(168,203,236,.95),rgba(0,105,211,.65))}
+.legend .sw-band{border-radius:3px;width:22px;height:12px;background:linear-gradient(90deg,rgba(123,235,181,.9),rgba(164,147,255,.7))}
 
 /* record card */
 .record{border-top:1px solid var(--line);padding-top:24px;margin-top:6px}
@@ -77,12 +77,12 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:6px 0 2px}
 .record h2{font-size:28px;margin-bottom:2px}
 .record .region{color:var(--fog);margin-bottom:14px}
 .big{display:flex;align-items:baseline;gap:12px;margin:14px 0 4px}
-.big .n{font-size:56px;line-height:1;font-weight:600;color:var(--blue);font-variant-numeric:tabular-nums}
+.big .n{font-family:var(--mono);font-size:56px;line-height:1;font-weight:500;color:var(--aurora)}
 .big .l{font-size:15px;color:var(--fog);max-width:200px;line-height:1.35}
 .range{color:var(--fog);font-size:13px;margin-bottom:16px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
 .stats div{background:var(--night-2);border-radius:8px;padding:10px 12px}
-.stats b{display:block;font-size:22px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats b{display:block;font-family:var(--mono);font-size:22px;font-weight:500;line-height:1.1}
 .stats span{font-size:12.5px;color:var(--fog);line-height:1.3;display:block;margin-top:4px}
 .record p{font-size:15px}
 .chart-title{font-size:13px;color:var(--fog);margin:14px 0 4px}
@@ -90,36 +90,35 @@ input[type=range]{width:100%;accent-color:var(--blue);margin:6px 0 2px}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .btn{border:1px solid var(--line);background:var(--night-2);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--snow)}
 .btn:hover{background:var(--night-3)}
-.btn.primary{background:var(--blue-deep);color:#fff;border-color:var(--blue-deep);font-weight:500}
-.btn.primary:hover{background:#1479DD}
+.btn.primary{background:var(--aurora);color:#0b1a2e;border-color:var(--aurora);font-weight:500}
+.btn.primary:hover{background:#95f2c6}
 
 /* ---------- sections ---------- */
 main{max-width:1180px;margin:0 auto;padding:0 36px}
 section.block{padding:72px 0 24px;border-top:1px solid var(--line)}
 section.block:first-child{border-top:none}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
-.chart{background:var(--night-2);border:1px solid var(--line);border-radius:14px;padding:22px 22px 14px;margin:18px 0}
+.chart{background:var(--night-2);border-radius:12px;padding:20px 20px 12px;margin:18px 0}
 .chart svg{display:block;width:100%;height:auto;overflow:visible}
 .chart-cap{color:var(--fog);font-size:13px;margin:8px 4px 0}
-.axis text{fill:var(--fog);font-family:var(--sans);font-size:11px;font-variant-numeric:tabular-nums}
+.axis text{fill:var(--fog);font-family:var(--mono);font-size:11px}
 .axis line,.axis path{stroke:var(--line)}
 .anno{fill:var(--fog);font-size:12px}
 
 /* calendar */
 .cal{display:grid;grid-template-columns:170px repeat(9,1fr) 64px;gap:3px;font-size:13px;margin:18px 0 8px}
-.cal .h{color:var(--fog);font-size:12px;text-align:center;padding:4px 0 6px}
+.cal .h{color:var(--fog);font-family:var(--mono);font-size:12px;text-align:center;padding:4px 0 6px}
 .cal .h.l,.cal .name{text-align:left}
 .cal .name{padding:0 8px;line-height:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cal .c{height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--snow);font-variant-numeric:tabular-nums}
-.cal .t{text-align:right;padding-right:6px;line-height:28px;color:var(--fog);font-variant-numeric:tabular-nums;font-weight:500}
+.cal .c{height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--snow)}
+.cal .t{font-family:var(--mono);text-align:right;padding-right:6px;line-height:28px;color:var(--fog)}
 .cal-legend{display:flex;align-items:center;gap:10px;color:var(--fog);font-size:13px;margin-top:10px}
-.cal-legend i{display:block;width:140px;height:10px;border-radius:3px;background:linear-gradient(90deg,#16233C,var(--blue))}
+.cal-legend i{display:block;width:140px;height:10px;border-radius:3px;background:linear-gradient(90deg,var(--night-3),var(--aurora))}
 
 /* pole */
 .pole-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
 .pole-wrap svg{display:block;width:100%;height:auto}
-.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.drift{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;min-width:420px}
+.drift{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
 .drift td,.drift th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
 .drift td:first-child,.drift th:first-child{text-align:left}
 .drift th{color:var(--fog);font-weight:500;font-size:13px}
@@ -127,36 +126,29 @@ section.block:first-child{border-top:none}
 
 /* method */
 .method h3{margin-top:28px}
-.method ul{padding-left:20px}
+.method ul{padding-left:20px;max-width:var(--measure)}
 .method li{margin-bottom:6px}
-footer{border-top:1px solid var(--line);margin-top:64px;padding:30px 36px 44px;color:var(--fog);font-size:14px;line-height:1.6;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
-footer p{margin:0}
-.brand{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--blue);font-weight:600;font-size:13px}
-.brand svg{display:block}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:28px 36px 40px;color:var(--fog);font-size:14px;line-height:1.6}
+footer p{max-width:none}
 
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;min-height:0}
   .globe-wrap{height:min(92vw,560px)}
+  .globe-note{display:none}
   .panel{border-left:none;border-top:1px solid var(--line);max-height:none;padding:28px 20px 40px}
   main{padding:0 20px}
   .two,.pole-wrap{grid-template-columns:1fr;gap:24px}
-  .cal{min-width:640px;grid-template-columns:120px repeat(9,1fr) 50px;font-size:12px}
+  .cal{grid-template-columns:120px repeat(9,1fr) 46px;font-size:12px}
   .cal .name{padding:0 4px}
-  .cal .c{font-size:11px;height:26px}
+  .cal .c{font-size:10px;height:24px}
   .stats{grid-template-columns:repeat(3,1fr)}
   .big .n{font-size:46px}
   footer{padding:24px 20px 36px}
 }
 @media (max-width:560px){
-  .cal{min-width:600px;grid-template-columns:96px repeat(9,1fr) 44px}
-  .cal .c{font-size:11px;height:26px}
+  .cal{grid-template-columns:96px repeat(9,1fr) 40px}
+  .cal .c{font-size:0}
   .stats{grid-template-columns:1fr 1fr}
-  h1{font-size:30px}
-  .big .n{font-size:42px}
-  .panel{padding:24px 16px 36px}
-  main{padding:0 16px}
-  .scroll-x{margin-left:-16px;margin-right:-16px;padding:0 16px}
-  footer{padding:24px 16px 36px}
 }
 </style>
 </head>
@@ -171,11 +163,12 @@ footer p{margin:0}
       <button type="button" id="zoom-out" aria-label="Отдалить">−</button>
       <button type="button" id="zoom-reset" aria-label="Вернуть карту" title="Вернуть карту">○</button>
     </div>
+    <div class="globe-note" id="globe-note">Глобус можно вращать. Зелёное кольцо — где сияние стоит над головой при выбранном Kp; горящие точки — города внутри овала, обведённые видят его на северном горизонте.</div>
   </div>
 
   <aside class="panel">
-    <h1>Атлас северного сияния</h1>
-    <p class="lead">Мы совместили 94 года геомагнитных наблюдений, 26 лет данных об облачности и астрономию полярной ночи для 43 городов России — и посчитали, сколько ночей в году над каждым из них горит небо. Назовите свой город.</p>
+    <h1>Где горит небо</h1>
+    <p class="lead">Атлас северного сияния над российской Арктикой. Мы совместили 94 года геомагнитных наблюдений, 26 лет данных об облачности и астрономию полярной ночи для 43 городов — и посчитали, сколько ночей в году над каждым из них горит небо. Назовите свой город.</p>
 
     <label class="field"><span>Город</span>
       <input type="text" id="city-input" list="city-list" placeholder="Например, Норильск" autocomplete="off">
@@ -187,14 +180,14 @@ footer p{margin:0}
       <input type="range" id="kp" min="0" max="27" step="1" value="9" aria-label="Индекс Kp">
       <div class="kp-scale"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
       <p class="kp-hint" id="kp-hint"></p>
-      <div class="kp-now"><button type="button" id="kp-now">Показать текущий Kp</button><span id="kp-now-msg">по данным NOAA SWPC</span></div>
+      <div class="kp-now"><button type="button" id="kp-now">Показать текущий Kp</button><span id="kp-now-msg">по данным NOAA SWPC</span></div>
     </div>
 
     <div class="legend">
-      <i class="sw-band"></i><span>овал сияния — здесь оно стоит над головой</span>
-      <i class="sw-over"></i><span>город внутри овала — небо горит</span>
-      <i class="sw-hor"></i><span>сияние видно на северном горизонте</span>
-      <i class="sw-none"></i><span>сияния не будет</span>
+      <i class="sw-band"></i><span>овал сияния: здесь оно над головой</span>
+      <i class="sw-over"></i><span>город внутри овала</span>
+      <i class="sw-hor"></i><span>сияние видно на северном горизонте</span>
+      <i class="sw-none"></i><span>сияния не будет</span>
     </div>
 
     <section class="record" id="record" hidden aria-live="polite"></section>
@@ -203,97 +196,86 @@ footer p{margin:0}
 
 <main>
   <section class="block" id="calendar">
-    <h2>Главный сезон сияний в Арктике — с января по март, а не в сентябре</h2>
-    <p class="sub">Ожидаемое число ночей в месяц, когда сияние стоит над городом при ясном небе. 32 города арктической зоны, среднее за 2000–2025. Полярная ночь темна, но облачна, а сентябрьский пик активности осенняя облачность съедает — поэтому лучшие месяцы у большинства городов зимние.</p>
-    <div class="scroll-x"><div class="cal" id="cal"></div></div>
+    <h2>Календарь сезона</h2>
+    <p>Ожидаемое число ночей в месяц, когда сияние стоит над городом при ясном небе (среднее за 2000–2025). Полярная ночь тёмная, но облачная; сентябрь геомагнитно самый бурный месяц, но осенью в Арктике пасмурно. Поэтому главный сезон у большинства арктических городов — с января по март.</p>
+    <div class="cal" id="cal"></div>
     <div class="cal-legend"><span>0</span><i></i><span id="cal-max">15 ночей</span></div>
   </section>
 
   <section class="block" id="history">
-    <h2>2025 год — лишь 40-й по числу геомагнитных бурь за 94 года наблюдений</h2>
-    <p class="sub">Дни с бурей Kp ≥ 5 (уровень G1 и выше) по годам, 1932–2026, на фоне солнечного цикла. Максимум бурь отстаёт от максимума пятен в среднем на два-три года, а сильнейшие события случаются на спаде цикла — так что лучшие сезоны текущего цикла ещё впереди. Оранжевые метки — дни с Kp 9, высшим баллом шкалы.</p>
+    <h2>94 года бурь</h2>
+    <p>Число дней в году с геомагнитной бурей (Kp ≥ 5, уровень G1 и выше) на фоне солнечного цикла. Максимум бурь отстаёт от максимума солнечных пятен в среднем на два-три года, а на спаде цикла случаются самые сильные события. Оранжевые метки — дни с Kp 9, высшим баллом шкалы.</p>
     <div class="chart"><svg id="hist"></svg><div class="chart-cap" id="hist-cap"></div></div>
   </section>
 
   <section class="block" id="season">
     <div class="two">
       <div>
-        <h2>Бурь у равноденствий вдвое больше, чем у солнцестояний</h2>
-        <p class="sub">Доля времени с бурей Kp ≥ 5 по месяцам, 1932–2025. Это эффект Расселла–Макферрона: в марте и сентябре ось Земли ориентирована так, что межпланетное поле легче стыкуется с земным.</p>
-        <div class="chart"><svg id="season-kp"></svg><div class="chart-cap">Доля 3-часовых интервалов с Kp ≥ 5, %. Источник: GFZ Potsdam.</div></div>
+        <h2>Равноденствие против полярной ночи</h2>
+        <p>Доля времени с бурей (Kp ≥ 5) по месяцам за 1932–2025. У равноденствий геомагнитная активность вдвое выше, чем у солнцестояний, — это эффект Расселла–Макферрона: в марте и сентябре ось Земли ориентирована так, что межпланетное поле легче стыкуется с земным.</p>
+        <div class="chart"><svg id="season-kp"></svg><div class="chart-cap">Доля 3-часовых интервалов с Kp ≥ 5, %. Источник: GFZ Potsdam.</div></div>
       </div>
       <div>
-        <h2>Самый бурный месяц — сентябрь, а самый сияющий — март</h2>
-        <p class="sub">Ожидаемые ночи с видимым сиянием по месяцам для среднего арктического города — с поправкой на светлое лето и осеннюю облачность. Сентябрьский пик в Арктике гасят облака; средней полосе он, наоборот, дарит лучший месяц года.</p>
-        <div class="chart"><svg id="season-vis"></svg><div class="chart-cap">Среднее по 32 городам АЗРФ: ночей с сиянием над головой при ясном небе, 2000–2025.</div></div>
+        <h2>Когда небо действительно горит</h2>
+        <p>А это ожидаемые видимые ночи в месяц для среднего арктического города — с учётом того, что летом темноты нет, а осенью небо закрыто облаками. Пик активности в сентябре в Арктике почти съедает облачность; средней полосе он, наоборот, дарит лучший месяц года.</p>
+        <div class="chart"><svg id="season-vis"></svg><div class="chart-cap">Среднее по 32 городам АЗРФ: ночей с сиянием над головой при ясном небе, 2000–2025.</div></div>
       </div>
     </div>
   </section>
 
   <section class="block" id="pole">
-    <h2>За 126 лет Россия «подъехала» к овалу сияния на 1–3,5 градуса</h2>
-    <p class="sub">Траектория северного магнитного полюса, 1590–2030, и геомагнитная широта городов по модели IGRF-14. Полюс прошёл путь от канадской Арктики до восточного полушария — в 2025 году он на 139° восточной долготы и движется к Таймыру. Центр овала следует за геомагнитным полюсом, который тоже смещается к географическому, — и каждый российский город постепенно приближается к сиянию, не двигаясь с места.</p>
+    <h2>Сияние переезжает в Россию</h2>
+    <p>Северный магнитный полюс с 1590 года прошёл путь от канадской Арктики почти до географического полюса и в 2020-х пересёк его, оказавшись в восточном полушарии: в 2025 году он находится на 139° восточной долготы и движется к Таймыру. Для сияний важнее другое: центр овала следует за геомагнитным полюсом, который тоже смещается к географическому, и вся Россия за 125 лет «подъехала» к овалу на 1–3,5 градуса геомагнитной широты.</p>
     <div class="pole-wrap">
       <svg id="pole-map" role="img" aria-label="Траектория северного магнитного полюса с 1590 по 2030 год"></svg>
       <div>
-        <div class="scroll-x"><table class="drift" id="drift"><thead><tr><th>Город</th><th>1900</th><th>1950</th><th>2000</th><th>2026</th><th>сдвиг</th></tr></thead><tbody></tbody></table></div>
-        <p class="hint">Геомагнитная (CGM) широта города на высоте свечения 110 км. Плюс 3,3° для Норильска — как переезд на 370 км к северу.</p>
+        <table class="drift" id="drift"><thead><tr><th>Город</th><th>1900</th><th>1950</th><th>2000</th><th>2026</th><th>сдвиг</th></tr></thead><tbody></tbody></table>
+        <p class="hint">Геомагнитная (CGM) широта города по IGRF-14 на высоте свечения 110 км. Плюс 3,3° для Норильска — это как переехать на 370 км к северу, не двигаясь с места.</p>
       </div>
     </div>
   </section>
 
   <section class="block method" id="method">
-    <h2>Как мы считали</h2>
-    <p class="sub">Атлас построен на четырёх независимых наборах данных: 94 года индекса Kp, астрономия сумерек, модель геомагнитного поля IGRF-14 и 26 лет наблюдений облачности.</p>
-    <p>Ночь засчитывается как «ночь с сиянием», если одновременно выполняются три условия: достаточно темно, геомагнитная активность дотянула овал до города и небо ясное. Каждое условие считалось по отдельному набору данных.</p>
+    <h2>Как считали</h2>
+    <p>Ночь засчитывается как «ночь с сиянием», если одновременно выполняются три условия: достаточно темно, геомагнитная активность дотянула овал до города и небо ясное. Каждое условие считалось по отдельному набору данных.</p>
     <h3>Темнота</h3>
-    <p>Для каждого часа с 1932 года вычислена высота Солнца над горизонтом. Час считается тёмным, если Солнце ниже −12° (конец навигационных сумерек). Ночь — промежуток от местного полудня до следующего полудня, чтобы не резать её по полуночи. Летом севернее полярного круга тёмных часов нет вовсе — поэтому сезон сияний в Мурманске длится с конца августа до середины апреля.</p>
-    <h3>Овал сияния и Kp</h3>
-    <p>Положение овала задано индексом Kp (GFZ Potsdam, трёхчасовые значения с 1932 года). Экваториальная граница овала на ночной стороне лежит примерно на 66,5° геомагнитной широты при Kp = 0 и опускается на 2° с каждым баллом (Gussenhoven, Hardy, Heinemann, 1983; эту же связь использует NOAA SWPC). Сияние «над головой» — когда граница достигла геомагнитной широты города; «на северном горизонте» — когда она не дальше 5° (около 550 км) к северу от него. Для ночи брался максимальный Kp за тёмные часы. Модель статистическая: она описывает, где сияние бывает при данном Kp, а не конкретную вспышку.</p>
+    <p>Для каждого часа с 1932 года вычислена высота Солнца над горизонтом. Час считается тёмным, если Солнце ниже −12° (конец навигационных сумерек). Ночь — промежуток от местного полудня до следующего полудня, чтобы не резать её по полуночи. Летом севернее полярного круга тёмных часов нет вовсе — поэтому сезон сияний в Мурманске длится с конца августа до середины апреля.</p>
+    <h3>Овал сияния и Kp</h3>
+    <p>Положение овала задано индексом Kp (GFZ Potsdam, трёхчасовые значения с 1932 года). Экваториальная граница овала на ночной стороне лежит примерно на 66,5° геомагнитной широты при Kp = 0 и опускается на 2° с каждым баллом (Gussenhoven, Hardy, Heinemann, 1983; эту же связь использует NOAA SWPC). Сияние «над головой» — когда граница достигла геомагнитной широты города; «на северном горизонте» — когда она не дальше 5° (около 550 км) к северу от него. Для ночи брался максимальный Kp за тёмные часы. Модель статистическая: она описывает, где сияние бывает при данном Kp, а не конкретную вспышку.</p>
     <h3>Геомагнитные координаты</h3>
-    <p>Географическая широта для сияний почти ничего не значит: овал центрирован на геомагнитном полюсе, который лежит над Канадой. Поэтому Норильск на 69° с. ш. и Кемь на 65° с. ш. геомагнитно различаются на четыре градуса, а Анадырь при своих 65° с. ш. магнитно «южнее» Архангельска. Корректированные геомагнитные широты (CGM) вычислены так же, как в стандартной модели AACGM-v2: по полю IGRF-14 силовая линия из точки на высоте 110 км трассируется до апекса, а затем сажается на дипольную линию. Реализация проверена по 13 станциям магнитометрической сети IMAGE (расхождение 0,04°). Эпоха — сентябрь 2026 года; для исторических эпох использованы коэффициенты соответствующих лет.</p>
+    <p>Географическая широта для сияний почти ничего не значит: овал центрирован на геомагнитном полюсе, который лежит над Канадой. Поэтому Норильск на 69° с. ш. и Кемь на 65° с. ш. геомагнитно различаются на четыре градуса, а Анадырь при своих 65° с. ш. магнитно «южнее» Архангельска. Корректированные геомагнитные широты (CGM) вычислены так же, как в стандартной модели AACGM-v2: по полю IGRF-14 силовая линия из точки на высоте 110 км трассируется до апекса, а затем сажается на дипольную линию. Реализация проверена по 13 станциям магнитометрической сети IMAGE (расхождение 0,04°). Эпоха — сентябрь 2026 года; для исторических эпох использованы коэффициенты соответствующих лет.</p>
     <h3>Облачность</h3>
-    <p>Облачность оценена по двум независимым источникам: часовому реанализу ERA5 (ECMWF, через Open-Meteo) и спутниковой климатологии CERES (NASA POWER), 2000–2025. Полярной зимой над снегом эти продукты расходятся в противоположные стороны, поэтому вероятность ясного неба взята как среднее двух оценок, а карточка города показывает диапазон между ними. «Ясно» — закрыто не больше половины неба; строгий критерий (не больше четверти) даёт цифры примерно на треть ниже.</p>
-    <h3>Границы расчёта</h3>
+    <p>Самая ненадёжная часть расчёта. Часовая облачность реанализа ERA5 (через Open-Meteo) за 2000–2025 годы агрегирована по тёмным часам каждой ночи. Но в холодную полярную зиму ERA5 систематически завышает облачность над Сибирью, а спутниковый продукт CERES (NASA POWER) ночью над снегом, наоборот, склонен её занижать. Поэтому вероятность ясного неба в каждом месяце взята как среднее двух оценок, а в карточке города показан разброс между ними. «Ясно» здесь означает, что закрыто не больше половины неба. При строгом критерии (не больше четверти) все цифры уменьшаются примерно на треть.</p>
+    <h3>Чего модель не умеет</h3>
     <ul>
-      <li>Все цифры — для тёмного загородного неба; городская засветка в модель не входит.</li>
-      <li>Расчёт даёт климатологию овала, а не прогноз конкретной ночи: красные сияния экстремальных бурь класса G5 видны заметно южнее расчётной линии — в мае 2024 года их снимали в Сочи.</li>
-      <li>Овал взят по положению на ночной стороне — кольцом постоянной геомагнитной широты; вечером и утром его граница проходит севернее.</li>
-      <li>Для городов внутри спокойного овала — Хатанги, Диксона, Тикси — достаточной считается любая тёмная ночь.</li>
+      <li>Не учитывает засветку: все цифры — для тёмного неба за городом.</li>
+      <li>Занижает дальность экстремальных бурь: красное сияние на высотах 300–600 км во время бурь класса G5 видно гораздо южнее расчётной линии — так в мае 2024 года его снимали в Сочи.</li>
+      <li>Считает овал кольцом постоянной геомагнитной широты — это его положение на ночной стороне; вечером и утром он проходит севернее.</li>
+      <li>Для городов внутри спокойного овала (Хатанга, Диксон, Тикси) «активность достаточна» в любую тёмную ночь; на самом деле в очень спокойные ночи дуга может стоять южнее.</li>
     </ul>
     <h3>Данные</h3>
     <ul>
-      <li>Индекс Kp, ap, Ap, числа Вольфа, F10.7 с 1932 г. — <a href="https://kp.gfz.de/" rel="noopener">GFZ Helmholtz Centre, Потсдам</a> (CC BY 4.0).</li>
-      <li>Месячные числа солнечных пятен с 1749 г. — <a href="https://www.sidc.be/SILSO/" rel="noopener">WDC-SILSO, Королевская обсерватория Бельгии</a>.</li>
-      <li>Коэффициенты IGRF-14 (1900–2030) и положения магнитного полюса 1590–2030 — <a href="https://www.ncei.noaa.gov/products/wandering-geomagnetic-poles" rel="noopener">NOAA NCEI</a>.</li>
+      <li>Индекс Kp, ap, Ap, числа Вольфа, F10.7 с 1932 г. — <a href="https://kp.gfz.de/" rel="noopener">GFZ Helmholtz Centre, Потсдам</a> (CC BY 4.0).</li>
+      <li>Месячные числа солнечных пятен с 1749 г. — <a href="https://www.sidc.be/SILSO/" rel="noopener">WDC-SILSO, Королевская обсерватория Бельгии</a>.</li>
+      <li>Коэффициенты IGRF-14 (1900–2030) и положения магнитного полюса 1590–2030 — <a href="https://www.ncei.noaa.gov/products/wandering-geomagnetic-poles" rel="noopener">NOAA NCEI</a>.</li>
       <li>Облачность: реанализ ERA5 (ECMWF) через <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a>; климатология CERES через <a href="https://power.larc.nasa.gov/" rel="noopener">NASA POWER</a>.</li>
-      <li>Связь Kp и границы овала: Gussenhoven M. S., Hardy D. A., Heinemann N. (1983), J. Geophys. Res. 88; метод CGM: Shepherd S. G. (2014), J. Geophys. Res. Space Physics 119.</li>
+      <li>Связь Kp и границы овала: Gussenhoven M. S., Hardy D. A., Heinemann N. (1983), J. Geophys. Res. 88; метод CGM: Shepherd S. G. (2014), J. Geophys. Res. Space Physics 119.</li>
     </ul>
   </section>
 </main>
 
 <footer>
-  <a class="brand" href="https://t.me/poradata" rel="noopener" aria-label="ПОРА считать в Телеграме">
-    <svg width="46" height="30" viewBox="0 0 46 30" fill="none" aria-hidden="true"><path d="M0 22 C6 14 10 14 15 18 C21 23 26 23 31 18 C36 13 41 13 46 17 L46 30 L0 30 Z" fill="#A8CBEC"/><path d="M0 26 C6 20 11 20 16 23 C22 27 27 27 32 23 C37 19 42 19 46 22 L46 30 L0 30 Z" fill="#0069D3"/></svg>
-    @poradata
-  </a>
-  <p><b>ПОРА считать</b> — канал о цифрах Арктики: <a href="https://t.me/poradata" rel="noopener">t.me/poradata</a>. Данные: GFZ Potsdam (индекс Kp), WDC-SILSO, NOAA NCEI (IGRF-14), ECMWF ERA5, NASA CERES. Расчёт: ПОРА считать.</p>
+  <p><b>ПОРА считать</b> — канал о цифрах Арктики: <a href="https://t.me/poradata" rel="noopener">t.me/poradata</a></p>
 </footer>
 
 <script src="data.js"></script>
-<!-- Библиотеки: сначала локальные копии (если положить d3.v7.min.js и topojson-client.min.js рядом с index.html), затем CDN. -->
-<script src="d3.v7.min.js"></script>
-<script>if (!window.d3) document.write('<script src="https://cdn.jsdelivr.net/npm/d3@7"><\/script>');</script>
-<script>if (!window.d3) document.write('<script src="https://unpkg.com/d3@7"><\/script>');</script>
-<script src="topojson-client.min.js"></script>
-<script>if (!window.topojson) document.write('<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"><\/script>');</script>
-<script>if (!window.topojson) document.write('<script src="https://unpkg.com/topojson-client@3"><\/script>');</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 <script>
 (function(){
 'use strict';
 const D = window.AURORA_DATA;
-if (!D) { console.error('data.js не подключён'); return; }
-if (!window.d3 || !window.topojson) { console.error('d3/topojson не загрузились'); return; }
+if (!D) { document.getElementById('globe-note').textContent = 'Не найден файл data.js — положите его рядом с index.html.'; return; }
 const M = D.meta;
 const CITIES = D.cities;
 const byName = new Map(CITIES.map(c => [c.name.toLowerCase(), c]));
@@ -305,8 +287,6 @@ const CSS = getComputedStyle(document.documentElement);
 const col = n => CSS.getPropertyValue(n).trim();
 
 // ---------- форматирование ----------
-const NBSP_RX = /(^|[\s>«„(—])([вкосуаиВКОСУАИ]|во|об|от|до|по|из|за|на|не|ни|со|же|бы|ли|для|при|под|над|про|без|Во|Об|От|До|По|Из|За|На|Не|Ни|Со|Для|При|Под|Над|Про|Без) (?=[\wА-Яа-яЁё«„(])/g;
-const typo = t => { let p; do { p = t; t = t.replace(NBSP_RX, '$1$2\u00A0'); } while (p !== t); return t.replace(/ — /g, '\u00A0— '); };
 const fmt1 = x => (Math.round(x * 10) / 10).toLocaleString('ru-RU', {minimumFractionDigits: 1, maximumFractionDigits: 1});
 const fmt0 = x => Math.round(x).toLocaleString('ru-RU');
 function fmtKp(k){ // 4.33 → «4+», 4.67 → «5−»
@@ -375,25 +355,25 @@ let kp = 3;
 
 const defs = svg.append('defs');
 const gSphere = defs.append('radialGradient').attr('id', 'g-sphere').attr('cx', '48%').attr('cy', '42%').attr('r', '62%');
-gSphere.append('stop').attr('offset', '0%').attr('stop-color', '#16263F');
-gSphere.append('stop').attr('offset', '100%').attr('stop-color', '#0B1424');
+gSphere.append('stop').attr('offset', '0%').attr('stop-color', '#1d3159');
+gSphere.append('stop').attr('offset', '100%').attr('stop-color', '#0b1530');
 const gBand = defs.append('linearGradient').attr('id', 'g-band').attr('x1', '0').attr('y1', '1').attr('x2', '0').attr('y2', '0');
-gBand.append('stop').attr('offset', '0%').attr('stop-color', col('--blue-soft')).attr('stop-opacity', .8);
-gBand.append('stop').attr('offset', '60%').attr('stop-color', col('--blue')).attr('stop-opacity', .5);
-gBand.append('stop').attr('offset', '100%').attr('stop-color', col('--blue-deep')).attr('stop-opacity', .4);
+gBand.append('stop').attr('offset', '0%').attr('stop-color', col('--aurora')).attr('stop-opacity', .85);
+gBand.append('stop').attr('offset', '60%').attr('stop-color', col('--aurora-deep')).attr('stop-opacity', .55);
+gBand.append('stop').attr('offset', '100%').attr('stop-color', col('--violet')).attr('stop-opacity', .45);
 const glow = defs.append('filter').attr('id', 'glow').attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
 glow.append('feGaussianBlur').attr('stdDeviation', 6).attr('result', 'b');
 const fm = glow.append('feMerge'); fm.append('feMergeNode').attr('in', 'b'); fm.append('feMergeNode').attr('in', 'SourceGraphic');
 
 const g = svg.append('g');
-const sphere = g.append('path').attr('fill', 'url(#g-sphere)').attr('stroke', '#2A4066').attr('stroke-width', 1);
-const grat = g.append('path').attr('fill', 'none').attr('stroke', '#1F3457').attr('stroke-width', .7);
-const landP = g.append('path').attr('fill', '#1B2C4A').attr('stroke', '#2B4066').attr('stroke-width', .5);
-const rusP = g.append('path').attr('fill', '#24395F').attr('stroke', '#5C7FB0').attr('stroke-width', .8);
-const arctic = g.append('path').attr('fill', 'none').attr('stroke', '#5C7FB0').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
+const sphere = g.append('path').attr('fill', 'url(#g-sphere)').attr('stroke', '#2a3f6e').attr('stroke-width', 1);
+const grat = g.append('path').attr('fill', 'none').attr('stroke', '#22345f').attr('stroke-width', .6);
+const landP = g.append('path').attr('fill', '#22375f').attr('stroke', '#31497a').attr('stroke-width', .5);
+const rusP = g.append('path').attr('fill', '#2b4677').attr('stroke', '#5a76aa').attr('stroke-width', .8);
+const arctic = g.append('path').attr('fill', 'none').attr('stroke', '#5a76aa').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
 const bandP = g.append('path').attr('fill', 'url(#g-band)').attr('stroke', 'none').attr('filter', 'url(#glow)');
-const eqP = g.append('path').attr('fill', 'none').attr('stroke', col('--blue-soft')).attr('stroke-width', 1.3).attr('stroke-opacity', .95);
-const horP = g.append('path').attr('fill', 'none').attr('stroke', col('--blue-soft')).attr('stroke-width', 1).attr('stroke-dasharray', '2 5').attr('stroke-opacity', .55);
+const eqP = g.append('path').attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 1.3).attr('stroke-opacity', .95);
+const horP = g.append('path').attr('fill', 'none').attr('stroke', col('--violet')).attr('stroke-width', 1).attr('stroke-dasharray', '2 5').attr('stroke-opacity', .8);
 const cityG = g.append('g');
 const labelG = g.append('g').attr('pointer-events', 'none');
 
@@ -431,8 +411,8 @@ function render(){
     .attr('cx', d => d.p[0]).attr('cy', d => d.p[1])
     .attr('display', d => d.vis ? null : 'none')
     .attr('r', d => (d.c === selected ? 6.5 : (d.c.group === 'АЗРФ' ? 4.2 : 3.4)) * Math.sqrt(zoomK))
-    .attr('fill', d => d.st === 'over' ? col('--orange') : (d.st === 'hor' ? 'rgba(168,203,236,.14)' : 'rgba(12,21,38,.6)'))
-    .attr('stroke', d => d.st === 'over' ? '#FFE3BF' : (d.st === 'hor' ? col('--blue-soft') : col('--mist')))
+    .attr('fill', d => d.st === 'over' ? col('--aurora') : (d.st === 'hor' ? 'rgba(164,147,255,.15)' : 'rgba(14,26,51,.6)'))
+    .attr('stroke', d => d.st === 'over' ? '#eafff5' : (d.st === 'hor' ? col('--violet') : col('--mist')))
     .attr('stroke-width', d => d.c === selected ? 2.2 : 1.3)
     .attr('filter', d => d.st === 'over' ? 'url(#glow)' : null)
     .style('cursor', 'pointer');
@@ -445,7 +425,7 @@ function render(){
     .attr('fill', d => d.c === selected ? col('--snow') : col('--fog'))
     .attr('font-size', d => d.c === selected ? 13 : 11.5)
     .attr('font-weight', d => d.c === selected ? 600 : 400)
-    .attr('paint-order', 'stroke').attr('stroke', 'rgba(12,21,38,.88)').attr('stroke-width', 3)
+    .attr('paint-order', 'stroke').attr('stroke', 'rgba(14,26,51,.85)').attr('stroke-width', 3)
     .text(d => d.c.name);
 }
 
@@ -478,27 +458,16 @@ function rotateTo(c){
   d3.transition().duration(900).ease(d3.easeCubicInOut).tween('rotate', () => t => { projection.rotate(i(t)); render(); });
 }
 
-// суша: сначала локальные файлы рядом с index.html, затем несколько CDN
-const ATLAS_SOURCES = ['', 'https://cdn.jsdelivr.net/npm/world-atlas@2/', 'https://unpkg.com/world-atlas@2/', 'https://cdn.jsdelivr.net/gh/topojson/world-atlas@v2.0.2/'];
-async function loadAtlas(){
-  for (const base of ATLAS_SOURCES) {
-    try {
-      const [l, c] = await Promise.all([fetch(base + 'land-110m.json').then(r => { if (!r.ok) throw 0; return r.json(); }),
-                                        fetch(base + 'countries-110m.json').then(r => { if (!r.ok) throw 0; return r.json(); })]);
-      if (!l.objects || !c.objects) throw 0;
-      return [l, c];
-    } catch (e) { /* пробуем следующий источник */ }
-  }
-  return null;
-}
-loadAtlas().then(res => {
-  if (!res) { drawPole(); return; }
-  const [l, c] = res;
+// суша
+Promise.all([
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json').then(r => r.json()),
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r => r.json())
+]).then(([l, c]) => {
   land = topojson.feature(l, l.objects.land);
   const countries = topojson.feature(c, c.objects.countries);
   russia = countries.features.find(f => f.id === '643' || f.id === 643 || (f.properties && f.properties.name === 'Russia'));
   render(); drawPole();
-});
+}).catch(() => { document.getElementById('globe-note').textContent += ' Контуры суши не загрузились (нет доступа к cdn.jsdelivr.net) — овал и города всё равно показаны.'; drawPole(); });
 
 // ---------- Kp ----------
 const kpInput = document.getElementById('kp'), kpOut = document.getElementById('kp-out'), kpHint = document.getElementById('kp-hint');
@@ -513,7 +482,7 @@ function setKp(v, fromSlider){
   const southern = CITIES.filter(c => cityState(c, kp) !== 'none').sort((a, b) => a.cgm - b.cgm)[0];
   let txt = `Граница овала — на ${fmt1(o.bEq)}° геомагнитной широты. Над головой сияние у ${inside} из 32 арктических городов`;
   if (southern) txt += `; самая южная точка, где его видно хотя бы на горизонте, — ${southern.name}.`; else txt += '.';
-  kpHint.textContent = typo(txt);
+  kpHint.textContent = txt;
   render();
   if (selected) updateRecordKp();
 }
@@ -530,7 +499,7 @@ document.getElementById('kp-now').addEventListener('click', async () => {
     setKp(Math.round(v * 3) / 3);
     const t = new Date(last[0].replace(' ', 'T') + 'Z');
     msg.textContent = `Kp ${fmtKp(v)} на ${t.toLocaleString('ru-RU', {day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit'})} (NOAA SWPC)`;
-  } catch (e) { msg.textContent = 'NOAA не ответил — попробуйте позже'; }
+  } catch (e) { msg.textContent = 'не удалось получить данные NOAA — попробуйте позже'; }
 });
 
 // ---------- поиск города ----------
@@ -553,7 +522,7 @@ function selectCity(c, rotate){
   selected = c;
   input.value = c.name;
   rec.hidden = false;
-  rec.innerHTML = typo(recordHTML(c));
+  rec.innerHTML = recordHTML(c);
   drawMonths(c); drawYears(c);
   document.getElementById('png').addEventListener('click', () => downloadCard(c));
   document.getElementById('share').addEventListener('click', () => shareCity(c));
@@ -578,7 +547,7 @@ function recordHTML(c){
     <div class="region">${c.region !== c.name ? c.region + ', ' : ''}${fmt1(c.lat)}° с. ш. Геомагнитная широта <span class="num">${fmt1(c.cgm)}°</span></div>
     <p>${thr}</p>
     <div class="big"><span class="n">${c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver)}</span><span class="l">${visLabel}</span></div>
-    <div class="range">Среднее за 2000–2025. Диапазон по двум источникам облачности: ${fmt0(lo)}–${fmt0(hi)}; строгий критерий ясности — ${fmt0(c.visOverStrict)}.</div>
+    <div class="range">Среднее за 2000–2025. Разброс по источникам облачности: от ${fmt0(lo)} до ${fmt0(hi)}; при строгом критерии ясности — ${fmt0(c.visOverStrict)}.</div>
     <div class="stats">
       <div><b class="num">${fmt0(c.darkNights)}</b><span>тёмных ночей в году</span></div>
       <div><b class="num">${fmt0(c.overNights)}</b><span>из них с достаточной активностью</span></div>
@@ -598,7 +567,7 @@ function recordHTML(c){
 function updateRecordKp(){
   const el = document.getElementById('rec-kp'); if (!el || !selected) return;
   const st = cityState(selected, kp);
-  el.textContent = typo(st === 'over' ? `При Kp ${fmtKp(kp)} ${selected.name} внутри овала — сияние над головой.` : st === 'hor' ? `При Kp ${fmtKp(kp)} сияние видно из города на северном горизонте.` : `При Kp ${fmtKp(kp)} до города овал не доходит: нужен Kp ${fmtKp(kpCeil(selected.kpHor))} для горизонта и ${fmtKp(kpCeil(selected.kpOver))} — чтобы оно встало над головой.`);
+  el.textContent = st === 'over' ? `При Kp ${fmtKp(kp)} ${selected.name} внутри овала — сияние над головой.` : st === 'hor' ? `При Kp ${fmtKp(kp)} сияние видно из города на северном горизонте.` : `При Kp ${fmtKp(kp)} до города овал не доходит: нужен Kp ${fmtKp(kpCeil(selected.kpHor))} для горизонта и ${fmtKp(kpCeil(selected.kpOver))} — чтобы оно встало над головой.`;
 }
 const SEASON_ORDER = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7];
 function drawMonths(c){
@@ -609,10 +578,10 @@ function drawMonths(c){
   const x = d3.scaleBand().domain(SEASON_ORDER).range([m.l, w - m.r]).padding(.22);
   const y = d3.scaleLinear().domain([0, Math.max(31, d3.max(data, d => d.dark))]).range([h - m.b, m.t]);
   s.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(3).tickSize(-(w - m.l - m.r))).attr('transform', `translate(${m.l},0)`).call(g => g.select('.domain').remove());
-  s.selectAll('.bg').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.dark)).attr('height', d => y(0) - y(d.dark)).attr('fill', 'rgba(168,203,236,.13)').attr('rx', 2);
-  s.selectAll('.v').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.vis)).attr('height', d => y(0) - y(d.vis)).attr('fill', col('--blue')).attr('rx', 2);
-  s.selectAll('.lab').data(data).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', h - 7).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 10.5).attr('font-family', col('--sans')).text(d => MON_SHORT[d.m - 1]);
-  s.selectAll('.val').data(data.filter(d => d.vis >= 0.5)).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', d => y(d.vis) - 3).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 10).attr('font-family', col('--sans')).text(d => fmt0(d.vis));
+  s.selectAll('.bg').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.dark)).attr('height', d => y(0) - y(d.dark)).attr('fill', '#233a66').attr('rx', 2);
+  s.selectAll('.v').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.vis)).attr('height', d => y(0) - y(d.vis)).attr('fill', col('--aurora')).attr('rx', 2);
+  s.selectAll('.lab').data(data).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', h - 7).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 10.5).attr('font-family', col('--mono')).text(d => MON_SHORT[d.m - 1]);
+  s.selectAll('.val').data(data.filter(d => d.vis >= 0.5)).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', d => y(d.vis) - 3).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 10).attr('font-family', col('--mono')).text(d => fmt0(d.vis));
 }
 function drawYears(c){
   const w = 368, h = 110, m = {l: 26, r: 4, t: 6, b: 18};
@@ -624,11 +593,11 @@ function drawYears(c){
   s.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(3).tickSize(-(w - m.l - m.r))).attr('transform', `translate(${m.l},0)`).call(g => g.select('.domain').remove());
   s.append('g').attr('class', 'axis').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(d3.format('d')).tickSize(3)).call(g => g.select('.domain').remove());
   const area = d3.area().x((d, i) => x(years[i])).y0(y(0)).y1(d => y(d)).curve(d3.curveMonotoneX);
-  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', area).attr('fill', 'rgba(92,168,239,.20)');
-  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', d3.line().x((d, i) => x(years[i])).y(d => y(d)).curve(d3.curveMonotoneX)).attr('fill', 'none').attr('stroke', col('--blue')).attr('stroke-width', 1.4);
+  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', area).attr('fill', 'rgba(123,235,181,.25)');
+  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', d3.line().x((d, i) => x(years[i])).y(d => y(d)).curve(d3.curveMonotoneX)).attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 1.4);
   const last = c.yearsOver[c.yearsOver.length - 1];
-  s.append('circle').attr('cx', x(2026)).attr('cy', y(last)).attr('r', 2.5).attr('fill', col('--orange'));
-  s.append('text').attr('x', w - m.r).attr('y', m.t + 8).attr('text-anchor', 'end').attr('fill', col('--fog')).attr('font-size', 10).attr('font-family', col('--sans')).text(`2026: ${last} за 8 мес.`);
+  s.append('circle').attr('cx', x(2026)).attr('cy', y(last)).attr('r', 2.5).attr('fill', col('--ember'));
+  s.append('text').attr('x', w - m.r).attr('y', m.t + 8).attr('text-anchor', 'end').attr('fill', col('--fog')).attr('font-size', 10).attr('font-family', col('--mono')).text(`2026: ${last} за 8 мес.`);
 }
 async function shareCity(c){
   const url = location.origin + location.pathname + '#' + c.id;
@@ -641,36 +610,36 @@ async function downloadCard(c){
   const S = 1080, cv = document.createElement('canvas'); cv.width = S; cv.height = S;
   const ctx = cv.getContext('2d');
   const bg = ctx.createRadialGradient(S * .5, S * .35, 80, S * .5, S * .5, S * .85);
-  bg.addColorStop(0, '#16263F'); bg.addColorStop(1, '#0B1424');
+  bg.addColorStop(0, '#182b52'); bg.addColorStop(1, '#0b1530');
   ctx.fillStyle = bg; ctx.fillRect(0, 0, S, S);
   // сияние-полоса
   const ag = ctx.createLinearGradient(0, 120, 0, 330);
-  ag.addColorStop(0, 'rgba(0,105,211,0)'); ag.addColorStop(.55, 'rgba(92,168,239,.5)'); ag.addColorStop(1, 'rgba(168,203,236,0)');
+  ag.addColorStop(0, 'rgba(164,147,255,0)'); ag.addColorStop(.55, 'rgba(47,185,143,.55)'); ag.addColorStop(1, 'rgba(123,235,181,.0)');
   ctx.fillStyle = ag; ctx.beginPath();
   for (let i = 0; i <= 40; i++) { const xx = i / 40 * S; const yy = 220 + Math.sin(i / 4.5) * 28 + Math.cos(i / 2.1) * 12; i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); }
   ctx.lineTo(S, 120); ctx.lineTo(0, 120); ctx.closePath(); ctx.fill();
-  const sans = '"Inter", system-ui, sans-serif';
-  ctx.fillStyle = '#9FB0C6'; ctx.font = `500 30px ${sans}`; ctx.fillText('Северное сияние над городом', 72, 380);
-  ctx.fillStyle = '#EFF4FA'; ctx.font = `600 ${c.name.length > 14 ? 64 : 84}px ${sans}`; ctx.fillText(c.name, 72, 470);
-  ctx.fillStyle = '#9FB0C6'; ctx.font = `400 28px ${sans}`; ctx.fillText(`${c.region}, геомагнитная широта ${fmt1(c.cgm)}°`, 72, 516);
-  ctx.fillStyle = '#5CA8EF'; ctx.font = `600 170px ${sans}`; ctx.fillText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver), 66, 690);
+  const sans = '"Inter", system-ui, sans-serif', mono = '"JetBrains Mono", Menlo, monospace';
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `500 30px ${sans}`; ctx.fillText('Северное сияние над городом', 72, 380);
+  ctx.fillStyle = '#edf2fa'; ctx.font = `600 ${c.name.length > 14 ? 64 : 84}px ${sans}`; ctx.fillText(c.name, 72, 470);
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `400 28px ${sans}`; ctx.fillText(`${c.region}, геомагнитная широта ${fmt1(c.cgm)}°`, 72, 516);
+  ctx.fillStyle = '#7bebb5'; ctx.font = `500 170px ${mono}`; ctx.fillText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver), 66, 690);
   const nw = ctx.measureText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver)).width;
-  ctx.fillStyle = '#EFF4FA'; ctx.font = `400 30px ${sans}`;
+  ctx.fillStyle = '#edf2fa'; ctx.font = `400 30px ${sans}`;
   wrapText(ctx, `${plural(c.visOver, 'ночь', 'ночи', 'ночей')} в году сияние стоит над головой при ясном небе`, 66 + nw + 28, 640, S - (66 + nw + 28) - 72, 38);
   // месяцы
   const data = SEASON_ORDER.map(mi => c.months.find(x => x.m === mi));
   const bx = 72, bw = (S - 144) / 12, base = 900, maxv = Math.max(31, d3.max(data, d => d.dark)), sc = 130 / maxv;
   data.forEach((d, i) => {
-    ctx.fillStyle = 'rgba(168,203,236,.16)'; roundRect(ctx, bx + i * bw + 6, base - d.dark * sc, bw - 12, d.dark * sc, 4);
-    ctx.fillStyle = '#5CA8EF'; roundRect(ctx, bx + i * bw + 6, base - d.vis * sc, bw - 12, d.vis * sc, 4);
-    ctx.fillStyle = '#9FB0C6'; ctx.font = `400 22px ${sans}`; ctx.textAlign = 'center'; ctx.fillText(MON_SHORT[d.m - 1], bx + i * bw + bw / 2, base + 30);
-    if (d.vis >= 0.5) { ctx.fillStyle = '#EFF4FA'; ctx.fillText(fmt0(d.vis), bx + i * bw + bw / 2, base - d.vis * sc - 8); }
+    ctx.fillStyle = '#233a66'; roundRect(ctx, bx + i * bw + 6, base - d.dark * sc, bw - 12, d.dark * sc, 4);
+    ctx.fillStyle = '#7bebb5'; roundRect(ctx, bx + i * bw + 6, base - d.vis * sc, bw - 12, d.vis * sc, 4);
+    ctx.fillStyle = '#a3b3cb'; ctx.font = `400 22px ${mono}`; ctx.textAlign = 'center'; ctx.fillText(MON_SHORT[d.m - 1], bx + i * bw + bw / 2, base + 30);
+    if (d.vis >= 0.5) { ctx.fillStyle = '#edf2fa'; ctx.fillText(fmt0(d.vis), bx + i * bw + bw / 2, base - d.vis * sc - 8); }
     ctx.textAlign = 'left';
   });
-  ctx.fillStyle = '#9FB0C6'; ctx.font = `400 22px ${sans}`;
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `400 22px ${sans}`;
   ctx.fillText('Ночей с сиянием по месяцам; на фоне — все тёмные ночи. Среднее за 2000–2025.', 72, 980);
-  ctx.fillStyle = '#EFF4FA'; ctx.font = `600 26px ${sans}`; ctx.fillText('ПОРА считать', 72, 1032);
-  ctx.fillStyle = '#5CA8EF'; ctx.font = `500 24px ${sans}`; ctx.textAlign = 'right'; ctx.fillText('t.me/poradata', S - 72, 1032); ctx.textAlign = 'left';
+  ctx.fillStyle = '#edf2fa'; ctx.font = `600 26px ${sans}`; ctx.fillText('ПОРА считать', 72, 1032);
+  ctx.fillStyle = '#a3b3cb'; ctx.font = `400 24px ${mono}`; ctx.textAlign = 'right'; ctx.fillText('t.me/poradata', S - 72, 1032); ctx.textAlign = 'left';
   const a = document.createElement('a'); a.download = `siyanie-${c.id}.png`; a.href = cv.toDataURL('image/png'); a.click();
 }
 function roundRect(ctx, x, y, w, h, r){ if (h <= 0) return; r = Math.min(r, h / 2, w / 2); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); ctx.fill(); }
@@ -682,12 +651,12 @@ function wrapText(ctx, text, x, y, maxW, lh){ const words = text.split(' '); let
   const months = [8, 9, 10, 11, 12, 1, 2, 3, 4];
   const rows = CITIES.filter(c => c.group === 'АЗРФ').sort((a, b) => b.visOver - a.visOver);
   const maxv = d3.max(rows, c => d3.max(c.months, m => m.vis));
-  const color = d3.scaleLinear().domain([0, maxv]).range(['#16233C', '#5CA8EF']).interpolate(d3.interpolateRgb);
+  const color = d3.scaleLinear().domain([0, maxv]).range(['#1a2c52', '#7bebb5']).interpolate(d3.interpolateRgb);
   document.getElementById('cal-max').textContent = `${fmt0(maxv)} ночей`;
   let html = '<div class="h l">город</div>' + months.map(m => `<div class="h">${MON_SHORT[m - 1]}</div>`).join('') + '<div class="h">за год</div>';
   rows.forEach(c => {
     html += `<div class="name" title="${c.name}">${c.name}</div>`;
-    months.forEach(m => { const v = c.months.find(x => x.m === m).vis; html += `<div class="c" style="background:${color(v)};color:${v > maxv * .55 ? '#0B1424' : '#EFF4FA'}" title="${c.name}, ${MON_NOM[m - 1]}: ${fmt1(v)}">${v >= 0.5 ? fmt0(v) : ''}</div>`; });
+    months.forEach(m => { const v = c.months.find(x => x.m === m).vis; html += `<div class="c" style="background:${color(v)};color:${v > maxv * .55 ? '#0b1a2e' : '#edf2fa'}" title="${c.name}, ${MON_NOM[m - 1]}: ${fmt1(v)}">${v >= 0.5 ? fmt0(v) : ''}</div>`; });
     html += `<div class="t">${fmt0(c.visOver)}</div>`;
   });
   el.innerHTML = html;
@@ -704,20 +673,20 @@ function wrapText(ctx, text, x, y, maxW, lh){ const words = text.split(' '); let
   s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(w - m.l - m.r))).call(g => g.select('.domain').remove());
   s.append('g').attr('class', 'axis').attr('transform', `translate(${w - m.r},0)`).call(d3.axisRight(y2).ticks(5)).call(g => g.select('.domain').remove());
   s.append('g').attr('class', 'axis').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickValues(d3.range(1935, 2027, 10)).tickSize(3)).call(g => g.select('.domain').remove());
-  s.selectAll('.bar').data(data).enter().append('rect').attr('x', d => x(d.y)).attr('width', x.bandwidth()).attr('y', d => y(d.k5)).attr('height', d => y(0) - y(d.k5)).attr('fill', d => d.y >= 2024 ? col('--orange') : 'rgba(92,168,239,.55)').attr('rx', 1.5)
+  s.selectAll('.bar').data(data).enter().append('rect').attr('x', d => x(d.y)).attr('width', x.bandwidth()).attr('y', d => y(d.k5)).attr('height', d => y(0) - y(d.k5)).attr('fill', d => d.y >= 2024 ? col('--aurora') : '#3f7f74').attr('rx', 1.5)
     .append('title').text(d => `${d.y}: ${d.k5} дней с Kp ≥ 5, ${d.k7} — с Kp ≥ 7; среднее число пятен ${fmt0(d.sn)}`);
   const p26 = D.kp2026;
-  s.append('rect').attr('x', x(2026)).attr('width', x.bandwidth()).attr('y', y(p26.k5)).attr('height', y(0) - y(p26.k5)).attr('fill', 'none').attr('stroke', col('--orange')).attr('stroke-dasharray', '3 2').attr('rx', 1.5)
+  s.append('rect').attr('x', x(2026)).attr('width', x.bandwidth()).attr('y', y(p26.k5)).attr('height', y(0) - y(p26.k5)).attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-dasharray', '3 2').attr('rx', 1.5)
     .append('title').text(`2026, январь–август: ${p26.k5} дней с Kp ≥ 5`);
   s.append('path').datum(data).attr('fill', 'none').attr('stroke', col('--fog')).attr('stroke-width', 1.6).attr('d', d3.line().x(d => x(d.y) + x.bandwidth() / 2).y(d => y2(d.sn)).curve(d3.curveMonotoneX));
   const kp9 = d3.rollup(D.storms, v => v.length, d => +d.d.slice(0, 4));
-  s.selectAll('.k9').data(Array.from(kp9)).enter().append('circle').attr('cx', d => x(d[0]) + x.bandwidth() / 2).attr('cy', m.t - 30).attr('r', d => 3 + d[1]).attr('fill', col('--orange')).attr('opacity', .9)
+  s.selectAll('.k9').data(Array.from(kp9)).enter().append('circle').attr('cx', d => x(d[0]) + x.bandwidth() / 2).attr('cy', m.t - 30).attr('r', d => 3 + d[1]).attr('fill', col('--ember')).attr('opacity', .9)
     .append('title').text(d => `${d[0]}: ${d[1]} ${plural(d[1], 'день', 'дня', 'дней')} с Kp 9`);
-  s.append('text').attr('class', 'anno').attr('x', m.l).attr('y', m.t - 42).text('дни с Kp 9').attr('fill', col('--orange')).attr('font-size', 11);
+  s.append('text').attr('class', 'anno').attr('x', m.l).attr('y', m.t - 42).text('дни с Kp 9').attr('fill', col('--ember')).attr('font-size', 11);
   s.append('text').attr('class', 'anno').attr('x', w - m.r + 8).attr('y', m.t - 8).text('число пятен').attr('font-size', 11);
   const ann = [[1951, 'рекорд: 141 день', 'start', 0], [1960, '126 дней и три Kp 9', 'start', 0], [2003, 'Хеллоуинские бури', 'middle', 0], [2024, 'первый Kp 9 за 21 год', 'end', 78]];
   ann.forEach(([yr, t, anc, yy]) => { const d = data.find(z => z.y === yr); s.append('text').attr('class', 'anno').attr('x', x(yr) + (anc === 'start' ? x.bandwidth() + 4 : anc === 'end' ? -4 : x.bandwidth() / 2)).attr('y', yy ? y(yy) : y(d.k5) - 8).attr('text-anchor', anc).text(t).attr('font-size', 11.5).attr('fill', col('--snow')); });
-  document.getElementById('hist-cap').textContent = typo(`Столбцы — дни с бурей (Kp ≥ 5) по годам, 1932–2025; пунктир — 2026 по 31 августа (${p26.k5} дней). Линия — среднегодовое число солнечных пятен (SILSO). В восьми завершённых циклах максимум бурь наступал в среднем через ${fmt1(d3.mean(D.cycles.filter(c => c.c < 25), c => c.kp5Max - c.snMax))} года после максимума пятен. Источники: GFZ Potsdam, WDC-SILSO.`);
+  document.getElementById('hist-cap').textContent = `Столбцы — дни с бурей (Kp ≥ 5) по годам, 1932–2025; пунктир — 2026 по 31 августа (${p26.k5} дней). Линия — среднегодовое число солнечных пятен (SILSO). В восьми завершённых циклах максимум бурь наступал в среднем через ${fmt1(d3.mean(D.cycles.filter(c => c.c < 25), c => c.kp5Max - c.snMax))} года после максимума пятен. Источники: GFZ Potsdam, WDC-SILSO.`;
 })();
 
 // ---------- сезонность ----------
@@ -729,13 +698,13 @@ function wrapText(ctx, text, x, y, maxW, lh){ const words = text.split(' '); let
     const y = d3.scaleLinear().domain([0, d3.max(vals) * 1.12]).range([h - m.b, m.t]);
     s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(w - m.l - m.r))).call(g => g.select('.domain').remove());
     s.selectAll('rect').data(vals).enter().append('rect').attr('x', (d, i) => x(i + 1)).attr('width', x.bandwidth()).attr('y', d => y(d)).attr('height', d => y(0) - y(d)).attr('fill', (d, i) => color(i + 1)).attr('rx', 2);
-    s.selectAll('.l').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', h - 8).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 11).attr('font-family', col('--sans')).text((d, i) => MON_SHORT[i]);
-    s.selectAll('.v').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', d => y(d) - 5).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 11).attr('font-family', col('--sans')).text(d => fmt(d));
+    s.selectAll('.l').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', h - 8).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 11).attr('font-family', col('--mono')).text((d, i) => MON_SHORT[i]);
+    s.selectAll('.v').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', d => y(d) - 5).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 11).attr('font-family', col('--mono')).text(d => fmt(d));
   }
-  bars('#season-kp', D.season.map(d => d.k5), d => fmt1(d), i => [3, 4, 9, 10].includes(i) ? col('--orange') : 'rgba(92,168,239,.38)');
+  bars('#season-kp', D.season.map(d => d.k5), d => fmt1(d), i => [3, 4, 9, 10].includes(i) ? col('--ember') : '#3f7f74');
   const az = CITIES.filter(c => c.group === 'АЗРФ');
   const vis = d3.range(1, 13).map(mi => d3.mean(az, c => c.months.find(x => x.m === mi).vis));
-  bars('#season-vis', vis, d => d >= 0.3 ? fmt1(d) : '', i => [1, 2, 3].includes(i) ? col('--blue') : 'rgba(92,168,239,.38)');
+  bars('#season-vis', vis, d => d >= 0.3 ? fmt1(d) : '', i => [1, 2, 3].includes(i) ? col('--aurora') : '#3f7f74');
 })();
 
 // ---------- полюс ----------
@@ -745,29 +714,29 @@ function drawPole(){
   s.selectAll('*').remove();
   const pr = d3.geoOrthographic().rotate([-90, -90]).clipAngle(90).translate([w / 2, h / 2]).scale(w / 2 * 2.7);
   const p = d3.geoPath(pr);
-  s.append('path').attr('d', p({type: 'Sphere'})).attr('fill', '#0E1830');
-  if (land) s.append('path').attr('d', p(land)).attr('fill', '#1B2C4A').attr('stroke', '#2B4066').attr('stroke-width', .5);
-  if (russia) s.append('path').attr('d', p(russia)).attr('fill', '#24395F').attr('stroke', '#5C7FB0').attr('stroke-width', .7);
-  s.append('path').attr('d', p(d3.geoGraticule().step([30, 10])())).attr('fill', 'none').attr('stroke', '#1F3457').attr('stroke-width', .6);
-  s.append('path').attr('d', p({type: 'LineString', coordinates: d3.range(0, 361, 2).map(l => [l, 66.56])})).attr('fill', 'none').attr('stroke', '#5C7FB0').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
+  s.append('path').attr('d', p({type: 'Sphere'})).attr('fill', '#0f1c3a');
+  if (land) s.append('path').attr('d', p(land)).attr('fill', '#22375f').attr('stroke', '#31497a').attr('stroke-width', .5);
+  if (russia) s.append('path').attr('d', p(russia)).attr('fill', '#2b4677').attr('stroke', '#5a76aa').attr('stroke-width', .7);
+  s.append('path').attr('d', p(d3.geoGraticule().step([30, 10])())).attr('fill', 'none').attr('stroke', '#22345f').attr('stroke-width', .6);
+  s.append('path').attr('d', p({type: 'LineString', coordinates: d3.range(0, 361, 2).map(l => [l, 66.56])})).attr('fill', 'none').attr('stroke', '#5a76aa').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
   const pts = D.pole;
-  const colr = d3.scaleLinear().domain([1590, 2030]).range(['#A8CBEC', '#E8912D']);
+  const colr = d3.scaleLinear().domain([1590, 2030]).range(['#7d8fb5', '#f5a65b']);
   for (let i = 1; i < pts.length; i++) {
     s.append('path').attr('d', p({type: 'LineString', coordinates: [[pts[i - 1].lon, pts[i - 1].lat], [pts[i].lon, pts[i].lat]]})).attr('fill', 'none').attr('stroke', colr(pts[i].y)).attr('stroke-width', pts[i].y > 2025 ? 1.5 : 2.5).attr('stroke-dasharray', pts[i].y > 2025 ? '3 3' : null);
   }
   [1590, 1900, 2000, 2020, 2030].forEach(yr => {
     const d = pts.find(z => z.y === yr) || pts.reduce((a, b) => Math.abs(b.y - yr) < Math.abs(a.y - yr) ? b : a);
     const q = pr([d.lon, d.lat]); if (!q) return;
-    s.append('circle').attr('cx', q[0]).attr('cy', q[1]).attr('r', yr === 2025 || yr === 2020 ? 4 : 3).attr('fill', colr(d.y)).attr('stroke', '#0E1830').attr('stroke-width', 1);
-    s.append('text').attr('x', q[0] + 7).attr('y', q[1] + 4).attr('fill', col('--snow')).attr('font-size', 12).attr('font-family', col('--sans')).attr('paint-order', 'stroke').attr('stroke', 'rgba(12,21,38,.9)').attr('stroke-width', 3).text(yr);
+    s.append('circle').attr('cx', q[0]).attr('cy', q[1]).attr('r', yr === 2025 || yr === 2020 ? 4 : 3).attr('fill', colr(d.y)).attr('stroke', '#0f1c3a').attr('stroke-width', 1);
+    s.append('text').attr('x', q[0] + 7).attr('y', q[1] + 4).attr('fill', col('--snow')).attr('font-size', 12).attr('font-family', col('--mono')).attr('paint-order', 'stroke').attr('stroke', 'rgba(15,28,58,.9)').attr('stroke-width', 3).text(yr);
   });
   const gp = pr([-72.76, 80.85]);
-  if (gp) { s.append('circle').attr('cx', gp[0]).attr('cy', gp[1]).attr('r', 5).attr('fill', 'none').attr('stroke', col('--blue')).attr('stroke-width', 2); s.append('text').attr('x', gp[0] - 9).attr('y', gp[1] + 4).attr('text-anchor', 'end').attr('fill', col('--blue')).attr('font-size', 12).text('геомагнитный полюс — центр овала'); }
+  if (gp) { s.append('circle').attr('cx', gp[0]).attr('cy', gp[1]).attr('r', 5).attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 2); s.append('text').attr('x', gp[0] - 9).attr('y', gp[1] + 4).attr('text-anchor', 'end').attr('fill', col('--aurora')).attr('font-size', 12).text('геомагнитный полюс — центр овала'); }
   s.append('text').attr('x', 14).attr('y', h - 14).attr('fill', col('--fog')).attr('font-size', 12).text('Магнитный полюс 1590–2025 (gufm1/IGRF), пунктир — прогноз WMM2025 до 2030. Пунктирный круг — полярный круг.');
   // таблица дрейфа
   const tb = document.querySelector('#drift tbody');
   const ids = ['murmansk', 'arkhangelsk', 'salekhard', 'norilsk', 'tiksi', 'anadyr', 'saint_petersburg', 'moscow'];
-  tb.innerHTML = ids.map(id => { const c = byId.get(id); return `<tr><td>${c.name}</td><td class="num">${fmt1(c.cgm1900)}</td><td class="num">${fmt1(c.cgm1950)}</td><td class="num">${fmt1(c.cgm2000)}</td><td class="num">${fmt1(c.cgm)}</td><td class="num" style="color:${col('--blue')}">+${fmt1(c.cgm - c.cgm1900)}°</td></tr>`; }).join('');
+  tb.innerHTML = ids.map(id => { const c = byId.get(id); return `<tr><td>${c.name}</td><td class="num">${fmt1(c.cgm1900)}</td><td class="num">${fmt1(c.cgm1950)}</td><td class="num">${fmt1(c.cgm2000)}</td><td class="num">${fmt1(c.cgm)}</td><td class="num" style="color:${col('--aurora')}">+${fmt1(c.cgm - c.cgm1900)}°</td></tr>`; }).join('');
 }
 
 // ---------- старт ----------
