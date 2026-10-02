@@ -1,782 +1,1050 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="theme-color" content="#0C1526">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Где сияет небо — атлас северного сияния над российской Арктикой | ПОРА считать</title>
-<meta name="description" content="Сколько ночей в году видно северное сияние в 43 городах России: 94 года геомагнитных индексов, 26 лет облачности и астрономия темноты. Назовите город — атлас посчитает его личную запись.">
-<meta property="og:title" content="Где сияет небо — атлас северного сияния над Россией">
-<meta property="og:description" content="Назовите город — атлас посчитает, сколько ночей в году над ним сияет небо.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ПОРА прикинуть: полярные баллы</title>
+<meta name="description" content="Пиксельная игра по цифрам статьи «Образование в российской Арктике»: проведите героя от детского сада до первой зарплаты">
 <style>
+/* Fonts embedded as subsets, SIL Open Font License 1.1: Press Start 2P (logo, big numbers, scene) and Pixellari by Zacchary Dempsey-Plante (all text, buttons, headings).
+   "Pixellari Cyr" is a modified Pixellari: Cyrillic letters, en/em dash and minus were added in the font's own 16 px grid. */
+@font-face{font-family:"PS2P";src:url(data:font/woff2;base64,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) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"PixellariCyr";font-style:normal;font-weight:400;font-display:block;src:url(data:font/woff2;base64,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) format("woff2")}
+
 :root{
-  --night:#0C1526; --night-2:#121E36; --night-3:#182747; --line:rgba(168,203,236,.16);
-  --snow:#EFF4FA; --fog:#9FB0C6; --mist:#6E7F97;
-  --blue:#5CA8EF; --blue-soft:#A8CBEC; --blue-deep:#0069D3; --orange:#E8912D;
-  --aurora:#7BEBB5; --aurora-deep:#2FB98F; --violet:#A493FF;
-  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --night:#0C1526; --night2:#13223A; --ink:#474958; --text:#404040; --muted:#6E7B87;
+  --snow:#FEFDFC; --paper:#FFFFFF; --line:#E4EAF0; --sky:#A8CBEC;
+  --blue:#0069D3; --blue-dark:#004F9E; --blue-pale:#EAF3FC;
+  --orange:#E8912D; --orange-dark:#B96A12; --orange-pale:#FCF1E3;
+  --aurora:#7BEBB5; --violet:#A493FF; --gold:#F2C94C;
+  --px:"PS2P","Courier New",monospace;
+  --body:"PixellariCyr","Courier New",monospace;
 }
+/* Type scale. Pixel fonts stay sharp only at whole multiples of their grid:
+   Pixellari (all words) is drawn on a 16 px grid -> 16 px, headings 32 px;
+   Press Start 2P (logo and big numbers) is drawn on an 8 px grid -> 16, 24, 32 px.
+   Line heights are multiples of 8 px. Emphasis = "pixel bold" (1 px shadow + 1 px tracking). */
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--night);color:var(--snow);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--blue);text-decoration-color:rgba(92,168,239,.4);text-underline-offset:3px}
-a:hover{text-decoration-color:var(--blue)}
-::selection{background:rgba(0,105,211,.45)}
-h1,h2,h3{font-weight:600;line-height:1.12;margin:0 0 .5em;letter-spacing:-.012em;text-wrap:pretty}
-h1{font-size:clamp(34px,4.2vw,46px)}
-h2{font-size:clamp(26px,3vw,34px);margin-top:0}
-.sub{color:var(--fog);font-size:17px;line-height:1.55;margin:0 0 1.1em}
-h3{font-size:19px}
-p{margin:0 0 1em}
-.num{font-variant-numeric:tabular-nums lining-nums}
-button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:3px}
-.hint{color:var(--fog);font-size:14px;line-height:1.5}
-.small{font-size:14px;line-height:1.5}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--night); color:var(--text); font-family:var(--body); font-size:16px; line-height:24px; font-synthesis:none; -webkit-font-smoothing:none; -moz-osx-font-smoothing:auto}
+b,strong{font-weight:400}
+button{font:inherit; cursor:pointer}
+a{color:var(--blue)}
+.hidden{display:none !important}
+.game{max-width:640px; margin:0 auto; padding:0 0 40px}
 
-/* ---------- hero: globe + panel ---------- */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) 440px;min-height:100vh;min-height:100svh}
-.globe-wrap{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#16233C 0%,var(--night) 62%,#080F1C 100%)}
-.globe-wrap svg{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
-.globe-wrap svg:active{cursor:grabbing}
-.globe-ui{position:absolute;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px}
-.globe-ui button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(12,21,38,.85);color:var(--snow);font-size:18px;line-height:1}
-.globe-ui button:hover{background:var(--night-3)}
-.tip{position:absolute;pointer-events:none;background:rgba(12,21,38,.94);border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-size:13px;line-height:1.35;color:var(--snow);transform:translate(-50%,calc(-100% - 12px));white-space:nowrap;opacity:0;transition:opacity .12s}
-.tip b{font-weight:600}
-.tip .num{color:var(--fog)}
-.panel{padding:40px 36px 48px;border-left:1px solid var(--line);background:var(--night);overflow:auto;max-height:100vh}
-.panel .lead{font-size:17px;color:var(--fog);margin-bottom:26px}
-.field{display:block;margin-bottom:22px}
-.field span{display:block;font-size:14px;color:var(--fog);margin-bottom:6px}
-.field input[type=text]{width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--night-2);color:var(--snow);font:inherit;font-size:17px}
-.field input[type=text]::placeholder{color:var(--mist)}
-.kp{margin-bottom:8px}
-.kp-head{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--fog);margin-bottom:4px}
-.kp-head output{font-size:20px;color:var(--snow);font-weight:500;font-variant-numeric:tabular-nums}
-.kp-head output small{font-size:13px;color:var(--fog);margin-left:8px;font-family:var(--sans)}
-input[type=range]{width:100%;accent-color:var(--blue);margin:6px 0 2px}
-.kp-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--mist);padding:0 2px;font-variant-numeric:tabular-nums}
-.kp-hint{color:var(--fog);font-size:14px;min-height:42px;margin:8px 0 6px}
-.kp-now{display:flex;gap:10px;align-items:center;margin-bottom:18px;font-size:13px;color:var(--fog)}
-.kp-now button{border:1px solid var(--line);background:transparent;color:var(--snow);border-radius:6px;padding:5px 10px;font-size:13px}
-.kp-now button:hover{background:var(--night-2)}
-.legend{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:center;font-size:13px;color:var(--fog);margin:10px 0 22px}
-.legend i{display:inline-block;width:16px;height:16px;border-radius:50%}
-.legend .sw-over{background:var(--aurora);box-shadow:0 0 10px rgba(123,235,181,.6)}
-.legend .sw-hor{border:2px solid var(--violet)}
-.legend .sw-none{border:1.5px solid var(--mist)}
-.legend .sw-band{border-radius:3px;width:22px;height:12px;background:linear-gradient(90deg,rgba(123,235,181,.9),rgba(164,147,255,.7))}
+/* HUD */
+.hud{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:8px 12px; color:#fff; font-family:var(--body); font-size:16px; line-height:24px; letter-spacing:1px; white-space:nowrap}
+.hud .t{color:var(--sky)}
+.hud .dots{display:flex; gap:4px}
+.hud .dots i{width:8px; height:8px; background:#2B4468; display:block}
+.hud .dots i.done{background:var(--sky)}
+.hud .dots i.now{background:var(--orange)}
+.hud .sc{color:#fff}
+.hud .sc b{color:var(--aurora); font-weight:400; margin-left:8px}
+.hud button.snd{background:transparent; border:2px solid #2B4468; color:var(--sky); font:inherit; letter-spacing:1px; padding:0 8px; line-height:24px}
+.hud button.snd.on{border-color:var(--aurora); color:var(--aurora)}
+@media (max-width:440px){ .hud .t{display:none} }
 
-/* record card */
-.record{border-top:1px solid var(--line);padding-top:24px;margin-top:6px}
-.record[hidden]{display:none}
-.record h2{font-size:28px;margin-bottom:2px}
-.record .region{color:var(--fog);margin-bottom:14px}
-.big{display:flex;align-items:baseline;gap:12px;margin:14px 0 4px}
-.big .n{font-size:56px;line-height:1;font-weight:600;color:var(--blue);font-variant-numeric:tabular-nums}
-.big .l{font-size:15px;color:var(--fog);max-width:200px;line-height:1.35}
-.range{color:var(--fog);font-size:13px;margin-bottom:16px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
-.stats div{background:var(--night-2);border-radius:8px;padding:10px 12px}
-.stats b{display:block;font-size:22px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
-.stats span{font-size:12.5px;color:var(--fog);line-height:1.3;display:block;margin-top:4px}
-.record p{font-size:15px}
-.chart-title{font-size:13px;color:var(--fog);margin:14px 0 4px}
-.record svg{display:block;width:100%;height:auto;overflow:visible}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.btn{border:1px solid var(--line);background:var(--night-2);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--snow)}
-.btn:hover{background:var(--night-3)}
-.btn.primary{background:var(--blue-deep);color:#fff;border-color:var(--blue-deep);font-weight:500}
-.btn.primary:hover{background:#1479DD}
+/* scene */
+.scene{position:relative; background:var(--night); border-top:2px solid #2B4468; border-bottom:2px solid #2B4468}
+canvas{display:block; width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; touch-action:pan-y; user-select:none; -webkit-user-select:none}
+.scene.drag canvas{touch-action:none; cursor:ew-resize}
+.overlay{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:4px; text-align:center; padding:4% 16px 0; cursor:pointer; background:linear-gradient(180deg, rgba(12,21,38,.82) 0%, rgba(12,21,38,.55) 60%, rgba(12,21,38,0) 100%)}
+.overlay h1{font-family:var(--px); font-weight:400; font-size:24px; line-height:32px; color:#fff; margin:0; text-shadow:3px 3px 0 var(--blue-dark)}
+.overlay .sub{font-family:var(--body); color:var(--sky); font-size:16px; line-height:24px; max-width:26em; margin:0}
+.overlay .press{font-family:var(--body); font-size:16px; line-height:24px; letter-spacing:1px; color:var(--aurora); animation:blink 1.1s steps(2,end) infinite; margin-top:4px}
+@media (min-width:560px){ .overlay{gap:8px; padding-top:7%} .overlay h1{font-size:32px; line-height:48px; text-shadow:4px 4px 0 var(--blue-dark)} }
+@keyframes blink{50%{opacity:0}}
+.overlay.end{cursor:default}
+.overlay.end h1{color:var(--aurora)}
 
-/* ---------- sections ---------- */
-main{max-width:1180px;margin:0 auto;padding:0 36px}
-section.block{padding:72px 0 24px;border-top:1px solid var(--line)}
-section.block:first-child{border-top:none}
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
-.chart{background:var(--night-2);border:1px solid var(--line);border-radius:14px;padding:22px 22px 14px;margin:18px 0}
-.chart svg{display:block;width:100%;height:auto;overflow:visible}
-.chart-cap{color:var(--fog);font-size:13px;margin:8px 4px 0}
-.axis text{fill:var(--fog);font-family:var(--sans);font-size:11px;font-variant-numeric:tabular-nums}
-.axis line,.axis path{stroke:var(--line)}
-.anno{fill:var(--fog);font-size:12px}
+/* dialogue panel */
+.panel{background:var(--snow); margin:12px 12px 0; padding:16px; border:4px solid var(--ink); box-shadow:0 0 0 2px var(--snow), 6px 6px 0 0 #000; position:relative}
+.panel:before{content:""; position:absolute; left:-4px; top:-4px; width:4px; height:4px; background:var(--night)}
+.station{font-size:16px; line-height:24px; letter-spacing:1px; color:var(--blue); margin:0 0 8px}
+.station span{color:var(--muted); letter-spacing:0}
+.q{font-size:16px; line-height:24px; letter-spacing:1px; color:var(--ink); text-shadow:1px 0 0 currentColor; margin:0 0 8px}
+.hint{font-size:16px; line-height:24px; color:var(--muted); margin:0 0 16px}
+@media (min-width:560px){ .q:not(.intro){font-size:32px; line-height:40px; letter-spacing:0; text-shadow:none; margin-bottom:12px} }
+.actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+.pbtn{font-family:var(--body); font-size:16px; line-height:24px; letter-spacing:1px; padding:8px 16px; background:var(--blue); color:#fff; border:3px solid var(--ink); box-shadow:3px 3px 0 0 var(--ink); text-decoration:none; display:inline-flex; align-items:center; justify-content:center}
+.pbtn:active{transform:translate(2px,2px); box-shadow:1px 1px 0 0 var(--ink)}
+.pbtn:disabled{background:var(--line); color:var(--muted); cursor:not-allowed; transform:none; box-shadow:3px 3px 0 0 var(--ink)}
+.pbtn.ghost{background:#fff; color:var(--blue)}
+.pbtn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--orange); outline-offset:2px}
 
-/* calendar */
-.cal{display:grid;grid-template-columns:170px repeat(9,1fr) 64px;gap:3px;font-size:13px;margin:18px 0 8px}
-.cal .h{color:var(--fog);font-size:12px;text-align:center;padding:4px 0 6px}
-.cal .h.l,.cal .name{text-align:left}
-.cal .name{padding:0 8px;line-height:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cal .c{height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--snow);font-variant-numeric:tabular-nums}
-.cal .t{text-align:right;padding-right:6px;line-height:28px;color:var(--fog);font-variant-numeric:tabular-nums;font-weight:500}
-.cal-legend{display:flex;align-items:center;gap:10px;color:var(--fog);font-size:13px;margin-top:10px}
-.cal-legend i{display:block;width:140px;height:10px;border-radius:3px;background:linear-gradient(90deg,#16233C,var(--blue))}
+/* estimation controls */
+.est{display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center}
+.est .arrow{width:56px; height:56px; display:flex; align-items:center; justify-content:center; padding:0; background:#fff; color:var(--blue); border:3px solid var(--ink); box-shadow:3px 3px 0 0 var(--ink); touch-action:none; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent}
+.est .arrow svg{width:15px; height:27px; fill:currentColor}
+.est .arrow.r svg{transform:scaleX(-1)}
+.est .arrow:active{transform:translate(2px,2px); box-shadow:1px 1px 0 0 var(--ink)}
+.est .arrow:disabled{color:var(--muted); background:var(--line); cursor:default; transform:none; box-shadow:3px 3px 0 0 var(--ink)}
+.est .val{text-align:center; font-family:var(--px); font-size:24px; line-height:32px; color:var(--blue); min-width:0}
+.est .val.long{font-size:16px}
+.est .val small{display:block; font-family:var(--body); font-size:16px; line-height:24px; color:var(--muted); margin-top:4px}
+.est .val.idle{color:var(--muted)}
+@media (min-width:560px){ .est .val{font-size:32px; line-height:40px} .est .val.long{font-size:24px} }
+.tip{font-size:16px; line-height:24px; color:var(--muted); margin:12px 0 0}
 
-/* pole */
-.pole-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
-.pole-wrap svg{display:block;width:100%;height:auto}
-.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.drift{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;min-width:420px}
-.drift td,.drift th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}
-.drift td:first-child,.drift th:first-child{text-align:left}
-.drift th{color:var(--fog);font-weight:500;font-size:13px}
-.drift td.num{color:var(--snow)}
-
-/* method */
-.method h3{margin-top:28px}
-.method ul{padding-left:20px}
-.method li{margin-bottom:6px}
-footer{border-top:1px solid var(--line);margin-top:64px;padding:30px 36px 44px;color:var(--fog);font-size:14px;line-height:1.6;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
-footer p{margin:0}
-.brand{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--blue);font-weight:600;font-size:13px}
-.brand svg{display:block}
-
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr;min-height:0}
-  .globe-wrap{height:min(92vw,560px)}
-  .panel{border-left:none;border-top:1px solid var(--line);max-height:none;padding:28px 20px 40px}
-  main{padding:0 20px}
-  .two,.pole-wrap{grid-template-columns:1fr;gap:24px}
-  .cal{min-width:640px;grid-template-columns:120px repeat(9,1fr) 50px;font-size:12px}
-  .cal .name{padding:0 4px}
-  .cal .c{font-size:11px;height:26px}
-  .stats{grid-template-columns:repeat(3,1fr)}
-  .big .n{font-size:46px}
-  footer{padding:24px 20px 36px}
+/* ranking: numbered medals with places */
+.rank{display:grid; gap:16px}
+.rk-rows{display:grid; gap:8px}
+.rk-row{display:grid; grid-template-columns:42px 1fr; gap:10px; align-items:center}
+.rk-slot,.rk-home{position:relative; width:42px; height:42px; flex:none}
+.rk-slot > svg,.rk-home > svg{position:absolute; inset:0; width:42px; height:42px; display:block}
+.rk-home > svg{visibility:hidden}
+.rk-home.empty > svg{visibility:visible}
+.ro{fill:var(--sky)} .rf{fill:var(--blue-pale)}
+.armed .rk-row:not(.filled) .ro,.rk-row.hover .ro{fill:var(--orange)}
+.rk-name{display:grid; grid-template-columns:minmax(0,1fr); gap:0; align-items:center; text-align:left; width:100%; min-height:48px; padding:8px 12px; background:#F7EBDD; border:3px solid var(--ink); box-shadow:3px 3px 0 0 var(--ink); font-family:var(--body); font-size:16px; line-height:24px; color:var(--ink)}
+.rk-name small{display:block; color:var(--muted); font-size:16px}
+.rk-name .v{font-family:var(--body); font-size:16px; line-height:24px; color:var(--orange-dark); display:none; margin-top:4px}
+.rk-name .fix{display:none; font-family:var(--body); font-size:16px; line-height:24px; letter-spacing:1px; color:var(--orange-dark); margin-top:4px}
+@media (min-width:520px){ /* wide screens: the value sits to the right of the label */
+  .rk-name{grid-template-columns:minmax(0,1fr) auto; column-gap:12px}
+  .rk-name .lbl{grid-column:1; grid-row:1}
+  .rk-name .v{grid-column:2; grid-row:1; margin-top:0; white-space:nowrap; text-align:right}
+  .rk-name .fix{grid-column:1 / -1; grid-row:2}
 }
-@media (max-width:560px){
-  .cal{min-width:600px;grid-template-columns:96px repeat(9,1fr) 44px}
-  .cal .c{font-size:11px;height:26px}
-  .stats{grid-template-columns:1fr 1fr}
-  h1{font-size:30px}
-  .big .n{font-size:42px}
-  .panel{padding:24px 16px 36px}
-  main{padding:0 16px}
-  .scroll-x{margin-left:-16px;margin-right:-16px;padding:0 16px}
-  footer{padding:24px 16px 36px}
-}
+.rk-row.hover .rk-name{background:#fff; border-color:var(--orange)}
+.armed .rk-name{background:#FBF4EA}
+.rk-tray{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:10px 8px; border:2px dashed var(--sky)}
+.kolo{position:absolute; inset:0; width:42px; height:42px; padding:0; border:0; background:transparent; touch-action:none; cursor:grab; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none}
+.kolo svg{display:block; width:42px; height:42px; pointer-events:none}
+.kolo b{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:2px 0 0 2px; font-family:var(--px); font-size:16px; font-weight:400; line-height:1; color:var(--ink); pointer-events:none}
+.ko{fill:var(--ink)} .ky{fill:var(--gold)} .kh{fill:#FFF3C4}
+.kolo.sel{transform:translateY(-4px)}
+.kolo.sel .ko{fill:var(--orange-dark)}
+.kolo.lifted{opacity:.25}
+.kolo.ghost{position:fixed; inset:auto; z-index:50; pointer-events:none; transform:translate(-50%,-50%) scale(1.15); cursor:grabbing}
+.checked .kolo{cursor:default}
+.checked .rk-tray,.checked + .tip,.checked .tip{display:none}
+.checked .rk-name{cursor:default}
+.checked .rk-name .v{display:block}
+.checked .rk-row.ok .rk-name{background:var(--blue-pale); border-color:var(--blue)}
+.checked .rk-row.ok .rk-name .v{color:var(--blue)}
+.checked .rk-row.near .rk-name{background:var(--orange-pale); border-color:var(--orange)}
+.checked .rk-row.bad .rk-name{background:var(--orange-pale); border-color:var(--orange-dark); animation:shake .35s}
+.checked .rk-row.near .fix,.checked .rk-row.bad .fix{display:block}
+@keyframes shake{25%{transform:translateX(-3px)} 75%{transform:translateX(3px)}}
+
+/* reveal */
+.reveal{margin-top:16px; padding-top:16px; border-top:3px dotted var(--sky)}
+.verdict{display:flex; align-items:baseline; gap:8px 16px; flex-wrap:wrap; margin-bottom:8px}
+.verdict .pts{font-family:var(--px); font-size:24px; line-height:32px; color:var(--ink)}
+.verdict .pts.big{color:var(--blue)}
+.verdict .pts small{font-family:var(--body); font-size:16px; color:var(--muted); margin-left:8px}
+.verdict .cmp{font-size:16px; line-height:24px; color:var(--muted)}
+.verdict .cmp b{font-weight:400; color:var(--ink)}
+.verdict .cmp b.t{color:var(--orange-dark)}
+.verdict .cmp b.g{color:var(--blue)}
+.from{margin:0; font-size:16px; line-height:24px}
+.from .lab{display:block; height:14px; margin-bottom:6px} /* empty gap of the same size where the label used to be */
+
+/* end */
+.total{font-family:var(--px); font-size:32px; line-height:40px; color:var(--blue); margin:8px 0 4px}
+.total small{font-family:var(--body); font-size:16px; letter-spacing:1px; color:var(--muted); margin-left:8px}
+.rank-title{font-size:32px; line-height:40px; color:var(--ink); margin:0 0 4px}
+.rank-note{margin:0 0 16px; color:var(--text)}
+.rounds{list-style:none; margin:0 0 8px; padding:0; border-top:2px solid var(--line)}
+.rounds li{display:grid; grid-template-columns:24px 1fr auto; gap:8px; align-items:center; padding:8px 0; border-bottom:2px solid var(--line); font-size:16px; line-height:24px}
+.rounds li .n{color:var(--muted)}
+.rounds li .p{color:var(--ink); text-shadow:1px 0 0 currentColor; letter-spacing:1px}
+.rounds li .p.zero{color:var(--muted); text-shadow:none}
+.after{margin:16px 0 0; padding:16px 12px; border:3px solid var(--orange); background:var(--orange-pale); font-family:var(--body); font-size:16px; line-height:24px; letter-spacing:1px; text-shadow:1px 0 0 currentColor; color:var(--orange-dark); text-align:center}
+.src{font-size:16px; line-height:24px; color:var(--sky); margin:16px 12px 0}
+.src a{color:var(--aurora)}
+.toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff; padding:8px 16px; border:3px solid #fff; font-size:16px; line-height:24px; opacity:0; pointer-events:none; transition:.25s; max-width:calc(100% - 24px)}
+.toast.on{opacity:1; transform:translateX(-50%)}
+@media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
 </style>
 </head>
 <body>
+<div class="game">
+  <div class="hud">
+    <span class="t">ПОРА ПРИКИНУТЬ</span>
+    <span class="dots" id="dots" aria-label="Станции"></span>
+    <span class="sc">ОЧКИ<b id="scoreVal">0</b></span>
+    <button class="snd" id="sndBtn" type="button" aria-pressed="false">ЗВУК ВЫКЛ</button>
+  </div>
+  <div class="scene" id="sceneBox">
+    <canvas id="scene" width="320" height="180" aria-label="Пиксельная сцена: герой идет по северному поселку"></canvas>
+    <div class="overlay" id="titleOverlay">
+      <h1>ПОРА<br>ПРИКИНУТЬ</h1>
+      <div class="press">НАЖМИТЕ, ЧТОБЫ НАЧАТЬ</div>
+    </div>
+    <div class="overlay end hidden" id="endOverlay"><h1>ПУТЬ ПРОЙДЕН</h1><p class="sub" id="endSub"></p></div>
+  </div>
 
-<header class="hero">
-  <div class="globe-wrap" id="globe-wrap">
-    <svg id="globe" role="img" aria-label="Глобус с овалом северного сияния над Арктикой"></svg>
-    <div class="tip" id="tip"></div>
-    <div class="globe-ui">
-      <button type="button" id="zoom-in" aria-label="Приблизить">+</button>
-      <button type="button" id="zoom-out" aria-label="Отдалить">−</button>
-      <button type="button" id="zoom-reset" aria-label="Вернуть карту" title="Вернуть карту">○</button>
+  <div class="panel" id="introPanel">
+    <p class="station">ПОЛЯРНЫЕ БАЛЛЫ <span>· от детского сада до первой зарплаты</span></p>
+    <p class="q intro">Проведите героя через восемь станций. На каждой из них вам предстоит выполнить мини-задание по мотивам статьи «Образование в российской Арктике». Проверим, внимательно ли вы ее читали!</p>
+    <p class="hint">Чем вы ближе к правильному ответу, тем больше получите очков (до 10 за одну задачу). Удачи!</p>
+    <div class="actions"><button class="pbtn" id="startBtn" type="button">НАЧАТЬ</button></div>
+  </div>
+
+  <div class="panel hidden" id="panel">
+    <p class="station" id="station"></p>
+    <p class="q" id="q"></p>
+    <p class="hint" id="hint"></p>
+    <div id="stage"></div>
+    <div class="actions" id="checkRow"><button class="pbtn" id="checkBtn" type="button">ПРОВЕРИТЬ</button></div>
+    <div class="reveal hidden" id="reveal">
+      <div class="verdict"><div class="pts" id="pts"></div><div class="cmp" id="cmp"></div></div>
+      <p class="from"><span class="lab" aria-hidden="true"></span><span id="fromText"></span></p>
+      <div class="actions"><button class="pbtn" id="nextBtn" type="button">ДАЛЬШЕ</button></div>
     </div>
   </div>
 
-  <aside class="panel">
-    <h1>Где сияет небо</h1>
-    <p class="lead">Мы совместили 94 года геомагнитных наблюдений, 26 лет данных об облачности и астрономию полярной ночи для 43 городов России — и посчитали, сколько ночей в году над каждым из них горит небо. Назовите свой город.</p>
-
-    <label class="field"><span>Город</span>
-      <input type="text" id="city-input" list="city-list" placeholder="Например, Норильск" autocomplete="off">
-      <datalist id="city-list"></datalist>
-    </label>
-
-    <div class="kp">
-      <div class="kp-head"><span>Геомагнитная активность</span><output id="kp-out">Kp 3</output></div>
-      <input type="range" id="kp" min="0" max="27" step="1" value="9" aria-label="Индекс Kp">
-      <div class="kp-scale"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
-      <p class="kp-hint" id="kp-hint"></p>
-      <div class="kp-now"><button type="button" id="kp-now">Показать текущий Kp</button><span id="kp-now-msg">по данным NOAA SWPC</span></div>
+  <div class="panel hidden" id="endPanel">
+    <div class="total"><span id="totalVal">0</span><small>ИЗ <span id="totalMax">110</span></small></div>
+    <div class="rank-title" id="rank"></div>
+    <p class="rank-note" id="rankNote"></p>
+    <ul class="rounds" id="roundsList"></ul>
+    <div class="after">СПАСИБО ЗА УЧАСТИЕ!</div>
+    <div class="actions">
+      <button class="pbtn" id="shareBtn" type="button">ПОДЕЛИТЬСЯ</button>
+      <button class="pbtn ghost" id="againBtn" type="button">ЕЩЕ РАЗ</button>
+      <a class="pbtn ghost" href="https://goarctic.ru/society/obrazovanie-v-rossiyskoy-arktike/" target="_blank" rel="noopener">СТАТЬЯ</a>
     </div>
+  </div>
 
-    <div class="legend">
-      <i class="sw-band"></i><span>овал сияния — здесь оно стоит над головой</span>
-      <i class="sw-over"></i><span>город внутри овала — небо сияет</span>
-      <i class="sw-hor"></i><span>сияние видно на северном горизонте</span>
-      <i class="sw-none"></i><span>сияния не будет</span>
-    </div>
+  <p class="src">По статье «Образование в российской Арктике» (GoArctic, 30 сентября 2026) и постам канала <a href="https://t.me/poradata" target="_blank" rel="noopener">«ПОРА считать»</a>. Данные: исследование ПОРА о 128 малых поселках Крайнего Севера, Росстат, портал «Работа в России», тарифы вузов на 2026/2027 учебный год.</p>
+</div>
+<div class="toast" id="toast" role="status"></div>
 
-    <section class="record" id="record" hidden aria-live="polite"></section>
-  </aside>
-</header>
-
-<main>
-  <section class="block" id="calendar">
-    <h2>Главный сезон сияний в Арктике — с января по март, а не в сентябре</h2>
-    <p class="sub">Ожидаемое число ночей в месяц, когда сияние стоит над городом при ясном небе. 32 города арктической зоны, среднее за 2000–2025. Полярная ночь темна, но облачна, а сентябрьский пик активности осенняя облачность съедает — поэтому лучшие месяцы у большинства городов зимние.</p>
-    <div class="scroll-x"><div class="cal" id="cal"></div></div>
-    <div class="cal-legend"><span>0</span><i></i><span id="cal-max">15 ночей</span></div>
-  </section>
-
-  <section class="block" id="history">
-    <h2>2025 год — лишь 40-й по числу геомагнитных бурь за 94 года наблюдений</h2>
-    <p class="sub">Дни с бурей Kp ≥ 5 (уровень G1 и выше) по годам, 1932–2026, на фоне солнечного цикла. Максимум бурь отстаёт от максимума пятен в среднем на два-три года, а сильнейшие события случаются на спаде цикла — так что лучшие сезоны текущего цикла ещё впереди. Оранжевые метки — дни с Kp 9, высшим баллом шкалы.</p>
-    <div class="chart"><svg id="hist"></svg><div class="chart-cap" id="hist-cap"></div></div>
-  </section>
-
-  <section class="block" id="season">
-    <div class="two">
-      <div>
-        <h2>Бурь у равноденствий вдвое больше, чем у солнцестояний</h2>
-        <p class="sub">Доля времени с бурей Kp ≥ 5 по месяцам, 1932–2025. Это эффект Расселла–Макферрона: в марте и сентябре ось Земли ориентирована так, что межпланетное поле легче стыкуется с земным.</p>
-        <div class="chart"><svg id="season-kp"></svg><div class="chart-cap">Доля 3-часовых интервалов с Kp ≥ 5, %. Источник: GFZ Potsdam.</div></div>
-      </div>
-      <div>
-        <h2>Самый бурный месяц — сентябрь, а самый сияющий — март</h2>
-        <p class="sub">Ожидаемые ночи с видимым сиянием по месяцам для среднего арктического города — с поправкой на светлое лето и осеннюю облачность. Сентябрьский пик в Арктике гасят облака; средней полосе он, наоборот, дарит лучший месяц года.</p>
-        <div class="chart"><svg id="season-vis"></svg><div class="chart-cap">Среднее по 32 городам АЗРФ: ночей с сиянием над головой при ясном небе, 2000–2025.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="pole">
-    <h2>За 126 лет Россия «подъехала» к овалу сияния на 1–3,5 градуса</h2>
-    <p class="sub">Траектория северного магнитного полюса, 1590–2030, и геомагнитная широта городов по модели IGRF-14. Полюс прошёл путь от канадской Арктики до восточного полушария — в 2025 году он на 139° восточной долготы и движется к Таймыру. Центр овала следует за геомагнитным полюсом, который тоже смещается к географическому, — и каждый российский город постепенно приближается к сиянию, не двигаясь с места.</p>
-    <div class="pole-wrap">
-      <svg id="pole-map" role="img" aria-label="Траектория северного магнитного полюса с 1590 по 2030 год"></svg>
-      <div>
-        <div class="scroll-x"><table class="drift" id="drift"><thead><tr><th>Город</th><th>1900</th><th>1950</th><th>2000</th><th>2026</th><th>сдвиг</th></tr></thead><tbody></tbody></table></div>
-        <p class="hint">Геомагнитная (CGM) широта города на высоте свечения 110 км. Плюс 3,3° для Норильска — как переезд на 370 км к северу.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block method" id="method">
-    <h2>Как мы считали</h2>
-    <p class="sub">В основе — четыре независимых набора данных: 94 года индекса Kp, астрономия сумерек, модель геомагнитного поля IGRF-14 и 26 лет наблюдений облачности.</p>
-    <p>Ночь засчитывается как «ночь с сиянием», если одновременно выполняются три условия: достаточно темно, геомагнитная активность дотянула овал до города и небо ясное. Каждое условие считалось по отдельному набору данных.</p>
-    <h3>Темнота</h3>
-    <p>Для каждого часа с 1932 года вычислена высота Солнца над горизонтом. Час считается тёмным, если Солнце ниже −12° (конец навигационных сумерек). Ночь — промежуток от местного полудня до следующего полудня, чтобы не резать её по полуночи. Летом севернее полярного круга тёмных часов нет вовсе — поэтому сезон сияний в Мурманске длится с конца августа до середины апреля.</p>
-    <h3>Овал сияния и Kp</h3>
-    <p>Положение овала задано индексом Kp (GFZ Potsdam, трёхчасовые значения с 1932 года). Экваториальная граница овала на ночной стороне лежит примерно на 66,5° геомагнитной широты при Kp = 0 и опускается на 2° с каждым баллом (Gussenhoven, Hardy, Heinemann, 1983; эту же связь использует NOAA SWPC). Сияние «над головой» — когда граница достигла геомагнитной широты города; «на северном горизонте» — когда она не дальше 5° (около 550 км) к северу от него. Для ночи брался максимальный Kp за тёмные часы. Модель статистическая: она описывает, где сияние бывает при данном Kp, а не конкретную вспышку.</p>
-    <h3>Геомагнитные координаты</h3>
-    <p>Географическая широта для сияний почти ничего не значит: овал центрирован на геомагнитном полюсе, который лежит над Канадой. Поэтому Норильск на 69° с. ш. и Кемь на 65° с. ш. геомагнитно различаются на четыре градуса, а Анадырь при своих 65° с. ш. магнитно «южнее» Архангельска. Корректированные геомагнитные широты (CGM) вычислены так же, как в стандартной модели AACGM-v2: по полю IGRF-14 силовая линия из точки на высоте 110 км трассируется до апекса, а затем сажается на дипольную линию. Реализация проверена по 13 станциям магнитометрической сети IMAGE (расхождение 0,04°). Эпоха — сентябрь 2026 года; для исторических эпох использованы коэффициенты соответствующих лет.</p>
-    <h3>Облачность</h3>
-    <p>Облачность оценена по двум независимым источникам: часовому реанализу ERA5 (ECMWF, через Open-Meteo) и спутниковой климатологии CERES (NASA POWER), 2000–2025. Полярной зимой над снегом эти продукты расходятся в противоположные стороны, поэтому вероятность ясного неба взята как среднее двух оценок, а карточка города показывает диапазон между ними. «Ясно» — закрыто не больше половины неба; строгий критерий (не больше четверти) даёт цифры примерно на треть ниже.</p>
-    <h3>Границы расчёта</h3>
-    <ul>
-      <li>Все цифры — для тёмного загородного неба; городская засветка в модель не входит.</li>
-      <li>Расчёт даёт климатологию овала, а не прогноз конкретной ночи: красные сияния экстремальных бурь класса G5 видны заметно южнее расчётной линии — в мае 2024 года их снимали в Сочи.</li>
-      <li>Овал взят по положению на ночной стороне — кольцом постоянной геомагнитной широты; вечером и утром его граница проходит севернее.</li>
-      <li>Для городов внутри спокойного овала — Хатанги, Диксона, Тикси — достаточной считается любая тёмная ночь.</li>
-    </ul>
-    <h3>Данные</h3>
-    <ul>
-      <li>Индекс Kp, ap, Ap, числа Вольфа, F10.7 с 1932 г. — <a href="https://kp.gfz.de/" rel="noopener">GFZ Helmholtz Centre, Потсдам</a> (CC BY 4.0).</li>
-      <li>Месячные числа солнечных пятен с 1749 г. — <a href="https://www.sidc.be/SILSO/" rel="noopener">WDC-SILSO, Королевская обсерватория Бельгии</a>.</li>
-      <li>Коэффициенты IGRF-14 (1900–2030) и положения магнитного полюса 1590–2030 — <a href="https://www.ncei.noaa.gov/products/wandering-geomagnetic-poles" rel="noopener">NOAA NCEI</a>.</li>
-      <li>Облачность: реанализ ERA5 (ECMWF) через <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a>; климатология CERES через <a href="https://power.larc.nasa.gov/" rel="noopener">NASA POWER</a>.</li>
-      <li>Связь Kp и границы овала: Gussenhoven M. S., Hardy D. A., Heinemann N. (1983), J. Geophys. Res. 88; метод CGM: Shepherd S. G. (2014), J. Geophys. Res. Space Physics 119.</li>
-    </ul>
-  </section>
-</main>
-
-<footer>
-  <a class="brand" href="https://t.me/poradata" rel="noopener" aria-label="ПОРА считать в Телеграме">
-    <svg width="46" height="30" viewBox="0 0 46 30" fill="none" aria-hidden="true"><path d="M0 22 C6 14 10 14 15 18 C21 23 26 23 31 18 C36 13 41 13 46 17 L46 30 L0 30 Z" fill="#A8CBEC"/><path d="M0 26 C6 20 11 20 16 23 C22 27 27 27 32 23 C37 19 42 19 46 22 L46 30 L0 30 Z" fill="#0069D3"/></svg>
-    @poradata
-  </a>
-  <p><b>ПОРА считать</b> — канал о цифрах Арктики: <a href="https://t.me/poradata" rel="noopener">t.me/poradata</a>. Данные: GFZ Potsdam (индекс Kp), WDC-SILSO, NOAA NCEI (IGRF-14), ECMWF ERA5, NASA CERES. Расчёт: ПОРА считать.</p>
-</footer>
-
-<script src="data.js"></script>
-<!-- Библиотеки: сначала локальные копии (если положить d3.v7.min.js и topojson-client.min.js рядом с index.html), затем CDN. -->
-<script src="d3.v7.min.js"></script>
-<script>if (!window.d3) document.write('<script src="https://cdn.jsdelivr.net/npm/d3@7"><\/script>');</script>
-<script>if (!window.d3) document.write('<script src="https://unpkg.com/d3@7"><\/script>');</script>
-<script src="topojson-client.min.js"></script>
-<script>if (!window.topojson) document.write('<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"><\/script>');</script>
-<script>if (!window.topojson) document.write('<script src="https://unpkg.com/topojson-client@3"><\/script>');</script>
 <script>
 (function(){
 'use strict';
-const D = window.AURORA_DATA;
-if (!D) { console.error('data.js не подключён'); return; }
-if (!window.d3 || !window.topojson) { console.error('d3/topojson не загрузились'); return; }
-const M = D.meta;
-const CITIES = D.cities;
-const byName = new Map(CITIES.map(c => [c.name.toLowerCase(), c]));
-const byId = new Map(CITIES.map(c => [c.id, c]));
-const MON_SHORT = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
-const MON_GEN = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-const MON_NOM = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
-const CSS = getComputedStyle(document.documentElement);
-const col = n => CSS.getPropertyValue(n).trim();
+/* ================= helpers ================= */
+const $ = s => document.querySelector(s);
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const fmt = (v, d = 0) => { const s = Number(v).toFixed(d); let [i, f] = s.split('.'); i = i.replace(/\B(?=(\d{3})+(?!\d))/g, ' '); return f ? i + ',' + f : i; };
+const plural = (n, f) => { const a = Math.abs(Math.round(n)) % 100, b = a % 10; if (a > 10 && a < 20) return f[2]; if (b > 1 && b < 5) return f[1]; if (b === 1) return f[0]; return f[2]; };
+const isInt = v => Math.abs(v - Math.round(v)) < 1e-9;
+const decimals = step => (String(step).split('.')[1] || '').length;
+const roundTo = (v, step) => +(Math.round(v / step) * step).toFixed(decimals(step)); // no float drift: 39.2 stays 39.2
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const num1 = v => fmt(v, isInt(v) ? 0 : 1);
 
-// ---------- форматирование ----------
-const NBSP_RX = /(^|[\s>«„(—])([вкосуаиВКОСУАИ]|во|об|от|до|по|из|за|на|не|ни|со|же|бы|ли|для|при|под|над|про|без|Во|Об|От|До|По|Из|За|На|Не|Ни|Со|Для|При|Под|Над|Про|Без) (?=[\wА-Яа-яЁё«„(])/g;
-const typo = t => { let p; do { p = t; t = t.replace(NBSP_RX, '$1$2\u00A0'); } while (p !== t); return t.replace(/ — /g, '\u00A0— '); };
-const fmt1 = x => (Math.round(x * 10) / 10).toLocaleString('ru-RU', {minimumFractionDigits: 1, maximumFractionDigits: 1});
-const fmt0 = x => Math.round(x).toLocaleString('ru-RU');
-function fmtKp(k){ // 4.33 → «4+», 4.67 → «5−»
-  const t = Math.round(k * 3);
-  const base = Math.floor(t / 3), r = t % 3;
-  if (r === 0) return String(base);
-  if (r === 1) return base + '+';
-  return (base + 1) + '−';
+/* ================= content ================= */
+const ARTICLE = 'https://goarctic.ru/society/obrazovanie-v-rossiyskoy-arktike/';
+const STATIONS = [
+  { name:'ДЕТСКИЙ САД', label:'ДЕТСАД', kind:'house', hero:0 },
+  { name:'ПЕРВЫЙ КЛАСС', label:'ШКОЛА', kind:'school', hero:1 },
+  { name:'ЕГЭ', label:'ЕГЭ', kind:'school', hero:2 },
+  { name:'ОЛИМПИАДА', label:'ОЛИМПИАДА', kind:'school', hero:2 },
+  { name:'УЧИТЕЛЯ', label:'УЧИТЕЛЯ', kind:'school', hero:2 },
+  { name:'ВУЗ', label:'ВУЗ', kind:'univ', hero:3 },
+  { name:'ЦЕНА ЗНАНИЙ', label:'ЦЕНА', kind:'univ', hero:3 },
+  { name:'ПЕРВАЯ ЗАРПЛАТА', label:'РАБОТА', kind:'plant', hero:4 }
+];
+/* type 'est'  — hero on a number line (min..max, step), points by distance to truth
+   type 'zone' — hero on a distance scale, stops only in the middle of a segment
+   type 'rank' — drag numbered medals into the circles next to the rows */
+const ROUNDS = [
+  { type:'est', st:0, title:'Детсады в арктических поселках',
+    q:'Какой процент детей ходит в детсад в арктических поселках?',
+    hint:'Данные ПОРА по малым населенным пунктам Крайнего Севера.',
+    min:0, max:100, step:1, truth:78,
+    fmt: v => `${fmt(v)}%`, unit: () => 'детей ходят в детсад', short: v => `${fmt(v)}%`,
+    reveal:'В поселках АЗРФ детский сад посещают в среднем 78% детей. Кстати, это больше, чем по стране в целом.' },
+  { type:'est', st:1, title:'Набор первоклассника',
+    q:'Сколько стоит «набор первоклассника» для мальчика в среднем арктическом городе?',
+    hint:'«Набор первоклассника» рассчитывается Росстатом каждый год в актуальных ценах.',
+    min:10, max:60, step:0.5, truth:33.5,
+    fmt: v => num1(v), unit: () => 'тыс. рублей', short: v => `${num1(v)} тыс. рублей`,
+    reveal:'Сборы первоклассника в школу обходятся родителям в 33,5 тыс. рублей (на 17% дороже, чем в среднем по стране). Самая высокая цена на такой набор зафиксирована в Архангельске (38,3 тыс.), самая низкая — в Белоярском и Костомукше (24–25 тыс.).' },
+  { type:'est', st:1, title:'Набор первоклассницы', skin:'girl',
+    q:'А теперь собираем в школу девочку. Во сколько обойдется «набор первоклассника» для нее?',
+    hint:'Набор состоит из двух десятков позиций, начиная с формы и обуви и заканчивая тетрадями и фломастерами.',
+    min:10, max:60, step:0.1, truth:39.2,
+    fmt: v => num1(v), unit: () => 'тыс. рублей', short: v => `${num1(v)} тыс. рублей`,
+    reveal:'Такой же набор для девочки будет стоить 39,2 тыс. рублей. Сборы первоклассницы обойдутся дороже, чем первоклассника. Эта разница поясняется тем, что в наборе девочки предметов гардероба больше, чем у мальчика.' },
+  { type:'zone', st:2, title:'ЕГЭ и расстояние до центра',
+    q:'Где самый высокий средний балл ЕГЭ за русский язык и математику на Севере — ближе к региональному центру или дальше от него?',
+    hint:'Влияет ли на успеваемость география?',
+    marks:[200, 500, 1000],
+    zones:[ // left to right: from far to near; to:null = open segment beyond the last mark
+      { from:1000, to:null, big:'1000+',    bub:'1000+ КМ',    short:'дальше 1000 км от центра', score:'~40' },
+      { from:500,  to:1000, big:'500–1000', bub:'500–1000 КМ', short:'500–1000 км от центра',    score:'55' },
+      { from:200,  to:500,  big:'200–500',  bub:'200–500 КМ',  short:'200–500 км от центра' },
+      { from:0,    to:200,  big:'0–200',    bub:'ДО 200 КМ',   short:'до 200 км от центра',      score:'60' } ],
+    truth:3, unit: () => 'км от регионального центра',
+    reveal:'Ближе к центру. В 200-километровой зоне вокруг столиц регионов средний балл по каждому из двух предметов доходит до 60, в 500–1000 км от столицы — до 55, а в поселках, удаленных на 1000 км и больше, он около 40. В среднем по России — около 62. Ближе к крупным городам проще найти подготовленных педагогов и дополнительные занятия.' },
+  { type:'rank', st:2, title:'ЕГЭ по регионам',
+    q:'Распределите регионы по самому высокому баллу ЕГЭ за русский язык и математику, набранному выпускниками из поселков.',
+    hint:'Максимум 200 баллов. Среднероссийский школьник получает за оба экзамена 124.',
+    top:'1 — самый высокий балл',
+    items:[
+      { id:'arh', label:'Архангельская область', value:128, display:'около 128' },
+      { id:'mur', label:'Мурманская область и Ямал', value:120.5, display:'120–121' },
+      { id:'komi', label:'Коми и Карелия', value:117.5, display:'117–118' },
+      { id:'kr', label:'Красноярский край', value:112, display:'112' },
+      { id:'chu', label:'Чукотка и Якутия', value:103.5, display:'100–107' } ],
+    reveal:'Разница между регионами достигает 28 баллов. Самые высокие баллы там, где среднегодовая температура держится от 0 до −5 °C. В северных районах Якутии, где среднегодовая температура колеблется между −10 и −20 °C, а полярная ночь длится около 50 дней, средний балл не превышает 100,5.' },
+  { type:'est', st:3, title:'Школьные олимпиады: успехи Ямала',
+    q:'Какое место в РФ занимает ЯНАО по числу победителей финала Всероссийской олимпиады школьников на 100 тысяч жителей?',
+    hint:'В финале 2026 года разыграли 4240 дипломов по 24 предметам, в среднем 2,9 диплома на 100 тысяч жителей страны.',
+    min:1, max:15, step:1, truth:5,
+    fmt: v => `${fmt(v)}`, unit: () => 'место среди регионов', short: v => `${fmt(v)}-е место`,
+    reveal:'Пятое место: 4,26 диплома на 100 тысяч жителей, больше только у Москвы, Татарстана, Подмосковья и Петербурга. С 2017 года показатель Ямала вырос в 7,6 раза. Кстати, финалы трех последних лет по истории, химии и физике принимал Арктический лицей в Новом Уренгое.' },
+  { type:'est', st:4, title:'Зарплата учителя и поселка',
+    q:'Как отличается покупательная способность зарплаты учителя в арктических поселках от зарплаты среднестатистического работника того же поселка?',
+    hint:'Зарплаты пересчитаны в потребительских наборах Росстата.',
+    min:-30, max:30, step:0.5, truth:-3.5,
+    labels:[ { v:-30, s:'30', row:0, align:'left' }, { v:0, s:'0', row:0, align:'center' }, { v:30, s:'30', row:0, align:'right' },
+             { v:-30, s:'НИЖЕ, %', row:1, align:'left' }, { v:30, s:'ВЫШЕ, %', row:1, align:'right' } ],
+    fmt: v => v === 0 ? '0%' : `${v < 0 ? '-' : '+'}${num1(Math.abs(v))}%`,
+    unit: v => v < 0 ? 'ниже, чем у среднего работника' : v > 0 ? 'выше, чем у среднего работника' : 'как у среднего работника',
+    short: v => v === 0 ? 'без разницы' : `${v < 0 ? 'ниже' : 'выше'} на ${num1(Math.abs(v))}%`,
+    reveal:'Ниже на 3,5%. Учителя получают около 4 потребительских наборов в месяц, а средний работник 4,15. По России в целом зарплаты учителей ниже общего уровня примерно на 18%. Примерно в каждом третьем северном поселке учителя зарабатывают больше среднего.' },
+  { type:'est', st:4, title:'Школьные вакансии',
+    q:'Какая медианная зарплата указана в школьных вакансиях АЗРФ на портале «Работа в России»?',
+    hint:'Объявления школ арктических муниципалитетов, лето 2026 года.',
+    min:20, max:200, step:1, truth:76,
+    fmt: v => `${fmt(v)}`, unit: () => 'тыс. рублей в месяц', short: v => `${fmt(v)} тыс. рублей`,
+    reveal:'76 тыс. рублей. На Ямале педагогам готовы платить 95 тыс., на Таймыре 85 тыс., в арктических районах Карелии и Архангельской области 56–60 тыс. Рекорд, 165 тыс. рублей в месяц, принадлежит вакансии в школе села Ваеги на Чукотке.' },
+  { type:'rank', st:4, title:'Кого ищут школы',
+    q:'Какие педагоги являются самыми востребованными в арктических муниципалитетах?',
+    hint:'Востребованность определяется по числу вакансий, открытых в арктических муниципалитетах.',
+    top:'1 — больше всего вакансий',
+    items:[
+      { id:'log', label:'Логопеды и дефектологи', value:65, display:'65 вакансий' },
+      { id:'mat', label:'Учителя математики', value:60, display:'60 вакансий' },
+      { id:'rus', label:'Учителя русского языка и литературы', value:37, display:'37 вакансий' },
+      { id:'fiz', label:'Учителя физики', value:30, display:'30 вакансий' } ],
+    reveal:'Всего в середине августа в арктических муниципалитетах было открыто 367 педагогических вакансий, больше трети из них, 134, на Ямале.' },
+  { type:'est', st:5, title:'Где учиться дальше',
+    q:'Сколько высших учебных заведений и филиалов вузов работает в регионах, полностью или частично входящих в АЗРФ?',
+    hint:'Рассматриваем все регионы в целом, включая неарктические части.',
+    min:0, max:150, step:1, truth:59,
+    fmt: v => `${fmt(v)}`, unit: v => plural(v, ['вуз и филиал','вуза и филиала','вузов и филиалов']), short: v => `${fmt(v)} ${plural(v, ['вуз и филиал','вуза и филиала','вузов и филиалов'])}`,
+    reveal:'59, из них около 30 филиалов. Головные университеты сосредоточены в Архангельске, Мурманске, Якутске, Норильске, Красноярске, Сыктывкаре и Ханты-Мансийске. На Ямале и Чукотке высшее образование представлено только филиалами, а в НАО вузов нет.' },
+  { type:'rank', st:6, title:'Цена года обучения',
+    q:'Где обучение стоит дороже, а где — дешевле? Распределите программы по стоимости первого курса в 2026/2027 учебном году.',
+    hint:'Официальные тарифы четырех вузов АЗРФ (САФУ и СГМУ в Архангельске, МАУ в Мурманске и ЗГУ в Норильске).',
+    top:'1 — самое дорогое обучение',
+    items:[
+      { id:'gd', label:'«Горное дело», ЗГУ', sub:'Норильск, очная форма', value:651.4, display:'651,4 тыс. руб.' },
+      { id:'tb', label:'Технический бакалавриат, ЗГУ', sub:'Норильск, очная форма', value:584.9, display:'584,9 тыс. руб.' },
+      { id:'st', label:'«Стоматология», СГМУ', sub:'Архангельск', value:315, display:'315 тыс. руб.' },
+      { id:'fa', label:'«Фармация», СГМУ', sub:'Архангельск', value:250, display:'250 тыс. руб.' },
+      { id:'sr', label:'«Социальная работа», СГМУ', sub:'Архангельск, заочная форма', value:55, display:'около 55 тыс. руб.' } ],
+    reveal:'Цены различаются на порядок. Дороже стоят очные технические программы, заочные гуманитарные — дешевле. Около половины российских студентов получают образование на платной основе.' }
+];
+const MAX = ROUNDS.length * 10;
+
+/* ================= sound (8-bit beeps) ================= */
+const SFX = {
+  on:false, ctx:null,
+  init(){ if (!this.ctx) { try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) { this.ctx = null; } } if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume(); },
+  tone(f, d = 0.08, type = 'square', vol = 0.06, when = 0){ if (!this.on || !this.ctx) return; const o = this.ctx.createOscillator(), g = this.ctx.createGain(); o.type = type; o.frequency.value = f; g.gain.value = vol; o.connect(g); g.connect(this.ctx.destination); const t = this.ctx.currentTime + when; o.start(t); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + d); o.stop(t + d + 0.02); },
+  tick(){ this.tone(880, 0.03, 'square', 0.03); },
+  step(){ this.tone(220, 0.04, 'triangle', 0.04); },
+  confirm(){ this.tone(660, 0.08); this.tone(990, 0.1, 'square', 0.06, 0.09); },
+  good(){ [523, 659, 784, 1047].forEach((f, i) => this.tone(f, 0.12, 'square', 0.06, i * 0.09)); },
+  ok(){ this.tone(523, 0.1); this.tone(659, 0.14, 'square', 0.06, 0.11); },
+  miss(){ this.tone(196, 0.18, 'sawtooth', 0.05); this.tone(147, 0.22, 'sawtooth', 0.05, 0.16); },
+  place(){ this.tone(330, 0.05, 'square', 0.04); },
+  morph(up){ (up ? [784, 988, 1175, 1568] : [1568, 1175, 988, 784]).forEach((f, i) => this.tone(f, 0.07, 'triangle', 0.05, i * 0.05)); }
+};
+
+/* ================= sprites ================= */
+const PAL = { h:'#0069D3', f:'#F3C9A6', e:'#2B2B2B', p:'#E8912D', l:'#2E3A59', b:'#1E2536', k:'#8D5A2B', w:'#FFFFFF', s:'#A8CBEC', c:'#474958', y:'#F2C94C', n:'#13223A', g:'#2FB98F', o:'#E8912D', r:'#B94A3A' };
+const HERO_A = [
+  '.....hhhh...',
+  '....hhhhhh..',
+  '....hwwwwh..',
+  '....hffffh..',
+  '....hfefeh..',
+  '....hffffh..',
+  '.....ffff...',
+  '...pppppppp.',
+  '..ppppppppp.',
+  '..ppppppppp.',
+  '..ppppppppp.',
+  '..ppppppppp.',
+  '...pppppppp.',
+  '....ll..ll..',
+  '....ll..ll..',
+  '....bb..bb..',
+  '...bbb..bbb.'
+];
+const HERO_B = HERO_A.slice(0, 12).concat([
+  '...ll....ll.',
+  '...ll....ll.',
+  '...bb....bb.',
+  '..bbb....bbb'
+]);
+// first-grade girl: big pink bow, blond hair, pink dress, white tights
+const GIRL_PAL = { B:'#FF7DB8', K:'#D63B83', Y:'#F7D774', y:'#D9A93A', f:'#F3C9A6', e:'#2B2B2B', r:'#F59AA0', w:'#FFFFFF', d:'#FF8EC4', D:'#E0579A', t:'#FFFFFF', k:'#B23A6E' };
+const GIRL_A = [
+  '...BBB.BBB..',
+  '..BBBBKBBBB.',
+  '...BByYyBB..',
+  '...yYYYYYYy.',
+  '...yYYYYYYY.',
+  '...yYfefeYy.',
+  '...YYfffrY..',
+  '...YY.ff....',
+  '..ddddwwddd.',
+  '..ddddddddd.',
+  '..fdDDDDDdf.',
+  '...ddddddd..',
+  '..ddddddddd.',
+  '..DDDDDDDDD.',
+  '....tt..tt..',
+  '....tt..tt..',
+  '...kkk..kkk.'
+];
+const GIRL_B = GIRL_A.slice(0, 13).concat([
+  '...tt....tt.',
+  '...tt....tt.',
+  '...tt....tt.',
+  '..kkk....kkk'
+]);
+// per-stage palettes (hood/parka/legs) and accessories
+const STAGE = [
+  { h:'#0069D3', p:'#E8912D', l:'#2E3A59', acc:'none' },     // малыш
+  { h:'#0069D3', p:'#E8912D', l:'#2E3A59', acc:'backpack' }, // первоклассник
+  { h:'#13223A', p:'#0069D3', l:'#2E3A59', acc:'scarf' },    // школьник
+  { h:'#A8CBEC', p:'#13223A', l:'#2E3A59', acc:'cap' },      // студент
+  { h:'#474958', p:'#0069D3', l:'#2E3A59', acc:'case' }      // работник
+];
+const FLAG = [
+  'oooooo.',
+  'oooooo.',
+  'oooooo.',
+  'c......',
+  'c......',
+  'c......',
+  'c......',
+  'c......',
+  'c......',
+  'c......',
+  'c......',
+  'c......'
+];
+const CUP = ['.yyyyy.', 'yyyyyyy', '.yyyyy.', '..yyy..', '..yyy..', '.yyyyy.'];
+// medal: round gold medal, the place number sits in the middle
+const KOLO = [
+  '.....oooo.....',
+  '...ooyyyyoo...',
+  '..oyhhyyyyyo..',
+  '.oyhyyyyyyyyo.',
+  '.oyyyyyyyyyyo.',
+  'oyyyyyyyyyyyyo',
+  'oyyyyyyyyyyyyo',
+  'oyyyyyyyyyyyyo',
+  'oyyyyyyyyyyyyo',
+  '.oyyyyyyyyyyo.',
+  '.oyyyyyyyyyyo.',
+  '..oyyyyyyyyo..',
+  '...ooyyyyoo...',
+  '.....oooo.....'
+];
+// empty place: dotted circle of the same shape
+const RING = KOLO.map((row, y) => [...row].map((ch, x) => ch === '.' ? '.' : ch === 'o' ? ((x + y) % 2 ? '.' : 'o') : 'f').join(''));
+function pixSVG(rows, cls){
+  let s = '';
+  rows.forEach((row, y) => { for (let x = 0; x < row.length;) { const ch = row[x]; if (ch === '.') { x++; continue; } let w = 1; while (row[x + w] === ch) w++; s += `<rect class="${cls[ch]}" x="${x}" y="${y}" width="${w}" height="1"/>`; x += w; } });
+  return `<svg viewBox="0 0 ${rows[0].length} ${rows.length}" shape-rendering="crispEdges" aria-hidden="true" focusable="false">${s}</svg>`;
 }
-function kpCeil(k){ return Math.ceil(k * 3 - 1e-9) / 3; }
-function gLevel(k){
-  if (k >= 9 - 1e-9) return ['G5', 'экстремальная буря'];
-  if (k >= 8 - 1e-9) return ['G4', 'очень сильная буря'];
-  if (k >= 7 - 1e-9) return ['G3', 'сильная буря'];
-  if (k >= 6 - 1e-9) return ['G2', 'умеренная буря'];
-  if (k >= 5 - 1e-9) return ['G1', 'малая буря'];
-  if (k >= 4 - 1e-9) return ['', 'активно'];
-  if (k >= 2) return ['', 'спокойно'];
-  return ['', 'очень спокойно'];
-}
-function plural(n, one, few, many){ n = Math.round(n); const a = n % 10, b = n % 100; if (b >= 11 && b <= 19) return many; if (a === 1) return one; if (a >= 2 && a <= 4) return few; return many; }
-function fmtDate(s){ if (!s) return '—'; const [y, m, d] = s.split('-').map(Number); return `${d} ${MON_GEN[m-1]} ${y}`; }
+const KOLO_SVG = pixSVG(KOLO, { o:'ko', y:'ky', h:'kh' });
+const RING_SVG = pixSVG(RING, { o:'ro', f:'rf' });
+const ARROW_SVG = pixSVG(['....#', '...##', '..###', '.####', '#####', '.####', '..###', '...##', '....#'], { '#':'a' });
 
-// ---------- геомагнитные изолинии ----------
-const ISO = D.cgmIso;
-function isoLine(b){
-  const lo = Math.max(40, Math.min(77.5, Math.floor(b * 2) / 2));
-  const hi = Math.min(78, lo + 0.5);
-  const t = Math.max(0, Math.min(1, (b - lo) / 0.5));
-  const A = ISO.iso[lo.toFixed(1)], B = ISO.iso[hi.toFixed(1)];
-  const pts = [];
-  ISO.lons.forEach((lon, i) => { const a = A[i], c = B[i]; if (a == null || c == null) return; pts.push([lon, a + (c - a) * t]); });
-  return pts;
-}
-function ring(eq, po){
-  eq = eq.concat([[360, eq[0][1]]]); po = po.concat([[360, po[0][1]]]);   // замыкаем кольцо без 3° клина
-  const r = eq.concat(po.slice().reverse()); r.push(r[0]);
-  const poly = {type: 'Polygon', coordinates: [r]};
-  if (d3.geoArea(poly) > 2 * Math.PI) poly.coordinates[0].reverse();
-  return poly;
-}
-function ovalFor(kp){
-  const bEq = M.ovalLat0 - M.ovalSlope * kp;
-  const bPole = Math.min(78, bEq + 6 + 0.7 * kp);
-  const bHor = Math.max(40, bEq - M.horizonDeg);
-  return {bEq, bPole, bHor,
-    band: ring(isoLine(bEq), isoLine(bPole)),
-    eq: {type: 'LineString', coordinates: isoLine(bEq).concat([isoLine(bEq)[0]])},
-    horizon: {type: 'LineString', coordinates: isoLine(bHor).concat([isoLine(bHor)[0]])}};
-}
-function cityState(c, kp){
-  const bEq = M.ovalLat0 - M.ovalSlope * kp;
-  if (c.cgm >= bEq - 1e-6) return 'over';
-  if (c.cgm >= bEq - M.horizonDeg - 1e-6) return 'hor';
-  return 'none';
-}
-
-// ---------- глобус ----------
-const wrap = document.getElementById('globe-wrap');
-const svg = d3.select('#globe');
-const tip = document.getElementById('tip');
-const projection = d3.geoOrthographic().clipAngle(90).rotate([-100, -70]);
-const path = d3.geoPath(projection);
-let zoomK = 1, W = 0, H = 0, land = null, russia = null, selected = null;
-let kp = 3;
-
-const defs = svg.append('defs');
-const gSphere = defs.append('radialGradient').attr('id', 'g-sphere').attr('cx', '48%').attr('cy', '42%').attr('r', '62%');
-gSphere.append('stop').attr('offset', '0%').attr('stop-color', '#16263F');
-gSphere.append('stop').attr('offset', '100%').attr('stop-color', '#0B1424');
-const gBand = defs.append('linearGradient').attr('id', 'g-band').attr('x1', '0').attr('y1', '1').attr('x2', '0').attr('y2', '0');
-gBand.append('stop').attr('offset', '0%').attr('stop-color', col('--aurora')).attr('stop-opacity', .85);
-gBand.append('stop').attr('offset', '60%').attr('stop-color', col('--aurora-deep')).attr('stop-opacity', .55);
-gBand.append('stop').attr('offset', '100%').attr('stop-color', col('--violet')).attr('stop-opacity', .45);
-const glow = defs.append('filter').attr('id', 'glow').attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
-glow.append('feGaussianBlur').attr('stdDeviation', 6).attr('result', 'b');
-const fm = glow.append('feMerge'); fm.append('feMergeNode').attr('in', 'b'); fm.append('feMergeNode').attr('in', 'SourceGraphic');
-
-const g = svg.append('g');
-const sphere = g.append('path').attr('fill', 'url(#g-sphere)').attr('stroke', '#2A4066').attr('stroke-width', 1);
-const grat = g.append('path').attr('fill', 'none').attr('stroke', '#1F3457').attr('stroke-width', .7);
-const landP = g.append('path').attr('fill', '#1B2C4A').attr('stroke', '#2B4066').attr('stroke-width', .5);
-const rusP = g.append('path').attr('fill', '#24395F').attr('stroke', '#5C7FB0').attr('stroke-width', .8);
-const arctic = g.append('path').attr('fill', 'none').attr('stroke', '#5C7FB0').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
-const bandP = g.append('path').attr('fill', 'url(#g-band)').attr('stroke', 'none').attr('filter', 'url(#glow)');
-const eqP = g.append('path').attr('fill', 'none').attr('stroke', col('--aurora')).attr('stroke-width', 1.3).attr('stroke-opacity', .95);
-const horP = g.append('path').attr('fill', 'none').attr('stroke', col('--violet')).attr('stroke-width', 1).attr('stroke-dasharray', '2 5').attr('stroke-opacity', .8);
-const cityG = g.append('g');
-const labelG = g.append('g').attr('pointer-events', 'none');
-
-const graticule = d3.geoGraticule().step([30, 10]);
-const arcticCircle = {type: 'LineString', coordinates: d3.range(0, 361, 2).map(l => [l, 66.56])};
-
-function visible(lon, lat){
-  const r = projection.rotate();
-  const c = d3.geoDistance([lon, lat], [-r[0], -r[1]]);
-  return c < Math.PI / 2 - 0.02;
-}
-
-function render(){
-  const s = Math.min(W, H) / 2 * 0.94 * zoomK;
-  projection.translate([W / 2, H / 2]).scale(s);
-  sphere.attr('d', path({type: 'Sphere'}));
-  grat.attr('d', path(graticule()));
-  if (land) landP.attr('d', path(land));
-  if (russia) rusP.attr('d', path(russia));
-  arctic.attr('d', path(arcticCircle));
-  const o = ovalFor(kp);
-  bandP.attr('d', path(o.band));
-  eqP.attr('d', path(o.eq));
-  horP.attr('d', path(o.horizon));
-
-  const pts = CITIES.map(c => { const p = projection([c.lon, c.lat]); return {c, p, vis: visible(c.lon, c.lat), st: cityState(c, kp)}; });
-  const sel = cityG.selectAll('circle').data(pts, d => d.c.id);
-  sel.enter().append('circle')
-    .attr('tabindex', 0).attr('role', 'button')
-    .on('mouseenter', (e, d) => showTip(d)).on('mouseleave', hideTip)
-    .on('click', (e, d) => selectCity(d.c, true))
-    .on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCity(d.c, true); } })
-    .merge(sel)
-    .attr('aria-label', d => d.c.name)
-    .attr('cx', d => d.p[0]).attr('cy', d => d.p[1])
-    .attr('display', d => d.vis ? null : 'none')
-    .attr('r', d => (d.c === selected ? 6.5 : (d.c.group === 'АЗРФ' ? 4.2 : 3.4)) * Math.sqrt(zoomK))
-    .attr('fill', d => d.st === 'over' ? col('--aurora') : (d.st === 'hor' ? 'rgba(164,147,255,.15)' : 'rgba(12,21,38,.6)'))
-    .attr('stroke', d => d.st === 'over' ? '#eafff5' : (d.st === 'hor' ? col('--violet') : col('--mist')))
-    .attr('stroke-width', d => d.c === selected ? 2.2 : 1.3)
-    .attr('filter', d => d.st === 'over' ? 'url(#glow)' : null)
-    .style('cursor', 'pointer');
-
-  const labels = pts.filter(d => d.vis && (d.c === selected || (zoomK >= 1.8 && d.c.group === 'АЗРФ') || ['murmansk','norilsk','tiksi','anadyr','arkhangelsk','salekhard','saint_petersburg','moscow','yakutsk'].includes(d.c.id) && zoomK < 1.8 && !selected));
-  const lb = labelG.selectAll('text').data(labels, d => d.c.id);
-  lb.exit().remove();
-  lb.enter().append('text').merge(lb)
-    .attr('x', d => d.p[0] + 8).attr('y', d => d.p[1] + 4)
-    .attr('fill', d => d.c === selected ? col('--snow') : col('--fog'))
-    .attr('font-size', d => d.c === selected ? 13 : 11.5)
-    .attr('font-weight', d => d.c === selected ? 600 : 400)
-    .attr('paint-order', 'stroke').attr('stroke', 'rgba(12,21,38,.88)').attr('stroke-width', 3)
-    .text(d => d.c.name);
-}
-
-function showTip(d){
-  const st = d.st === 'over' ? 'сияние над головой' : d.st === 'hor' ? 'сияние на северном горизонте' : 'при таком Kp сияния нет';
-  tip.innerHTML = `<b>${d.c.name}</b><br>геомагн. широта <span class="num">${fmt1(d.c.cgm)}°</span><br>${st}<br>≈ <span class="num">${fmt0(d.c.visOver)}</span> ${plural(d.c.visOver, 'ночь', 'ночи', 'ночей')} в году`;
-  tip.style.left = d.p[0] + 'px'; tip.style.top = d.p[1] + 'px'; tip.style.opacity = 1;
-}
-function hideTip(){ tip.style.opacity = 0; }
-
-function resize(){ W = wrap.clientWidth; H = wrap.clientHeight; svg.attr('viewBox', `0 0 ${W} ${H}`).attr('width', W).attr('height', H); render(); }
-window.addEventListener('resize', resize);
-
-// вращение
-svg.call(d3.drag()
-  .on('start', hideTip)
-  .on('drag', (e) => {
-    const r = projection.rotate(); const k = 60 / projection.scale() * 1.4;
-    projection.rotate([r[0] + e.dx * k, Math.max(-90, Math.min(90, r[1] - e.dy * k))]);
-    render();
-  }));
-function setZoom(k){ zoomK = Math.max(1, Math.min(3.2, k)); render(); }
-document.getElementById('zoom-in').addEventListener('click', () => setZoom(zoomK * 1.35));
-document.getElementById('zoom-out').addEventListener('click', () => setZoom(zoomK / 1.35));
-document.getElementById('zoom-reset').addEventListener('click', () => { zoomK = 1; d3.transition().duration(700).tween('r', () => { const i = d3.interpolate(projection.rotate(), [-100, -70]); return t => { projection.rotate(i(t)); render(); }; }); });
-
-function rotateTo(c){
-  const target = [-c.lon, -Math.min(c.lat + 6, 88)];
-  const i = d3.interpolate(projection.rotate(), target);
-  d3.transition().duration(900).ease(d3.easeCubicInOut).tween('rotate', () => t => { projection.rotate(i(t)); render(); });
-}
-
-// суша: сначала локальные файлы рядом с index.html, затем несколько CDN
-const ATLAS_SOURCES = ['', 'https://cdn.jsdelivr.net/npm/world-atlas@2/', 'https://unpkg.com/world-atlas@2/', 'https://cdn.jsdelivr.net/gh/topojson/world-atlas@v2.0.2/'];
-async function loadAtlas(){
-  for (const base of ATLAS_SOURCES) {
-    try {
-      const [l, c] = await Promise.all([fetch(base + 'land-110m.json').then(r => { if (!r.ok) throw 0; return r.json(); }),
-                                        fetch(base + 'countries-110m.json').then(r => { if (!r.ok) throw 0; return r.json(); })]);
-      if (!l.objects || !c.objects) throw 0;
-      return [l, c];
-    } catch (e) { /* пробуем следующий источник */ }
+function drawSprite(ctx, rows, x, y, pal){
+  for (let r = 0; r < rows.length; r++) {
+    const row = rows[r];
+    for (let c = 0; c < row.length; c++) {
+      const ch = row[c]; if (ch === '.') continue;
+      ctx.fillStyle = pal[ch] || PAL[ch] || '#f0f';
+      ctx.fillRect(x + c, y + r, 1, 1);
+    }
   }
-  return null;
 }
-loadAtlas().then(res => {
-  if (!res) { drawPole(); return; }
-  const [l, c] = res;
-  land = topojson.feature(l, l.objects.land);
-  const countries = topojson.feature(c, c.objects.countries);
-  russia = countries.features.find(f => f.id === '643' || f.id === 643 || (f.properties && f.properties.name === 'Russia'));
-  render(); drawPole();
+function drawHero(ctx, x, y, stage, frame, facing, skin){ // x,y = feet-bottom-left of 12x17 box
+  const st = STAGE[stage] || STAGE[0];
+  const girl = skin === 'girl';
+  const pal = girl ? GIRL_PAL : Object.assign({}, PAL, { h: st.h, p: st.p, l: st.l });
+  const rows = girl ? (frame ? GIRL_B : GIRL_A) : (frame ? HERO_B : HERO_A);
+  const acc = girl ? 'none' : st.acc;
+  const top = y - 16;
+  if (facing < 0) { ctx.save(); ctx.translate(x + 12, 0); ctx.scale(-1, 1); drawSprite(ctx, rows, 0, top, pal); drawAcc(ctx, 0, top, acc); ctx.restore(); }
+  else { drawSprite(ctx, rows, x, top, pal); drawAcc(ctx, x, top, acc); }
+}
+// sparkles around the hero while the skin changes
+const SPARK = ['#FF7DB8', '#FEFDFC', '#F2C94C', '#A8CBEC'];
+function drawMorph(ctx, cx, cy, t){ // t: 0..1
+  const n = 10, rad = 3 + t * 16;
+  for (let i = 0; i < n; i++) {
+    if ((Math.floor(t * 14) + i) % 3 === 0) continue; // twinkle
+    const a = i / n * Math.PI * 2 + t * 2.4, x = Math.round(cx + Math.cos(a) * rad), y = Math.round(cy + Math.sin(a) * rad * .8);
+    ctx.fillStyle = SPARK[i % SPARK.length];
+    ctx.fillRect(x, y, 1, 1);
+    if (t < .7) { ctx.fillRect(x - 1, y, 3, 1); ctx.fillRect(x, y - 1, 1, 3); } // small cross while it is bright
+  }
+  if (t < .45) { ctx.globalAlpha = .55 * (1 - t / .45); ctx.fillStyle = '#FEFDFC'; ctx.fillRect(cx - 7, cy - 9, 14, 18); ctx.globalAlpha = 1; } // flash hides the swap
+}
+function drawAcc(ctx, x, top, acc){
+  if (acc === 'backpack') { ctx.fillStyle = '#8D5A2B'; ctx.fillRect(x + 1, top + 8, 2, 4); ctx.fillStyle = '#C98A4B'; ctx.fillRect(x + 1, top + 8, 2, 1); }
+  if (acc === 'scarf') { ctx.fillStyle = '#E8912D'; ctx.fillRect(x + 4, top + 7, 5, 1); ctx.fillRect(x + 8, top + 8, 1, 3); }
+  if (acc === 'cap') { ctx.fillStyle = '#13223A'; ctx.fillRect(x + 4, top + 1, 6, 1); ctx.fillRect(x + 3, top + 2, 8, 1); ctx.fillStyle = '#F2C94C'; ctx.fillRect(x + 9, top + 2, 2, 1); }
+  if (acc === 'case') { ctx.fillStyle = '#474958'; ctx.fillRect(x + 10, top + 9, 3, 4); ctx.fillStyle = '#E8912D'; ctx.fillRect(x + 11, top + 8, 1, 1); }
+}
+function drawBuilding(ctx, x, base, kind, lit){
+  // x = left, base = ground y; returns width
+  const win = (wx, wy) => { ctx.fillStyle = lit ? '#F2C94C' : '#2B4468'; ctx.fillRect(wx, wy, 3, 3); ctx.fillStyle = '#474958'; ctx.fillRect(wx + 1, wy, 1, 3); };
+  if (kind === 'house') {
+    ctx.fillStyle = '#C98A4B'; ctx.fillRect(x, base - 14, 26, 14);
+    ctx.fillStyle = '#8D5A2B'; for (let i = 0; i < 14; i += 3) ctx.fillRect(x, base - 14 + i, 26, 1);
+    ctx.fillStyle = '#B94A3A'; for (let i = 0; i < 8; i++) ctx.fillRect(x - 1 + i, base - 15 - i, 28 - i * 2, 1);
+    ctx.fillStyle = '#FEFDFC'; for (let i = 0; i < 8; i++) ctx.fillRect(x - 1 + i, base - 16 - i, 28 - i * 2, 1);
+    win(x + 4, base - 10); win(x + 19, base - 10);
+    ctx.fillStyle = '#474958'; ctx.fillRect(x + 11, base - 8, 4, 8); ctx.fillStyle = '#F2C94C'; ctx.fillRect(x + 14, base - 4, 1, 1);
+    // fence + slide
+    ctx.fillStyle = '#A8CBEC'; for (let i = 0; i < 5; i++) ctx.fillRect(x + 30 + i * 3, base - 4, 1, 4); ctx.fillRect(x + 30, base - 3, 13, 1);
+    return 44;
+  }
+  if (kind === 'school') {
+    ctx.fillStyle = '#E4EAF0'; ctx.fillRect(x, base - 20, 40, 20);
+    ctx.fillStyle = '#A8CBEC'; ctx.fillRect(x, base - 20, 40, 1); ctx.fillRect(x, base - 11, 40, 1);
+    ctx.fillStyle = '#0069D3'; ctx.fillRect(x - 1, base - 22, 42, 2);
+    for (let i = 0; i < 4; i++) { win(x + 4 + i * 9, base - 18); win(x + 4 + i * 9, base - 9); }
+    ctx.fillStyle = '#474958'; ctx.fillRect(x + 18, base - 7, 5, 7);
+    ctx.fillStyle = '#474958'; ctx.fillRect(x + 44, base - 30, 1, 30); ctx.fillStyle = '#E8912D'; ctx.fillRect(x + 45, base - 30, 6, 4);
+    return 52;
+  }
+  if (kind === 'univ') {
+    ctx.fillStyle = '#E4EAF0'; ctx.fillRect(x, base - 22, 48, 22);
+    ctx.fillStyle = '#FEFDFC'; for (let i = 0; i < 5; i++) ctx.fillRect(x + 3 + i * 10, base - 20, 3, 20);
+    ctx.fillStyle = '#A8CBEC'; for (let i = 0; i < 5; i++) ctx.fillRect(x + 5 + i * 10, base - 20, 1, 20);
+    ctx.fillStyle = '#0069D3'; for (let i = 0; i < 6; i++) ctx.fillRect(x - 2 + i, base - 23 - i, 52 - i * 2, 1);
+    ctx.fillStyle = '#FEFDFC'; ctx.fillRect(x + 20, base - 27, 8, 3);
+    ctx.fillStyle = '#474958'; ctx.fillRect(x + 21, base - 8, 6, 8);
+    for (let i = 0; i < 4; i++) win(x + 8 + i * 10, base - 16);
+    return 52;
+  }
+  if (kind === 'plant') {
+    ctx.fillStyle = '#2B4468'; ctx.fillRect(x, base - 16, 44, 16);
+    ctx.fillStyle = '#13223A'; ctx.fillRect(x + 32, base - 32, 6, 16);
+    ctx.fillStyle = '#A8CBEC'; ctx.fillRect(x + 31, base - 33, 8, 1);
+    ctx.fillStyle = '#0069D3'; for (let i = 0; i < 4; i++) { ctx.fillRect(x + 2 + i * 11, base - 20, 8, 4); }
+    ctx.fillStyle = '#E4EAF0'; for (let i = 0; i < 4; i++) { ctx.fillRect(x + 2 + i * 11, base - 21, 8, 1); }
+    for (let i = 0; i < 4; i++) win(x + 4 + i * 11, base - 12);
+    ctx.fillStyle = '#474958'; ctx.fillRect(x + 19, base - 7, 6, 7);
+    // smoke puffs
+    ctx.fillStyle = 'rgba(228,234,240,.55)'; ctx.fillRect(x + 33, base - 38, 4, 3); ctx.fillRect(x + 36, base - 43, 5, 3); ctx.fillRect(x + 40, base - 47, 3, 2);
+    return 48;
+  }
+  return 0;
+}
+function drawTown(ctx, x, base){ // small regional centre at the end of the distance scale
+  const blocks = [[0, 9, 5], [5, 15, 6], [11, 11, 5]];
+  for (const [dx, h, w] of blocks) {
+    ctx.fillStyle = '#A8CBEC'; ctx.fillRect(x + dx, base - h, w, h);
+    ctx.fillStyle = '#F2C94C'; for (let yy = base - h + 2; yy < base - 2; yy += 3) ctx.fillRect(x + dx + 1, yy, 1, 1), ctx.fillRect(x + dx + w - 2, yy, 1, 1);
+  }
+  ctx.fillStyle = '#0069D3'; ctx.fillRect(x + 7, base - 18, 1, 3);
+}
+function drawTree(ctx, x, base, h){
+  ctx.fillStyle = '#8D5A2B'; ctx.fillRect(x + 3, base - 3, 2, 3);
+  ctx.fillStyle = '#1C6B4A';
+  for (let i = 0; i < h; i++) { const w = 1 + Math.floor((i / h) * 7); ctx.fillRect(x + 4 - Math.floor(w / 2), base - 3 - h + i, w, 1); }
+  ctx.fillStyle = '#FEFDFC'; ctx.fillRect(x + 4, base - 3 - h, 1, 1); ctx.fillRect(x + 3, base - 3 - Math.floor(h / 2), 3, 1);
+}
+
+/* ================= world ================= */
+const W = 320, H = 180, GROUND = 140;
+const STX = i => 160 + i * 240;               // world x of station i (hero stop point)
+const WORLD_W = STX(STATIONS.length - 1) + 220;
+const seed = (n) => { let s = n; return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }; };
+const rnd = seed(7);
+const STARS = Array.from({ length: 60 }, () => ({ x: Math.floor(rnd() * WORLD_W), y: Math.floor(rnd() * 90), b: rnd() > .7 ? 2 : 1 }));
+const TREES = Array.from({ length: 70 }, () => ({ x: Math.floor(rnd() * WORLD_W), h: 6 + Math.floor(rnd() * 8) })).filter(t => !STATIONS.some((s, i) => Math.abs(t.x - (STX(i) + 40)) < 46));
+const MTN = []; for (let x = 0; x <= WORLD_W + 40; x += 20) MTN.push({ x, y1: 96 + Math.floor(rnd() * 26), y2: 116 + Math.floor(rnd() * 16) });
+
+const cv = $('#scene'), ctx = cv.getContext('2d'), sceneBox = $('#sceneBox');
+ctx.imageSmoothingEnabled = false;
+const AURORA = [0, 1].map(band => { const c = document.createElement('canvas'); c.width = 2; c.height = 22; const g2 = c.getContext('2d'); const g = g2.createLinearGradient(0, 0, 0, 22); g.addColorStop(0, 'rgba(123,235,181,0)'); g.addColorStop(.35, band ? 'rgba(164,147,255,.55)' : 'rgba(123,235,181,.6)'); g.addColorStop(1, 'rgba(47,185,143,0)'); g2.fillStyle = g; g2.fillRect(0, 0, 2, 22); return c; });
+const G = { // scene state
+  mode: 'title', px: STX(0), stage: 0, facing: 1, frame: 0, walkT: 0, camX: 0, camSnap: true, t: 0,
+  station: 0, ruler: null, flag: null, pops: [], jump: 0, skin: null, morph: null
+};
+
+function drawText(x, y, s, color, size = 8, align = 'left'){
+  ctx.font = `${size}px "PS2P", monospace`; ctx.textBaseline = 'top'; ctx.textAlign = align; ctx.fillStyle = color; ctx.fillText(s, x, y);
+}
+function bubble(cx, y, s, fill, line, color){
+  ctx.font = '8px "PS2P", monospace'; const tw = ctx.measureText(s).width + 6;
+  let bx = Math.round(cx - tw / 2); bx = clamp(bx, 2, W - tw - 2);
+  ctx.fillStyle = fill; ctx.fillRect(bx, y, tw, 12); ctx.fillStyle = line; ctx.fillRect(bx, y, tw, 1); ctx.fillRect(bx, y + 11, tw, 1); ctx.fillRect(bx, y, 1, 12); ctx.fillRect(bx + tw - 1, y, 1, 12);
+  drawText(bx + 3, y + 2, s, color);
+}
+function render(now){
+  const t = now / 1000; G.t = t;
+  const cam = Math.round(G.camX);
+  // sky
+  const sky = ctx.createLinearGradient(0, 0, 0, GROUND); sky.addColorStop(0, '#0C1526'); sky.addColorStop(.6, '#13223A'); sky.addColorStop(1, '#1E3355');
+  ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+  // stars (parallax .3)
+  ctx.fillStyle = '#FEFDFC';
+  for (const s of STARS) { const sx = ((s.x - cam * .3) % WORLD_W + WORLD_W) % WORLD_W; if (sx < W) ctx.fillRect(sx, s.y, s.b, s.b); }
+  // aurora (cached vertical strips)
+  const au = REDUCED ? 0 : t;
+  for (let band = 0; band < 2; band++) {
+    const strip = AURORA[band];
+    for (let x = 0; x < W; x += 2) {
+      const wx = x + cam * .2;
+      const y = Math.round(26 + band * 22 + 9 * Math.sin(wx / 46 + au * .5 + band) + 5 * Math.sin(wx / 13 - au * .9));
+      ctx.drawImage(strip, x, y);
+    }
+  }
+  // mountains (parallax .5)
+  ctx.fillStyle = '#22395C';
+  for (let i = 0; i < MTN.length - 1; i++) { const a = MTN[i], b = MTN[i + 1]; const ax = a.x - cam * .5, bx = b.x - cam * .5; if (bx < -20 || ax > W + 20) continue; ctx.beginPath(); ctx.moveTo(ax, a.y1); ctx.lineTo(bx, b.y1); ctx.lineTo(bx, GROUND); ctx.lineTo(ax, GROUND); ctx.fill(); }
+  ctx.fillStyle = '#16283F';
+  for (let i = 0; i < MTN.length - 1; i++) { const a = MTN[i], b = MTN[i + 1]; const ax = a.x - cam * .7, bx = b.x - cam * .7; if (bx < -20 || ax > W + 20) continue; ctx.beginPath(); ctx.moveTo(ax, a.y2); ctx.lineTo(bx, b.y2); ctx.lineTo(bx, GROUND); ctx.lineTo(ax, GROUND); ctx.fill(); }
+  // ground
+  ctx.fillStyle = '#FEFDFC'; ctx.fillRect(0, GROUND, W, H - GROUND);
+  ctx.fillStyle = '#E4EAF0'; ctx.fillRect(0, GROUND, W, 1); for (let x = 0; x < W; x += 7) ctx.fillRect(x, GROUND + 6 + (x % 3) * 9, 2, 1);
+  // trees & buildings (world)
+  for (const tr of TREES) { const sx = tr.x - cam; if (sx > -12 && sx < W + 12) drawTree(ctx, sx, GROUND, tr.h); }
+  STATIONS.forEach((s, i) => {
+    const bx = STX(i) + 26 - cam; if (bx < -70 || bx > W + 70) return;
+    const w = drawBuilding(ctx, bx, GROUND, s.kind, true);
+    if (i === 3) drawSprite(ctx, CUP, bx + 18, GROUND - 30, PAL);
+    // signboard
+    ctx.font = '8px "PS2P", monospace'; const tw = ctx.measureText(s.label).width + 6;
+    ctx.fillStyle = '#FEFDFC'; ctx.fillRect(bx + Math.floor(w / 2) - Math.floor(tw / 2) - 2, GROUND - 46, tw + 2, 12);
+    ctx.fillStyle = '#474958'; ctx.fillRect(bx + Math.floor(w / 2) - Math.floor(tw / 2) - 2, GROUND - 46, tw + 2, 1); ctx.fillRect(bx + Math.floor(w / 2) - Math.floor(tw / 2) - 2, GROUND - 35, tw + 2, 1);
+    drawText(bx + Math.floor(w / 2), GROUND - 44, s.label, i === G.station ? '#0069D3' : '#474958', 8, 'center');
+  });
+  // ruler
+  if (G.ruler) {
+    const r = G.ruler; const x0 = r.x0 - cam, x1 = r.x1 - cam, sx = v => Math.round(v - cam);
+    if (r.town) drawTown(ctx, x1 + 3, GROUND);
+    if (G.flag) { const gx = Math.min(r.gx, G.flag.x) - cam, gw = Math.abs(r.gx - G.flag.x); ctx.fillStyle = 'rgba(232,145,45,.35)'; ctx.fillRect(gx, GROUND + 10, gw, 5); }
+    ctx.fillStyle = '#474958'; ctx.fillRect(x0, GROUND + 12, x1 - x0, 1);
+    for (const tx of r.ticks) ctx.fillRect(sx(tx), GROUND + 10, 1, 5);
+    for (const tx of r.big) ctx.fillRect(sx(tx), GROUND + 8, 1, 9);
+    for (const ln of r.lines) ctx.fillRect(sx(ln.x), GROUND + ln.y0, 1, ln.y1 - ln.y0);
+    for (const d of r.dots) { ctx.fillStyle = d.c || '#474958'; ctx.fillRect(sx(d.x) - (d.s >> 1), GROUND + 12 - (d.s >> 1), d.s, d.s); }
+    for (const l of r.labels) drawText(sx(l.x), GROUND + (l.row ? 28 : 17), l.s, '#6E7B87', 8, l.align);
+    if (G.flag) for (const l of r.after) drawText(sx(l.x), GROUND + 2, l.s, '#0069D3', 8, 'center');
+    if (!G.flag) bubble(G.px - cam + 6, GROUND - 32, r.valLbl, '#FEFDFC', '#0069D3', '#0069D3'); // value above hero
+  }
+  // flag
+  if (G.flag) {
+    const fx = G.flag.x - cam;
+    drawSprite(ctx, FLAG, fx - 1, GROUND - 12, PAL);
+    bubble(fx, GROUND - 26, G.flag.lbl, '#FCF1E3', '#E8912D', '#B96A12');
+  }
+  // hero
+  const jumpY = G.jump > 0 ? -Math.round(6 * Math.sin(Math.PI * G.jump)) : 0;
+  drawHero(ctx, Math.round(G.px - cam), GROUND + jumpY, G.stage, G.frame, G.facing, G.skin);
+  if (G.morph) drawMorph(ctx, Math.round(G.px - cam) + 6, GROUND + jumpY - 8, G.morph.t / G.morph.d);
+  // pops
+  G.pops = G.pops.filter(p => p.life > 0);
+  for (const p of G.pops) { const a = Math.min(1, p.life / .4); ctx.globalAlpha = a; drawText(p.x - cam, p.y, p.s, p.c, 16, 'center'); ctx.globalAlpha = 1; }
+}
+
+/* main loop */
+let last = 0, walk = null;
+function loop(now){
+  const dt = Math.min(.05, (now - last) / 1000 || 0); last = now;
+  if (walk) {
+    const dir = Math.sign(walk.to - G.px); G.facing = dir || 1;
+    const sp = REDUCED ? 1e6 : 96;
+    G.px += dir * sp * dt;
+    G.walkT += dt; G.frame = Math.floor(G.walkT * 8) % 2;
+    if (Math.floor(G.walkT * 4) !== walk.lastStep) { walk.lastStep = Math.floor(G.walkT * 4); SFX.step(); }
+    if ((dir > 0 && G.px >= walk.to) || (dir < 0 && G.px <= walk.to) || dir === 0) { G.px = walk.to; const cb = walk.cb; walk = null; G.frame = 0; if (cb) cb(); }
+  }
+  if (G.jump > 0) G.jump = Math.max(0, G.jump - dt * 1.6);
+  if (G.morph) { G.morph.t += dt; if (!G.morph.done && G.morph.t >= G.morph.d * .3) { G.skin = G.morph.to; G.morph.done = true; } if (G.morph.t >= G.morph.d) G.morph = null; }
+  for (const p of G.pops) { p.life -= dt; p.y -= dt * 18; }
+  // camera: follows the hero between stations, stays on the station during a task (also after the answer)
+  const followHero = G.mode === 'walk' || G.mode === 'title';
+  const target = clamp((followHero ? G.px : STX(G.station)) - 150, 0, WORLD_W - W);
+  if (G.camSnap || REDUCED) { G.camX = target; G.camSnap = false; }
+  else G.camX += (target - G.camX) * Math.min(1, dt * 7);
+  if (Math.abs(target - G.camX) < .3) G.camX = target;
+  render(now);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(t => { last = t; loop(t); });
+
+function walkTo(x, cb){ if (REDUCED) { G.px = x; if (cb) cb(); return; } walk = { to: x, cb, lastStep: -1 }; G.walkT = 0; }
+function morphTo(skin){ // change the hero's look with a little hop and sparkles
+  skin = skin || null;
+  if (skin === (G.morph ? G.morph.to : G.skin)) return;
+  if (REDUCED) { G.skin = skin; G.morph = null; return; }
+  G.morph = { t: 0, d: .7, to: skin, done: false }; G.jump = 1; SFX.morph(skin === 'girl');
+}
+function pop(s, c){ G.pops.push({ x: G.px + 6, y: GROUND - 40, s, c, life: 1.1 }); }
+
+/* ================= game flow ================= */
+let idx = 0, score = 0, results = [], cur = null, revealAt = 0;
+const el = { panel: $('#panel'), station: $('#station'), q: $('#q'), hint: $('#hint'), stage: $('#stage'), checkRow: $('#checkRow'), checkBtn: $('#checkBtn'), reveal: $('#reveal'), pts: $('#pts'), cmp: $('#cmp'), fromText: $('#fromText'), nextBtn: $('#nextBtn'), scoreVal: $('#scoreVal'), dots: $('#dots'), endPanel: $('#endPanel'), endOverlay: $('#endOverlay'), title: $('#titleOverlay'), toast: $('#toast') };
+
+function renderDots(){ el.dots.innerHTML = ''; STATIONS.forEach((s, i) => { const d = document.createElement('i'); if (i < G.station) d.className = 'done'; else if (i === G.station) d.className = 'now'; el.dots.appendChild(d); }); }
+function setScore(){ el.scoreVal.textContent = fmt(score); }
+function toast(m, ms = 2200){ el.toast.textContent = m; el.toast.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => el.toast.classList.remove('on'), ms); }
+
+function startGame(){
+  if (cur) { cur.cleanup(); cur = null; }
+  walk = null;
+  idx = 0; score = 0; results = []; setScore();
+  G.station = 0; G.stage = 0; G.px = STX(0); G.ruler = null; G.flag = null; G.mode = 'walk'; G.camSnap = true; G.skin = null; G.morph = null; G.jump = 0;
+  el.title.classList.add('hidden'); el.endOverlay.classList.add('hidden'); el.endPanel.classList.add('hidden'); $('#introPanel').classList.add('hidden');
+  renderDots();
+  startRound();
+}
+function startRound(){
+  const r = ROUNDS[idx];
+  const goStation = r.st;
+  morphTo(r.skin); // e.g. the girl for the first-grader girl question, and back to the usual hero after it
+  const begin = () => {
+    G.station = goStation; G.stage = STATIONS[goStation].hero; renderDots();
+    el.station.innerHTML = `${STATIONS[goStation].name} <span>· задача ${idx + 1} из ${ROUNDS.length}</span>`;
+    el.q.textContent = r.q; el.hint.textContent = r.hint || '';
+    el.stage.innerHTML = ''; el.reveal.classList.add('hidden'); el.checkRow.classList.remove('hidden');
+    G.flag = null; G.ruler = null;
+    if (r.type === 'rank') buildRank(r); else buildScale(r);
+    el.panel.classList.remove('hidden');
+    el.nextBtn.textContent = idx === ROUNDS.length - 1 ? 'К ИТОГАМ' : 'ДАЛЬШЕ';
+  };
+  if (goStation !== G.station || idx === 0) { G.mode = 'walk'; el.panel.classList.add('hidden'); G.station = goStation; renderDots(); walkTo(STX(goStation), begin); }
+  else begin();
+}
+
+/* ---- scale: hero on a number line ('est') or on distance segments ('zone') ---- */
+function buildScale(r){
+  G.mode = 'est'; sceneBox.classList.add('drag');
+  const zone = r.type === 'zone';
+  const x0 = STX(G.station) - 136, x1 = STX(G.station) + 136;
+  const ruler = { x0, x1, ticks: [], big: [], dots: [], lines: [], labels: [], after: [], town: false, valLbl: '', gx: 0 };
+  let min, max, step, posOf, fromX, val;
+  if (zone) {
+    const span = (x1 - x0) * 0.84, kx = d => x1 - d / 1000 * span; // proportional km scale, the rest is the open "1000+" segment
+    const mids = r.zones.map(z => z.to === null ? (x0 + kx(z.from)) / 2 : kx((z.from + z.to) / 2));
+    min = 0; max = r.zones.length - 1; step = 1; val = null;
+    posOf = i => mids[i];
+    fromX = x => { let b = 0; mids.forEach((m, i) => { if (Math.abs(m - x) < Math.abs(mids[b] - x)) b = i; }); return b; };
+    r.marks.forEach(m => { ruler.dots.push({ x: kx(m), s: 3 }); ruler.labels.push({ x: kx(m), row: 0, s: `${m} КМ`, align: 'center' }); });
+    ruler.dots.push({ x: x1, s: 5, c: '#0069D3' });
+    ruler.lines.push({ x: x1, y0: 14, y1: 35 });
+    ruler.labels.push({ x: x1 - 4, row: 1, s: 'РЕГИОНАЛЬНЫЙ ЦЕНТР', align: 'right' });
+    ruler.after = r.zones.map((z, i) => z.score ? { x: mids[i], s: z.score } : null).filter(Boolean);
+    ruler.town = true;
+  } else {
+    min = r.min; max = r.max; step = r.step;
+    const pct = v => (v - min) / (max - min);
+    posOf = v => x0 + pct(v) * (x1 - x0);
+    fromX = x => min + clamp((x - x0) / (x1 - x0), 0, 1) * (max - min);
+    for (let k = 0; k <= 4; k++) ruler.ticks.push(x0 + (x1 - x0) * k / 4);
+    if (min < 0 && max > 0) ruler.big.push(posOf(0));
+    ruler.labels = r.labels ? r.labels.map(l => ({ x: posOf(l.v), row: l.row, s: l.s, align: l.align }))
+                            : [{ x: x0, row: 0, s: r.fmt(min), align: 'left' }, { x: x1, row: 0, s: r.fmt(max), align: 'right' }];
+    val = roundTo((min + max) / 2, step);
+  }
+  G.ruler = ruler;
+  const totalSteps = Math.round((max - min) / step);
+  let touched = false, locked = false, dragging = false, holdT = 0, holdI = 0;
+  const ac = new AbortController(), sig = { signal: ac.signal };
+
+  const wrap = document.createElement('div');
+  wrap.innerHTML = `<div class="est"><button class="arrow" id="left" type="button" aria-label="Меньше">${ARROW_SVG}</button><div class="val idle" id="val" aria-live="polite"></div><button class="arrow r" id="right" type="button" aria-label="Больше">${ARROW_SVG}</button></div><p class="tip">${zone ? 'Ведите героя по шкале с помощью стрелок или тяните его прямо на экране: он встанет посередине выбранного отрезка.' : r.skin === 'girl' ? 'Ведите героиню по шкале с помощью стрелок или тяните ее прямо на экране.' : 'Ведите героя по шкале с помощью стрелок или тяните его прямо на экране.'}</p>`;
+  if (zone) { wrap.querySelector('#left').setAttribute('aria-label', 'Дальше от центра'); wrap.querySelector('#right').setAttribute('aria-label', 'Ближе к центру'); }
+  el.stage.appendChild(wrap);
+  const valEl = wrap.querySelector('#val');
+  const place = intro => {
+    let big, small, px;
+    if (val === null) { px = (x0 + x1) / 2 - 6; ruler.valLbl = '?'; big = '?'; small = r.unit(); }
+    else { px = posOf(val) - 6; ruler.valLbl = zone ? r.zones[val].bub : r.fmt(val); big = zone ? r.zones[val].big : r.fmt(val); small = r.unit(val); }
+    if (intro && Math.abs(G.px - px) > 2) walkTo(px); // after a previous answer the hero walks back instead of teleporting
+    else { if (walk) { walk = null; G.frame = 0; } G.px = px; }
+    valEl.innerHTML = `${big}<small>${small}</small>`; valEl.classList.toggle('long', big.length > 5);
+  };
+  const setVal = (v, quiet) => {
+    if (locked) return; // the answer is fixed after "ПРОВЕРИТЬ"
+    const nv = zone ? clamp(Math.round(v), min, max) : clamp(roundTo(v, step), min, max);
+    if (nv !== val) { G.facing = (val === null ? posOf(nv) > G.px + 6 : nv > val) ? 1 : -1; val = nv; if (!quiet) SFX.tick(); }
+    if (!touched) { touched = true; valEl.classList.remove('idle'); el.checkBtn.disabled = false; }
+    place();
+  };
+  const nudge = (d, mult = 1) => {
+    if (locked) return;
+    if (val === null) { // first move on the zone scale: pick the nearest segment on that side
+      const cx = G.px + 6; let pick = null;
+      for (let i = 0; i <= max; i++) { const m = posOf(i); if (d < 0 && m < cx) pick = i; if (d > 0 && m > cx && pick === null) pick = i; }
+      setVal(pick === null ? (d < 0 ? min : max) : pick); return;
+    }
+    setVal(val + d * step * mult);
+  };
+  place(true); el.checkBtn.disabled = true;
+  // buttons: tap = one step, hold = auto-repeat that speeds up on long scales
+  const stopHold = () => { clearTimeout(holdT); clearInterval(holdI); holdT = holdI = 0; };
+  const hold = (btn, d) => {
+    btn.addEventListener('pointerdown', e => {
+      if (locked || btn.disabled || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      e.preventDefault(); SFX.init(); stopHold(); nudge(d);
+      let n = 0;
+      holdT = setTimeout(() => { holdI = setInterval(() => { n++; nudge(d, n > 30 ? Math.max(1, Math.ceil(totalSteps / 50)) : n > 12 ? Math.max(1, Math.ceil(totalSteps / 120)) : 1); }, 60); }, 380);
+    }, sig);
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => btn.addEventListener(ev, stopHold, sig));
+    btn.addEventListener('click', e => { if (e.detail === 0) { SFX.init(); nudge(d); } }, sig); // Enter / Space on a focused arrow
+  };
+  hold(wrap.querySelector('#left'), -1); hold(wrap.querySelector('#right'), 1);
+  // keyboard
+  document.addEventListener('keydown', e => {
+    if (locked || G.mode !== 'est') return;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); SFX.init(); nudge(e.key === 'ArrowLeft' ? -1 : 1, e.shiftKey ? 10 : 1); return; }
+    if (e.key === 'Enter' && !e.repeat) {
+      const tgt = e.target.closest ? e.target.closest('button, a') : null;
+      if (tgt && tgt !== el.checkBtn && !wrap.contains(tgt)) return; // leave other buttons (sound etc.) alone
+      if (!el.checkBtn.disabled && !el.checkRow.classList.contains('hidden')) { e.preventDefault(); el.checkBtn.click(); }
+    }
+  }, sig);
+  // canvas drag
+  const toX = e => { const rect = cv.getBoundingClientRect(); return (e.clientX - rect.left) / rect.width * W + G.camX; };
+  const up = e => { if (!dragging) return; dragging = false; try { cv.releasePointerCapture(e.pointerId); } catch (_) {} };
+  cv.addEventListener('pointerdown', e => { if (locked || G.mode !== 'est') return; dragging = true; try { cv.setPointerCapture(e.pointerId); } catch (_) {} SFX.init(); setVal(fromX(toX(e))); }, sig);
+  cv.addEventListener('pointermove', e => { if (!dragging || locked) return; setVal(fromX(toX(e)), !zone); }, sig);
+  cv.addEventListener('pointerup', up, sig); cv.addEventListener('pointercancel', up, sig);
+
+  const lock = () => { locked = true; dragging = false; stopHold(); ac.abort(); sceneBox.classList.remove('drag'); };
+  cur = {
+    cleanup: lock,
+    check(){
+      lock();
+      wrap.querySelectorAll('button').forEach(b => b.disabled = true);
+      G.mode = 'result';
+      let pts, cmp, tx;
+      if (zone) {
+        const d = Math.abs(val - r.truth), z = r.zones;
+        pts = Math.round(10 * Math.max(0, 1 - d / (z.length - 1)));
+        tx = posOf(r.truth);
+        G.flag = { x: Math.round(tx), lbl: z[r.truth].bub };
+        cmp = d === 0 ? `Точно в цель: <b class="t">${z[r.truth].short}</b>` : `Ваш ответ: <b class="g">${z[val].short}</b>, в реальности: <b class="t">${z[r.truth].short}</b>`;
+      } else {
+        const g = val, t = r.truth;
+        const err = Math.abs(g - t) / (max - min);
+        pts = Math.round(10 * Math.max(0, 1 - err / (r.tol || 0.3)));
+        tx = posOf(t);
+        G.flag = { x: Math.round(tx), lbl: r.fmt(t) };
+        cmp = g === t ? `Точно в цель: <b class="t">${r.short(t)}</b>` : `Ваш ответ: <b class="g">${r.short(g)}</b>, в реальности: <b class="t">${r.short(t)}</b>`;
+      }
+      ruler.gx = G.px + 6;
+      G.facing = tx >= G.px + 6 ? 1 : -1;
+      if (pts >= 8) { G.jump = 1; SFX.good(); } else if (pts > 0) SFX.ok(); else SFX.miss();
+      pop(`+${pts}`, pts ? '#0069D3' : '#B96A12');
+      return { pts, cmp };
+    }
+  };
+}
+
+/* ---- ranking: drag numbered medals into the circles ---- */
+function buildRank(r){
+  G.mode = 'order';
+  if (Math.abs(G.px - STX(G.station)) > 1) walkTo(STX(G.station)); // back to the station door after a scale task
+  const n = r.items.length, places = Array.from({ length: n }, (_, i) => i + 1);
+  const truePlace = {}; r.items.slice().sort((a, b) => b.value - a.value).forEach((it, i) => truePlace[it.id] = i + 1);
+  let rows = shuffle(r.items), guard = 0;
+  while (rows.every((it, i) => truePlace[it.id] === i + 1) && guard++ < 20) rows = shuffle(r.items);
+  const at = {}; places.forEach(p => at[p] = null); // place -> row id
+  let sel = null, locked = false, drag = null, swallowClick = false;
+  const ac = new AbortController(), sig = { signal: ac.signal };
+
+  const wrap = document.createElement('div'); wrap.className = 'rank';
+  wrap.innerHTML = `<div class="rk-rows">${rows.map(it => `<div class="rk-row" data-id="${it.id}"><div class="rk-slot" data-id="${it.id}">${RING_SVG}</div><button type="button" class="rk-name" data-id="${it.id}"><span class="lbl">${it.label}${it.sub ? `<small>${it.sub}</small>` : ''}</span><span class="v">${it.display}</span><span class="fix"></span></button></div>`).join('')}</div>`
+    + `<div class="rk-tray" aria-label="Места">${places.map(p => `<div class="rk-home" data-place="${p}">${RING_SVG}<button type="button" class="kolo" data-place="${p}" aria-label="Место ${p}" aria-pressed="false">${KOLO_SVG}<b>${p}</b></button></div>`).join('')}</div>`
+    + `<p class="tip">Перетащите медали в кружки: ${r.top}. Можно и просто нажимать на строки по порядку, начиная с первого места.</p>`;
+  el.stage.appendChild(wrap);
+  const pick = q => Object.fromEntries([...wrap.querySelectorAll(q)].map(e => [e.dataset.place || e.dataset.id, e]));
+  const kolos = pick('.kolo'), homes = pick('.rk-home'), slots = pick('.rk-slot'), rowEls = pick('.rk-row'), names = pick('.rk-name');
+  const rowsBox = wrap.querySelector('.rk-rows');
+  const placeOfRow = id => { for (const p of places) if (at[p] === id) return p; return null; };
+  const sync = () => {
+    places.forEach(p => {
+      const k = kolos[p], target = at[p] ? slots[at[p]] : homes[p];
+      if (k.parentNode !== target) target.appendChild(k);
+      k.classList.toggle('sel', sel === p); k.setAttribute('aria-pressed', String(sel === p));
+      homes[p].classList.toggle('empty', at[p] !== null);
+    });
+    rows.forEach(it => { const p = placeOfRow(it.id); rowEls[it.id].classList.toggle('filled', p !== null); names[it.id].setAttribute('aria-label', p ? `${it.label}, место ${p}` : `${it.label}, без места`); });
+    wrap.classList.toggle('armed', sel !== null);
+    el.checkBtn.disabled = places.some(p => at[p] === null);
+  };
+  const put = (p, id) => { // id === null: back to the tray; an occupied circle swaps
+    if (locked) return;
+    const from = at[p];
+    if (id) { const occ = placeOfRow(id); if (occ !== null && occ !== p) at[occ] = from; at[p] = id; }
+    else at[p] = null;
+    SFX.init(); SFX.place();
+  };
+  // taps and keyboard (click also fires for Enter / Space)
+  wrap.addEventListener('click', e => {
+    if (locked) return;
+    if (swallowClick) { swallowClick = false; return; }
+    const k = e.target.closest('.kolo');
+    if (k) { const p = +k.dataset.place; sel = sel === p ? null : p; SFX.init(); SFX.tick(); sync(); return; }
+    const row = e.target.closest('.rk-row');
+    if (row) {
+      const id = row.dataset.id;
+      if (sel !== null) { put(sel, id); sel = null; }
+      else {
+        const p = placeOfRow(id);
+        if (p !== null) { at[p] = null; SFX.init(); SFX.tick(); }          // tap a filled row: the medal goes back
+        else { const free = places.find(q => at[q] === null); if (free) put(free, id); } // tap an empty row: next free place
+      }
+      sync(); return;
+    }
+    if (e.target.closest('.rk-tray') && sel !== null) { put(sel, null); sel = null; sync(); }
+  }, sig);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && sel !== null && !locked) { sel = null; sync(); } }, sig);
+  // drag & drop with pointer events (mouse, touch, pen)
+  const rowAt = (x, y) => { const t = document.elementFromPoint(x, y); const rw = t && t.closest('.rk-row'); return rw && wrap.contains(rw) ? rw : null; };
+  const dropGhost = d => { cancelAnimationFrame(d.raf); if (d.hover) d.hover.classList.remove('hover'); if (d.ghost) d.ghost.remove(); d.k.classList.remove('lifted'); try { d.k.releasePointerCapture(d.id); } catch (_) {} };
+  wrap.addEventListener('pointerdown', e => {
+    const k = e.target.closest('.kolo');
+    if (!k || locked || drag || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    e.preventDefault();
+    drag = { k, p: +k.dataset.place, id: e.pointerId, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, moved: false, ghost: null, hover: null, raf: 0 };
+    try { k.setPointerCapture(e.pointerId); } catch (_) {}
+  }, sig);
+  wrap.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    drag.x = e.clientX; drag.y = e.clientY;
+    if (!drag.moved && Math.hypot(drag.x - drag.sx, drag.y - drag.sy) > 6) {
+      drag.moved = true; sel = null; sync();
+      const g = drag.k.cloneNode(true); g.classList.add('ghost'); g.classList.remove('sel'); g.removeAttribute('aria-pressed'); g.setAttribute('aria-hidden', 'true'); document.body.appendChild(g);
+      drag.ghost = g; drag.k.classList.add('lifted'); SFX.init(); SFX.tick();
+      const edgeScroll = () => { if (!drag) return; const m = 56; if (drag.y < m) window.scrollBy(0, -9); else if (drag.y > innerHeight - m) window.scrollBy(0, 9); drag.raf = requestAnimationFrame(edgeScroll); };
+      drag.raf = requestAnimationFrame(edgeScroll);
+    }
+    if (drag.moved) {
+      drag.ghost.style.left = drag.x + 'px'; drag.ghost.style.top = drag.y + 'px';
+      const hr = rowAt(drag.x, drag.y);
+      if (hr !== drag.hover) { if (drag.hover) drag.hover.classList.remove('hover'); if (hr) hr.classList.add('hover'); drag.hover = hr; }
+    }
+  }, sig);
+  const endDrag = (e, cancel) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const d = drag; drag = null; dropGhost(d);
+    if (!d.moved) return; // plain tap: handled by click
+    swallowClick = true; setTimeout(() => { swallowClick = false; }, 0);
+    if (!cancel) { const rw = rowAt(d.x, d.y); put(d.p, rw ? rw.dataset.id : null); }
+    sync();
+  };
+  wrap.addEventListener('pointerup', e => endDrag(e, false), sig);
+  wrap.addEventListener('pointercancel', e => endDrag(e, true), sig);
+  sync();
+
+  const lock = () => { locked = true; ac.abort(); if (drag) { dropGhost(drag); drag = null; } };
+  cur = {
+    cleanup: lock,
+    check(){
+      lock(); sel = null; sync();
+      wrap.classList.add('checked'); G.mode = 'result';
+      let ok = 0, near = 0, sum = 0;
+      rows.forEach(it => {
+        const p = placeOfRow(it.id), tp = truePlace[it.id], d = Math.abs(p - tp);
+        rowEls[it.id].classList.add(d === 0 ? 'ok' : d === 1 ? 'near' : 'bad');
+        if (d === 0) ok++; else if (d === 1) near++;
+        sum += d === 0 ? 1 : d === 1 ? 0.5 : 0; // the closer, the more points: exact place 1, neighbour 0.5
+        if (d) rowEls[it.id].querySelector('.fix').textContent = `ВЕРНОЕ МЕСТО: ${tp}`;
+      });
+      wrap.querySelectorAll('button').forEach(b => b.disabled = true);
+      const pts = Math.round(10 * sum / n);
+      if (ok === n) { G.jump = 1; SFX.good(); } else if (pts > 0) SFX.ok(); else SFX.miss();
+      pop(`+${pts}`, pts ? '#0069D3' : '#B96A12');
+      // reorder rows into the right order, with a stepped slide
+      setTimeout(() => {
+        if (!wrap.isConnected) return;
+        const els = [...rowsBox.children], first = new Map(els.map(e => [e, e.getBoundingClientRect().top]));
+        els.sort((a, b) => truePlace[a.dataset.id] - truePlace[b.dataset.id]).forEach(e => rowsBox.appendChild(e));
+        if (!REDUCED && els[0].animate) els.forEach(e => { const dy = first.get(e) - e.getBoundingClientRect().top; if (dy) e.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 480, easing: 'steps(6, end)' }); });
+      }, 900);
+      const cmp = ok === n ? `Все ${n} на своих местах` : `На своем месте: <b>${ok} из ${n}</b>${near ? `, еще ${near} — с ошибкой на одно место` : ''}`;
+      return { pts, cmp };
+    }
+  };
+}
+
+el.checkBtn.addEventListener('click', () => {
+  if (!cur || el.checkBtn.disabled) return; SFX.init(); SFX.confirm();
+  const r = ROUNDS[idx]; const { pts, cmp } = cur.check(); cur.cleanup();
+  score += pts; setScore(); results.push({ title: r.title, pts });
+  el.pts.innerHTML = `+${pts}<small>из 10</small>`; el.pts.classList.toggle('big', pts >= 8);
+  el.cmp.innerHTML = cmp; el.fromText.textContent = r.reveal;
+  el.checkRow.classList.add('hidden'); el.reveal.classList.remove('hidden');
+  cur = null; revealAt = performance.now();
+  el.nextBtn.focus({ preventScroll: true });
+  setTimeout(() => el.reveal.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'nearest' }), 80);
+});
+el.nextBtn.addEventListener('click', () => {
+  if (performance.now() - revealAt < 350) return; // a double tap on "ПРОВЕРИТЬ" must not skip the answer
+  SFX.tick(); idx++;
+  G.flag = null; G.ruler = null;
+  if (idx >= ROUNDS.length) finish(); else { startRound(); window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' }); }
 });
 
-// ---------- Kp ----------
-const kpInput = document.getElementById('kp'), kpOut = document.getElementById('kp-out'), kpHint = document.getElementById('kp-hint');
-function setKp(v, fromSlider){
-  kp = Math.max(0, Math.min(9, v));
-  if (!fromSlider) kpInput.value = Math.round(kp * 3);
-  const [gl, gt] = gLevel(kp);
-  kpOut.innerHTML = `Kp ${fmtKp(kp)}<small>${gl ? gl + ', ' : ''}${gt}</small>`;
-  const o = ovalFor(kp);
-  const inside = CITIES.filter(c => c.group === 'АЗРФ' && cityState(c, kp) === 'over').length;
-  const horiz = CITIES.filter(c => cityState(c, kp) === 'hor');
-  const southern = CITIES.filter(c => cityState(c, kp) !== 'none').sort((a, b) => a.cgm - b.cgm)[0];
-  let txt = `Граница овала — на ${fmt1(o.bEq)}° геомагнитной широты. Над головой сияние у ${inside} из 32 арктических городов`;
-  if (southern) txt += `; самая южная точка, где его видно хотя бы на горизонте, — ${southern.name}.`; else txt += '.';
-  kpHint.textContent = typo(txt);
-  render();
-  if (selected) updateRecordKp();
+function verdict(share){
+  if (share >= 0.9) return ['Арктический эксперт', 'Вы идеально разбираетесь в северных делах.'];
+  if (share >= 0.7) return ['Свой на Севере', 'Большинство показателей вы оценили почти точно.'];
+  if (share >= 0.5) return ['Внимательный читатель', 'Половина цифр названа верно, осталось запомнить вторую.'];
+  if (share >= 0.3) return ['Турист', 'Север по-прежнему полон загадок. Но вы бывали близки к истине!'];
+  return ['Пора перечитать статью', 'Все цифры есть в нашем тексте, а игру можно пройти еще раз ;)'];
 }
-kpInput.addEventListener('input', () => setKp(+kpInput.value / 3, true));
-
-document.getElementById('kp-now').addEventListener('click', async () => {
-  const msg = document.getElementById('kp-now-msg');
-  msg.textContent = 'запрашиваю…';
-  try {
-    const r = await fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json');
-    const rows = await r.json();
-    const last = rows[rows.length - 1];
-    const v = parseFloat(last[1]);
-    setKp(Math.round(v * 3) / 3);
-    const t = new Date(last[0].replace(' ', 'T') + 'Z');
-    msg.textContent = `Kp ${fmtKp(v)} на ${t.toLocaleString('ru-RU', {day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit'})} (NOAA SWPC)`;
-  } catch (e) { msg.textContent = 'NOAA не ответил — попробуйте позже'; }
+function finish(){
+  el.panel.classList.add('hidden'); G.mode = 'walk'; sceneBox.classList.remove('drag');
+  const [rank, note] = verdict(score / MAX);
+  const done = () => {
+    G.station = STATIONS.length - 1; G.stage = 4; renderDots();
+    $('#totalVal').textContent = fmt(score); $('#totalMax').textContent = fmt(MAX);
+    $('#rank').textContent = rank; $('#rankNote').textContent = note;
+    const ul = $('#roundsList'); ul.innerHTML = '';
+    results.forEach((res, i) => { const li = document.createElement('li'); li.innerHTML = `<span class="n">${i + 1}</span><span>${res.title}</span><span class="p${res.pts ? '' : ' zero'}">${res.pts}</span>`; ul.appendChild(li); });
+    $('#endSub').textContent = `${fmt(score)} из ${fmt(MAX)}. ${rank}`;
+    el.endOverlay.classList.remove('hidden'); el.endPanel.classList.remove('hidden');
+    G.jump = 1; SFX.good();
+    window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' });
+  };
+  G.station = STATIONS.length - 1; renderDots();
+  walkTo(STX(STATIONS.length - 1), done);
+}
+function shareText(){ const url = /^https?:/.test(location.href) ? location.href : ARTICLE; const [rank] = verdict(score / MAX); return `${fmt(score)} из ${fmt(MAX)} в пиксельной игре «ПОРА прикинуть: полярные баллы» про образование в Арктике. Мой уровень: ${rank}. Проверьте себя: ${url}`; }
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); toast('Результат скопирован'); }
+  catch (_) { toast('Скопируйте вручную: ' + text, 6000); }
+}
+$('#shareBtn').addEventListener('click', async () => {
+  const text = shareText();
+  if (navigator.share) {
+    try { await navigator.share({ text }); return; }
+    catch (err) { if (err && err.name === 'AbortError') return; } // the user closed the share sheet
+  }
+  copyText(text);
 });
-
-// ---------- поиск города ----------
-const dl = document.getElementById('city-list');
-CITIES.slice().sort((a, b) => a.name.localeCompare(b.name, 'ru')).forEach(c => { const o = document.createElement('option'); o.value = c.name; dl.appendChild(o); });
-const input = document.getElementById('city-input');
-function tryInput(){
-  const v = input.value.trim().toLowerCase();
-  if (!v) return;
-  let c = byName.get(v);
-  if (!c) c = CITIES.find(x => x.name.toLowerCase().startsWith(v));
-  if (c) selectCity(c, true);
-}
-input.addEventListener('change', tryInput);
-input.addEventListener('keydown', e => { if (e.key === 'Enter') tryInput(); });
-
-// ---------- карточка города ----------
-const rec = document.getElementById('record');
-function selectCity(c, rotate){
-  selected = c;
-  input.value = c.name;
-  rec.hidden = false;
-  rec.innerHTML = typo(recordHTML(c));
-  drawMonths(c); drawYears(c);
-  document.getElementById('png').addEventListener('click', () => downloadCard(c));
-  document.getElementById('share').addEventListener('click', () => shareCity(c));
-  updateRecordKp();
-  if (rotate) rotateTo(c); else render();
-  if (history.replaceState) history.replaceState(null, '', '#' + c.id);
-}
-function recordHTML(c){
-  const over0 = c.kpOver <= 0.01, hor0 = c.kpHor <= 0.01;
-  const thr = over0
-    ? 'Город лежит внутри спокойного овала: сияние может стоять над головой в любую тёмную ночь, даже при Kp 0.'
-    : `Чтобы сияние оказалось над головой, нужен Kp не ниже <span class="num">${fmtKp(kpCeil(c.kpOver))}</span>; ${hor0 ? 'на северном горизонте оно видно при любой активности' : `на северном горизонте — от Kp <span class="num">${fmtKp(kpCeil(c.kpHor))}</span>`}.`;
-  const lo = Math.min(c.visOverEra, c.visOverCeres), hi = Math.max(c.visOverEra, c.visOverCeres);
-  const pd = c.polarDay ? `<p>Светлые ночи без тёмного неба: с ${fmtDate(c.polarDay[0])} по ${fmtDate(c.polarDay[1])} — ${c.polarDay[2]} ${plural(c.polarDay[2], 'ночь', 'ночи', 'ночей')} без сияний.</p>` : '';
-  const drift = c.cgm - c.cgm1900;
-  const lastOver = c.lastOver ? `Последняя ночь, когда сияние по расчёту стояло над городом, — ${fmtDate(c.lastOver)}${c.lastOverKp ? ` (Kp ${fmtKp(c.lastOverKp)})` : ''}.` : 'За 94 года наблюдений овал не дотягивал до этого города ни разу.';
-  const lastHor = (!c.lastOver && c.lastHor) ? ` На северном горизонте его можно было увидеть ${fmtDate(c.lastHor)}.` : '';
-  const visLabel = c.visOver >= 0.95 ? `${plural(c.visOver, 'ночь', 'ночи', 'ночей')} в году сияние стоит над городом при ясном небе` : 'ночей в году — над головой оно почти не появляется';
-  const horLine = c.visHor > c.visOver + 0.5 ? `<p>Если считать и сияние на северном горизонте, ночей набирается около <span class="num">${fmt0(c.visHor)}</span> в году.</p>` : '';
-  return `
-    <h2>${c.name}</h2>
-    <div class="region">${c.region !== c.name ? c.region + ', ' : ''}${fmt1(c.lat)}° с. ш. Геомагнитная широта <span class="num">${fmt1(c.cgm)}°</span></div>
-    <p>${thr}</p>
-    <div class="big"><span class="n">${c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver)}</span><span class="l">${visLabel}</span></div>
-    <div class="range">Среднее за 2000–2025. Диапазон по двум источникам облачности: ${fmt0(lo)}–${fmt0(hi)}; строгий критерий ясности — ${fmt0(c.visOverStrict)}.</div>
-    <div class="stats">
-      <div><b class="num">${fmt0(c.darkNights)}</b><span>тёмных ночей в году</span></div>
-      <div><b class="num">${fmt0(c.overNights)}</b><span>из них с достаточной активностью</span></div>
-      <div><b class="num">${fmt0(c.pClear * 100)}%</b><span>тёмных часов с ясным небом</span></div>
-    </div>
-    ${horLine}
-    <p>${lastOver}${lastHor} В 2025 году таких ночей было ${c.over2025}, за первые восемь месяцев 2026-го — ${c.over2026} (без учёта облачности).</p>
-    ${pd}
-    <p id="rec-kp" class="hint"></p>
-    <div class="chart-title">Ожидаемые ночи с сиянием по месяцам (столбик на фоне — все тёмные ночи месяца)</div>
-    <svg id="months"></svg>
-    <div class="chart-title">Ночей в году с сиянием над городом по данным Kp, без облачности: 1932–2026</div>
-    <svg id="years"></svg>
-    <p class="hint">В 1900 году геомагнитная широта города была ${fmt1(c.cgm1900)}°: за 126 лет овал сместился к городу на ${fmt1(drift)}°.</p>
-    <div class="actions"><button type="button" class="btn primary" id="png">Скачать карточку PNG</button><button type="button" class="btn" id="share">Скопировать ссылку</button></div>`;
-}
-function updateRecordKp(){
-  const el = document.getElementById('rec-kp'); if (!el || !selected) return;
-  const st = cityState(selected, kp);
-  el.textContent = typo(st === 'over' ? `При Kp ${fmtKp(kp)} ${selected.name} внутри овала — сияние над головой.` : st === 'hor' ? `При Kp ${fmtKp(kp)} сияние видно из города на северном горизонте.` : `При Kp ${fmtKp(kp)} до города овал не доходит: нужен Kp ${fmtKp(kpCeil(selected.kpHor))} для горизонта и ${fmtKp(kpCeil(selected.kpOver))} — чтобы оно встало над головой.`);
-}
-const SEASON_ORDER = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7];
-function drawMonths(c){
-  const w = 368, h = 150, m = {l: 26, r: 4, t: 8, b: 22};
-  const s = d3.select('#months').attr('viewBox', `0 0 ${w} ${h}`);
-  s.selectAll('*').remove();
-  const data = SEASON_ORDER.map(mi => c.months.find(x => x.m === mi));
-  const x = d3.scaleBand().domain(SEASON_ORDER).range([m.l, w - m.r]).padding(.22);
-  const y = d3.scaleLinear().domain([0, Math.max(31, d3.max(data, d => d.dark))]).range([h - m.b, m.t]);
-  s.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(3).tickSize(-(w - m.l - m.r))).attr('transform', `translate(${m.l},0)`).call(g => g.select('.domain').remove());
-  s.selectAll('.bg').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.dark)).attr('height', d => y(0) - y(d.dark)).attr('fill', 'rgba(168,203,236,.13)').attr('rx', 2);
-  s.selectAll('.v').data(data).enter().append('rect').attr('x', d => x(d.m)).attr('width', x.bandwidth()).attr('y', d => y(d.vis)).attr('height', d => y(0) - y(d.vis)).attr('fill', col('--blue')).attr('rx', 2);
-  s.selectAll('.lab').data(data).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', h - 7).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 10.5).attr('font-family', col('--sans')).text(d => MON_SHORT[d.m - 1]);
-  s.selectAll('.val').data(data.filter(d => d.vis >= 0.5)).enter().append('text').attr('x', d => x(d.m) + x.bandwidth() / 2).attr('y', d => y(d.vis) - 3).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 10).attr('font-family', col('--sans')).text(d => fmt0(d.vis));
-}
-function drawYears(c){
-  const w = 368, h = 110, m = {l: 26, r: 4, t: 6, b: 18};
-  const s = d3.select('#years').attr('viewBox', `0 0 ${w} ${h}`);
-  s.selectAll('*').remove();
-  const years = d3.range(c.yearStart, c.yearStart + c.yearsOver.length);
-  const x = d3.scaleLinear().domain([years[0], years[years.length - 1]]).range([m.l, w - m.r]);
-  const y = d3.scaleLinear().domain([0, Math.max(10, d3.max(c.yearsOver))]).nice().range([h - m.b, m.t]);
-  s.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(3).tickSize(-(w - m.l - m.r))).attr('transform', `translate(${m.l},0)`).call(g => g.select('.domain').remove());
-  s.append('g').attr('class', 'axis').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(d3.format('d')).tickSize(3)).call(g => g.select('.domain').remove());
-  const area = d3.area().x((d, i) => x(years[i])).y0(y(0)).y1(d => y(d)).curve(d3.curveMonotoneX);
-  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', area).attr('fill', 'rgba(92,168,239,.20)');
-  s.append('path').datum(c.yearsOver.slice(0, -1)).attr('d', d3.line().x((d, i) => x(years[i])).y(d => y(d)).curve(d3.curveMonotoneX)).attr('fill', 'none').attr('stroke', col('--blue')).attr('stroke-width', 1.4);
-  const last = c.yearsOver[c.yearsOver.length - 1];
-  s.append('circle').attr('cx', x(2026)).attr('cy', y(last)).attr('r', 2.5).attr('fill', col('--orange'));
-  s.append('text').attr('x', w - m.r).attr('y', m.t + 8).attr('text-anchor', 'end').attr('fill', col('--fog')).attr('font-size', 10).attr('font-family', col('--sans')).text(`2026: ${last} за 8 мес.`);
-}
-async function shareCity(c){
-  const url = location.origin + location.pathname + '#' + c.id;
-  try { await navigator.clipboard.writeText(url); document.getElementById('share').textContent = 'Ссылка скопирована'; } catch (e) { prompt('Ссылка на карточку', url); }
-}
-
-// PNG-карточка 1080×1080
-async function downloadCard(c){
-  if (document.fonts && document.fonts.ready) { try { await document.fonts.ready; } catch (e) {} }
-  const S = 1080, cv = document.createElement('canvas'); cv.width = S; cv.height = S;
-  const ctx = cv.getContext('2d');
-  const bg = ctx.createRadialGradient(S * .5, S * .35, 80, S * .5, S * .5, S * .85);
-  bg.addColorStop(0, '#16263F'); bg.addColorStop(1, '#0B1424');
-  ctx.fillStyle = bg; ctx.fillRect(0, 0, S, S);
-  // сияние-полоса
-  const ag = ctx.createLinearGradient(0, 120, 0, 330);
-  ag.addColorStop(0, 'rgba(164,147,255,0)'); ag.addColorStop(.55, 'rgba(47,185,143,.55)'); ag.addColorStop(1, 'rgba(123,235,181,.0)');
-  ctx.fillStyle = ag; ctx.beginPath();
-  for (let i = 0; i <= 40; i++) { const xx = i / 40 * S; const yy = 220 + Math.sin(i / 4.5) * 28 + Math.cos(i / 2.1) * 12; i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); }
-  ctx.lineTo(S, 120); ctx.lineTo(0, 120); ctx.closePath(); ctx.fill();
-  const sans = '"Inter", system-ui, sans-serif';
-  ctx.fillStyle = '#9FB0C6'; ctx.font = `500 30px ${sans}`; ctx.fillText('Северное сияние над городом', 72, 380);
-  ctx.fillStyle = '#EFF4FA'; ctx.font = `600 ${c.name.length > 14 ? 64 : 84}px ${sans}`; ctx.fillText(c.name, 72, 470);
-  ctx.fillStyle = '#9FB0C6'; ctx.font = `400 28px ${sans}`; ctx.fillText(`${c.region}, геомагнитная широта ${fmt1(c.cgm)}°`, 72, 516);
-  ctx.fillStyle = '#5CA8EF'; ctx.font = `600 170px ${sans}`; ctx.fillText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver), 66, 690);
-  const nw = ctx.measureText(c.visOver < 0.95 && c.visOver > 0 ? '<1' : fmt0(c.visOver)).width;
-  ctx.fillStyle = '#EFF4FA'; ctx.font = `400 30px ${sans}`;
-  wrapText(ctx, `${plural(c.visOver, 'ночь', 'ночи', 'ночей')} в году сияние стоит над головой при ясном небе`, 66 + nw + 28, 640, S - (66 + nw + 28) - 72, 38);
-  // месяцы
-  const data = SEASON_ORDER.map(mi => c.months.find(x => x.m === mi));
-  const bx = 72, bw = (S - 144) / 12, base = 900, maxv = Math.max(31, d3.max(data, d => d.dark)), sc = 130 / maxv;
-  data.forEach((d, i) => {
-    ctx.fillStyle = 'rgba(168,203,236,.16)'; roundRect(ctx, bx + i * bw + 6, base - d.dark * sc, bw - 12, d.dark * sc, 4);
-    ctx.fillStyle = '#5CA8EF'; roundRect(ctx, bx + i * bw + 6, base - d.vis * sc, bw - 12, d.vis * sc, 4);
-    ctx.fillStyle = '#9FB0C6'; ctx.font = `400 22px ${sans}`; ctx.textAlign = 'center'; ctx.fillText(MON_SHORT[d.m - 1], bx + i * bw + bw / 2, base + 30);
-    if (d.vis >= 0.5) { ctx.fillStyle = '#EFF4FA'; ctx.fillText(fmt0(d.vis), bx + i * bw + bw / 2, base - d.vis * sc - 8); }
-    ctx.textAlign = 'left';
-  });
-  ctx.fillStyle = '#9FB0C6'; ctx.font = `400 22px ${sans}`;
-  ctx.fillText('Ночей с сиянием по месяцам; на фоне — все тёмные ночи. Среднее за 2000–2025.', 72, 980);
-  ctx.fillStyle = '#EFF4FA'; ctx.font = `600 26px ${sans}`; ctx.fillText('ПОРА считать', 72, 1032);
-  ctx.fillStyle = '#5CA8EF'; ctx.font = `500 24px ${sans}`; ctx.textAlign = 'right'; ctx.fillText('t.me/poradata', S - 72, 1032); ctx.textAlign = 'left';
-  const a = document.createElement('a'); a.download = `siyanie-${c.id}.png`; a.href = cv.toDataURL('image/png'); a.click();
-}
-function roundRect(ctx, x, y, w, h, r){ if (h <= 0) return; r = Math.min(r, h / 2, w / 2); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); ctx.fill(); }
-function wrapText(ctx, text, x, y, maxW, lh){ const words = text.split(' '); let line = ''; for (const w of words) { const t = line ? line + ' ' + w : w; if (ctx.measureText(t).width > maxW && line) { ctx.fillText(line, x, y); line = w; y += lh; } else line = t; } if (line) ctx.fillText(line, x, y); }
-
-// ---------- календарь ----------
-(function calendar(){
-  const el = document.getElementById('cal');
-  const months = [8, 9, 10, 11, 12, 1, 2, 3, 4];
-  const rows = CITIES.filter(c => c.group === 'АЗРФ').sort((a, b) => b.visOver - a.visOver);
-  const maxv = d3.max(rows, c => d3.max(c.months, m => m.vis));
-  const color = d3.scaleLinear().domain([0, maxv]).range(['#16233C', '#5CA8EF']).interpolate(d3.interpolateRgb);
-  document.getElementById('cal-max').textContent = `${fmt0(maxv)} ночей`;
-  let html = '<div class="h l">город</div>' + months.map(m => `<div class="h">${MON_SHORT[m - 1]}</div>`).join('') + '<div class="h">за год</div>';
-  rows.forEach(c => {
-    html += `<div class="name" title="${c.name}">${c.name}</div>`;
-    months.forEach(m => { const v = c.months.find(x => x.m === m).vis; html += `<div class="c" style="background:${color(v)};color:${v > maxv * .55 ? '#0B1424' : '#EFF4FA'}" title="${c.name}, ${MON_NOM[m - 1]}: ${fmt1(v)}">${v >= 0.5 ? fmt0(v) : ''}</div>`; });
-    html += `<div class="t">${fmt0(c.visOver)}</div>`;
-  });
-  el.innerHTML = html;
-})();
-
-// ---------- 94 года бурь ----------
-(function historyChart(){
-  const w = 1100, h = 400, m = {l: 44, r: 84, t: 52, b: 34};
-  const s = d3.select('#hist').attr('viewBox', `0 0 ${w} ${h}`);
-  const data = D.kpYearly;
-  const x = d3.scaleBand().domain(data.map(d => d.y).concat([2026])).range([m.l, w - m.r]).padding(.18);
-  const y = d3.scaleLinear().domain([0, d3.max(data, d => d.k5) * 1.05]).range([h - m.b, m.t]);
-  const y2 = d3.scaleLinear().domain([0, d3.max(data, d => d.sn) * 1.05]).range([h - m.b, m.t]);
-  s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickSize(-(w - m.l - m.r))).call(g => g.select('.domain').remove());
-  s.append('g').attr('class', 'axis').attr('transform', `translate(${w - m.r},0)`).call(d3.axisRight(y2).ticks(5)).call(g => g.select('.domain').remove());
-  s.append('g').attr('class', 'axis').attr('transform', `translate(0,${h - m.b})`).call(d3.axisBottom(x).tickValues(d3.range(1935, 2027, 10)).tickSize(3)).call(g => g.select('.domain').remove());
-  s.selectAll('.bar').data(data).enter().append('rect').attr('x', d => x(d.y)).attr('width', x.bandwidth()).attr('y', d => y(d.k5)).attr('height', d => y(0) - y(d.k5)).attr('fill', d => d.y >= 2024 ? col('--orange') : 'rgba(92,168,239,.55)').attr('rx', 1.5)
-    .append('title').text(d => `${d.y}: ${d.k5} дней с Kp ≥ 5, ${d.k7} — с Kp ≥ 7; среднее число пятен ${fmt0(d.sn)}`);
-  const p26 = D.kp2026;
-  s.append('rect').attr('x', x(2026)).attr('width', x.bandwidth()).attr('y', y(p26.k5)).attr('height', y(0) - y(p26.k5)).attr('fill', 'none').attr('stroke', col('--orange')).attr('stroke-dasharray', '3 2').attr('rx', 1.5)
-    .append('title').text(`2026, январь–август: ${p26.k5} дней с Kp ≥ 5`);
-  s.append('path').datum(data).attr('fill', 'none').attr('stroke', col('--fog')).attr('stroke-width', 1.6).attr('d', d3.line().x(d => x(d.y) + x.bandwidth() / 2).y(d => y2(d.sn)).curve(d3.curveMonotoneX));
-  const kp9 = d3.rollup(D.storms, v => v.length, d => +d.d.slice(0, 4));
-  s.selectAll('.k9').data(Array.from(kp9)).enter().append('circle').attr('cx', d => x(d[0]) + x.bandwidth() / 2).attr('cy', m.t - 30).attr('r', d => 3 + d[1]).attr('fill', col('--orange')).attr('opacity', .9)
-    .append('title').text(d => `${d[0]}: ${d[1]} ${plural(d[1], 'день', 'дня', 'дней')} с Kp 9`);
-  s.append('text').attr('class', 'anno').attr('x', m.l).attr('y', m.t - 42).text('дни с Kp 9').attr('fill', col('--orange')).attr('font-size', 11);
-  s.append('text').attr('class', 'anno').attr('x', w - m.r + 8).attr('y', m.t - 8).text('число пятен').attr('font-size', 11);
-  const ann = [[1951, 'рекорд: 141 день', 'start', 0], [1960, '126 дней и три Kp 9', 'start', 0], [2003, 'Хеллоуинские бури', 'middle', 0], [2024, 'первый Kp 9 за 21 год', 'end', 78]];
-  ann.forEach(([yr, t, anc, yy]) => { const d = data.find(z => z.y === yr); s.append('text').attr('class', 'anno').attr('x', x(yr) + (anc === 'start' ? x.bandwidth() + 4 : anc === 'end' ? -4 : x.bandwidth() / 2)).attr('y', yy ? y(yy) : y(d.k5) - 8).attr('text-anchor', anc).text(t).attr('font-size', 11.5).attr('fill', col('--snow')); });
-  document.getElementById('hist-cap').textContent = typo(`Столбцы — дни с бурей (Kp ≥ 5) по годам, 1932–2025; пунктир — 2026 по 31 августа (${p26.k5} дней). Линия — среднегодовое число солнечных пятен (SILSO). В восьми завершённых циклах максимум бурь наступал в среднем через ${fmt1(d3.mean(D.cycles.filter(c => c.c < 25), c => c.kp5Max - c.snMax))} года после максимума пятен. Источники: GFZ Potsdam, WDC-SILSO.`);
-})();
-
-// ---------- сезонность ----------
-(function seasonCharts(){
-  const w = 520, h = 240, m = {l: 34, r: 8, t: 14, b: 26};
-  function bars(id, vals, fmt, color){
-    const s = d3.select(id).attr('viewBox', `0 0 ${w} ${h}`);
-    const x = d3.scaleBand().domain(d3.range(1, 13)).range([m.l, w - m.r]).padding(.2);
-    const y = d3.scaleLinear().domain([0, d3.max(vals) * 1.12]).range([h - m.b, m.t]);
-    s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(w - m.l - m.r))).call(g => g.select('.domain').remove());
-    s.selectAll('rect').data(vals).enter().append('rect').attr('x', (d, i) => x(i + 1)).attr('width', x.bandwidth()).attr('y', d => y(d)).attr('height', d => y(0) - y(d)).attr('fill', (d, i) => color(i + 1)).attr('rx', 2);
-    s.selectAll('.l').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', h - 8).attr('text-anchor', 'middle').attr('fill', col('--fog')).attr('font-size', 11).attr('font-family', col('--sans')).text((d, i) => MON_SHORT[i]);
-    s.selectAll('.v').data(vals).enter().append('text').attr('x', (d, i) => x(i + 1) + x.bandwidth() / 2).attr('y', d => y(d) - 5).attr('text-anchor', 'middle').attr('fill', col('--snow')).attr('font-size', 11).attr('font-family', col('--sans')).text(d => fmt(d));
-  }
-  bars('#season-kp', D.season.map(d => d.k5), d => fmt1(d), i => [3, 4, 9, 10].includes(i) ? col('--orange') : 'rgba(92,168,239,.38)');
-  const az = CITIES.filter(c => c.group === 'АЗРФ');
-  const vis = d3.range(1, 13).map(mi => d3.mean(az, c => c.months.find(x => x.m === mi).vis));
-  bars('#season-vis', vis, d => d >= 0.3 ? fmt1(d) : '', i => [1, 2, 3].includes(i) ? col('--blue') : 'rgba(92,168,239,.38)');
-})();
-
-// ---------- полюс ----------
-function drawPole(){
-  const w = 520, h = 520;
-  const s = d3.select('#pole-map').attr('viewBox', `0 0 ${w} ${h}`);
-  s.selectAll('*').remove();
-  const pr = d3.geoOrthographic().rotate([-90, -90]).clipAngle(90).translate([w / 2, h / 2]).scale(w / 2 * 2.7);
-  const p = d3.geoPath(pr);
-  s.append('path').attr('d', p({type: 'Sphere'})).attr('fill', '#0E1830');
-  if (land) s.append('path').attr('d', p(land)).attr('fill', '#1B2C4A').attr('stroke', '#2B4066').attr('stroke-width', .5);
-  if (russia) s.append('path').attr('d', p(russia)).attr('fill', '#24395F').attr('stroke', '#5C7FB0').attr('stroke-width', .7);
-  s.append('path').attr('d', p(d3.geoGraticule().step([30, 10])())).attr('fill', 'none').attr('stroke', '#1F3457').attr('stroke-width', .6);
-  s.append('path').attr('d', p({type: 'LineString', coordinates: d3.range(0, 361, 2).map(l => [l, 66.56])})).attr('fill', 'none').attr('stroke', '#5C7FB0').attr('stroke-width', .7).attr('stroke-dasharray', '3 4');
-  const pts = D.pole;
-  const colr = d3.scaleLinear().domain([1590, 2030]).range(['#A8CBEC', '#E8912D']);
-  for (let i = 1; i < pts.length; i++) {
-    s.append('path').attr('d', p({type: 'LineString', coordinates: [[pts[i - 1].lon, pts[i - 1].lat], [pts[i].lon, pts[i].lat]]})).attr('fill', 'none').attr('stroke', colr(pts[i].y)).attr('stroke-width', pts[i].y > 2025 ? 1.5 : 2.5).attr('stroke-dasharray', pts[i].y > 2025 ? '3 3' : null);
-  }
-  [1590, 1900, 2000, 2020, 2030].forEach(yr => {
-    const d = pts.find(z => z.y === yr) || pts.reduce((a, b) => Math.abs(b.y - yr) < Math.abs(a.y - yr) ? b : a);
-    const q = pr([d.lon, d.lat]); if (!q) return;
-    s.append('circle').attr('cx', q[0]).attr('cy', q[1]).attr('r', yr === 2025 || yr === 2020 ? 4 : 3).attr('fill', colr(d.y)).attr('stroke', '#0E1830').attr('stroke-width', 1);
-    s.append('text').attr('x', q[0] + 7).attr('y', q[1] + 4).attr('fill', col('--snow')).attr('font-size', 12).attr('font-family', col('--sans')).attr('paint-order', 'stroke').attr('stroke', 'rgba(12,21,38,.9)').attr('stroke-width', 3).text(yr);
-  });
-  const gp = pr([-72.76, 80.85]);
-  if (gp) { s.append('circle').attr('cx', gp[0]).attr('cy', gp[1]).attr('r', 5).attr('fill', 'none').attr('stroke', col('--blue')).attr('stroke-width', 2); s.append('text').attr('x', gp[0] - 9).attr('y', gp[1] + 4).attr('text-anchor', 'end').attr('fill', col('--blue')).attr('font-size', 12).text('геомагнитный полюс — центр овала'); }
-  s.append('text').attr('x', 14).attr('y', h - 14).attr('fill', col('--fog')).attr('font-size', 12).text('Магнитный полюс 1590–2025 (gufm1/IGRF), пунктир — прогноз WMM2025 до 2030. Пунктирный круг — полярный круг.');
-  // таблица дрейфа
-  const tb = document.querySelector('#drift tbody');
-  const ids = ['murmansk', 'arkhangelsk', 'salekhard', 'norilsk', 'tiksi', 'anadyr', 'saint_petersburg', 'moscow'];
-  tb.innerHTML = ids.map(id => { const c = byId.get(id); return `<tr><td>${c.name}</td><td class="num">${fmt1(c.cgm1900)}</td><td class="num">${fmt1(c.cgm1950)}</td><td class="num">${fmt1(c.cgm2000)}</td><td class="num">${fmt1(c.cgm)}</td><td class="num" style="color:${col('--blue')}">+${fmt1(c.cgm - c.cgm1900)}°</td></tr>`; }).join('');
-}
-
-// ---------- старт ----------
-resize();
-setKp(3);
-drawPole();
-const hashCity = byId.get(location.hash.replace('#', ''));
-if (hashCity) setTimeout(() => selectCity(hashCity, true), 300);
+$('#againBtn').addEventListener('click', () => { SFX.tick(); startGame(); });
+el.title.addEventListener('click', () => { SFX.init(); SFX.confirm(); startGame(); });
+$('#startBtn').addEventListener('click', () => { SFX.init(); SFX.confirm(); startGame(); });
+el.title.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); el.title.click(); } });
+el.title.setAttribute('tabindex', '0'); el.title.setAttribute('role', 'button');
+document.addEventListener('keydown', e => {
+  if (G.mode !== 'title' || (e.key !== 'Enter' && e.key !== ' ')) return;
+  if (e.target.closest && e.target.closest('button, a, [role="button"]')) return; // the focused control starts the game itself
+  e.preventDefault(); SFX.init(); SFX.confirm(); startGame();
+});
+$('#sndBtn').addEventListener('click', e => { SFX.init(); SFX.on = !SFX.on; e.currentTarget.classList.toggle('on', SFX.on); e.currentTarget.textContent = SFX.on ? 'ЗВУК ВКЛ' : 'ЗВУК ВЫКЛ'; e.currentTarget.setAttribute('aria-pressed', String(SFX.on)); if (SFX.on) SFX.confirm(); });
+renderDots();
 })();
 </script>
 </body>
